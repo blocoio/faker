@@ -1,14 +1,11 @@
 package io.bloco.faker.components;
 
-import java.util.Map;
-
 import io.bloco.faker.FakerComponent;
+import io.bloco.faker.FakerData;
 
 public class App extends FakerComponent {
 
-    public static final String KEY = "app";
-
-    public App(Map<String, Object> data) {
+    public App(FakerData data) {
         super(data);
     }
 
@@ -16,11 +13,11 @@ public class App extends FakerComponent {
         return sample("name");
     }
 
-    private String version() {
-        return numerify(sample("name"));
+    public String version() {
+        return numerify(sample("version"));
     }
 
-    private String author() {
-        throw new UnsupportedOperationException();
+    public String author() {
+        return parse(sample("author"));
     }
 }
