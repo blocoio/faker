@@ -24,13 +24,21 @@ public class Faker {
     private final FakerData data;
 
     public Faker() {
-        this.locale = DEFAULT_LOCALE;
+        this(DEFAULT_LOCALE);
+    }
+
+    public Faker(String locale) {
+        this.locale = locale;
         this.data = new FakerData(loadData(this.locale));
 
         // Load components
         this.app = this.data.getComponent(App.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
+    }
+
+    public String getLocale() {
+        return locale;
     }
 
     private Map<String, Object> loadData(String locale) {
@@ -49,7 +57,7 @@ public class Faker {
     private File getDataFile(String locale) {
         File file = new File("locales/" + locale + ".yml");
         if (!file.exists()) {
-            throw new RuntimeException("Unavailable locale " + locale);
+            throw new IllegalArgumentException("Unavailable locale '" + locale + "'");
         }
         return file;
     }

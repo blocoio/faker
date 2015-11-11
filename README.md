@@ -18,6 +18,9 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
     faker.name.firstName();    // Returns "Aaron"
     faker.company.name();       // Returns "Hirthe-Ritchie"
 
+    Faker faker = new Faker("nl");
+    faker.name.firstName();    // Returns "Thijs"
+
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 
 ### Available components
@@ -28,6 +31,5 @@ For full list of available options, check the [original source](https://github.c
 
 ## TODO
 
- - Add all locales and test localization
  - Dates support
  - Implement remaining components
