@@ -23,7 +23,7 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 
     Faker faker = new Faker();
     faker.name.firstName();    // Returns "Aaron"
-    faker.company.name();       // Returns "Hirthe-Ritchie"
+    faker.company.name();      // Returns "Hirthe-Ritchie"
 
     Faker faker = new Faker("nl");
     faker.name.firstName();    // Returns "Thijs"
