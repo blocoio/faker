@@ -3,9 +3,10 @@ package io.bloco.faker;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import io.bloco.faker.helpers.RandomHelper;
+import io.bloco.faker.helpers.StringHelper;
 
 public abstract class FakerComponent {
 
@@ -13,11 +14,13 @@ public abstract class FakerComponent {
     private static final String PARSE_REGEXP = "\\#\\{(.+?)\\}";
 
     private final FakerData data;
-    private final Random random;
+    private final RandomHelper randomHelper;
+    private final StringHelper stringHelper;
 
     public FakerComponent(FakerData data) {
         this.data = data;
-        this.random = new Random();
+        this.randomHelper = new RandomHelper();
+        this.stringHelper = new StringHelper();
     }
 
     public String getKey() {
@@ -29,41 +32,35 @@ public abstract class FakerComponent {
     }
 
     protected String sample(List options) {
-        Object option = getSampleObjectFromList(options);
+        Object option = randomHelper.sample(options);
 
         if (option instanceof String) {
             return (String) option;
         } else if (option instanceof List) {
             // List of lists
-            return (String) getSampleObjectFromList((List) option);
+            return (String) randomHelper.sample((List) option);
         } else {
             throw new UnsupportedOperationException("Unsupported data type");
         }
     }
 
     protected String numerify(String input) {
-        Pattern pattern = Pattern.compile(DIGIT_SYMBOL);
-        Matcher matcher = pattern.matcher(input);
-        StringBuffer stringBuffer = new StringBuffer();
-        while (matcher.find()) {
-            String digit = Integer.toString(random.nextInt(10));
-            matcher.appendReplacement(stringBuffer, digit);
-        }
-        matcher.appendTail(stringBuffer);
-        return stringBuffer.toString();
+        return stringHelper.replaceMethod(input, DIGIT_SYMBOL, new StringHelper.StringReplacer() {
+            @Override
+            public String replaceWith(Matcher matcher) {
+                return randomHelper.digit();
+            }
+        });
     }
 
     protected String parse(String input) {
-        Pattern pattern = Pattern.compile(PARSE_REGEXP);
-        Matcher matcher = pattern.matcher(input);
-        StringBuffer stringBuffer = new StringBuffer();
-        while (matcher.find()) {
-            String key = matcher.group(1);
-            String value = getParsedValue(key);
-            matcher.appendReplacement(stringBuffer, value);
-        }
-        matcher.appendTail(stringBuffer);
-        return stringBuffer.toString();
+        return stringHelper.replaceMethod(input, PARSE_REGEXP, new StringHelper.StringReplacer() {
+            @Override
+            public String replaceWith(Matcher matcher) {
+                String key = matcher.group(1);
+                return getParsedValue(key);
+            }
+        });
     }
 
     protected List getList(String listKey) {
@@ -93,18 +90,15 @@ public abstract class FakerComponent {
     }
 
     private String get(String methodKey) {
+        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
         String value;
         try {
-            value = (String) getClass().getDeclaredMethod(methodKey).invoke(this);
+            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
         } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
             throw new IllegalArgumentException(
                     "Unsupported method '" + methodKey + "' " +
                             "for component '" + this.getKey() + "'", e);
         }
         return value;
-    }
-
-    private Object getSampleObjectFromList(List options) {
-        return options.get(random.nextInt(options.size()));
     }
 }

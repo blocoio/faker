@@ -18,12 +18,12 @@ public class NameTest {
 
     @Test
     public void testFirstName() throws Exception {
-        assertNotNull(faker.name.first_name());
+        assertNotNull(faker.name.firstName());
     }
 
     @Test
     public void testLastName() throws Exception {
-        assertNotNull(faker.name.last_name());
+        assertNotNull(faker.name.lastName());
     }
 
     @Test

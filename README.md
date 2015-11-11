@@ -1,4 +1,4 @@
-# faker
+# Faker
 
 *Work in progress*
 
@@ -15,7 +15,7 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 ## Usage
 
     Faker faker = new Faker();
-    faker.name.first_name();    // Returns "Aaron"
+    faker.name.firstName();    // Returns "Aaron"
     faker.company.name();       // Returns "Hirthe-Ritchie"
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).

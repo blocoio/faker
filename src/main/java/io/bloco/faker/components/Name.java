@@ -14,11 +14,11 @@ public class Name extends FakerComponent {
         title = new Title();
     }
 
-    public String first_name() {
+    public String firstName() {
         return sample("first_name");
     }
 
-    public String last_name() {
+    public String lastName() {
         return sample("last_name");
     }
 
