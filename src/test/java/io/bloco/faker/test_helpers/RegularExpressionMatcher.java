@@ -1,4 +1,4 @@
-package io.bloco.faker.helpers;
+package io.bloco.faker.test_helpers;
 
 import org.hamcrest.Description;
 import org.hamcrest.Factory;

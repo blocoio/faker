@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static io.bloco.faker.helpers.RegularExpressionMatcher.matchesPattern;
+import static io.bloco.faker.test_helpers.RegularExpressionMatcher.matchesPattern;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
