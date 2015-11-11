@@ -25,6 +25,7 @@ For full list of available options, check the [original source](https://github.c
 
 ### Available components
 
+ - Address
  - App
  - Company
  - Name
@@ -32,4 +33,5 @@ For full list of available options, check the [original source](https://github.c
 ## TODO
 
  - Dates support
+ - Regular expressions support
  - Implement remaining components

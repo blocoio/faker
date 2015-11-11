@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
 
+import io.bloco.faker.components.Address;
 import io.bloco.faker.components.App;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
@@ -16,6 +17,7 @@ public class Faker {
 
     public static final String DEFAULT_LOCALE = "en";
 
+    public final Address address;
     public final App app;
     public final Company company;
     public final Name name;
@@ -32,6 +34,7 @@ public class Faker {
         this.data = new FakerData(loadData(this.locale));
 
         // Load components
+        this.address = this.data.getComponent(Address.class);
         this.app = this.data.getComponent(App.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
