@@ -10,7 +10,14 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 ## Installing
 
-*Not available yet*
+    repositories {
+        // ...
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        compile 'com.github.blocoio:faker:-SNAPSHOT'
+    }
 
 ## Usage
 
