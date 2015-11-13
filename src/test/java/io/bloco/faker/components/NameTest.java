@@ -17,42 +17,42 @@ public class NameTest {
     }
 
     @Test
-    public void testFirstName() throws Exception {
+    public void firstName() throws Exception {
         assertNotNull(faker.name.firstName());
     }
 
     @Test
-    public void testLastName() throws Exception {
+    public void lastName() throws Exception {
         assertNotNull(faker.name.lastName());
     }
 
     @Test
-    public void testPrefix() throws Exception {
+    public void prefix() throws Exception {
         assertNotNull(faker.name.prefix());
     }
 
     @Test
-    public void testSuffix() throws Exception {
+    public void suffix() throws Exception {
         assertNotNull(faker.name.suffix());
     }
 
     @Test
-    public void testTitleDescription() throws Exception {
+    public void titleDescription() throws Exception {
         assertNotNull(faker.name.title.descriptor());
     }
 
     @Test
-    public void testTitleLevel() throws Exception {
+    public void titleLevel() throws Exception {
         assertNotNull(faker.name.title.level());
     }
 
     @Test
-    public void testTitleJob() throws Exception {
+    public void titleJob() throws Exception {
         assertNotNull(faker.name.title.job());
     }
 
     @Test
-    public void testName() throws Exception {
+    public void name() throws Exception {
         assertNotNull(faker.name.name());
     }
 }

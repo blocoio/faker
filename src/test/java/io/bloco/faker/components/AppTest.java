@@ -17,17 +17,17 @@ public class AppTest {
     }
 
     @Test
-    public void testName() throws Exception {
+    public void name() throws Exception {
         assertNotNull(faker.app.name());
     }
 
     @Test
-    public void testVersion() throws Exception {
+    public void version() throws Exception {
         assertNotNull(faker.app.version());
     }
 
     @Test
-    public void testAuthor() throws Exception {
+    public void author() throws Exception {
         assertNotNull(faker.app.author());
     }
 }

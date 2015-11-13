@@ -19,7 +19,7 @@ public class AvatarTest {
     }
 
     @Test
-    public void testImageDefault() throws Exception {
+    public void imageDefault() throws Exception {
         String defaultUrl = faker.avatar.image();
         assertThat(defaultUrl, containsString("robohash.org"));
         assertThat(defaultUrl, containsString("image"));
@@ -30,7 +30,7 @@ public class AvatarTest {
     }
 
     @Test
-    public void testImageParams() throws Exception {
+    public void imageParams() throws Exception {
         String specificUrl = faker.avatar.image("my-slug", "80x80", "bmp", "set2", "bgset1");
         assertThat(specificUrl, containsString("robohash.org"));
         assertThat(specificUrl, containsString("my-slug"));
@@ -41,12 +41,12 @@ public class AvatarTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testImageInvalidSize() {
+    public void imageInvalidSize() {
         faker.avatar.image("my-slug", "123456");
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testImageInvalidFormat() {
+    public void imageInvalidFormat() {
         faker.avatar.image("my-slug", "80x80", "pdf");
     }
 }

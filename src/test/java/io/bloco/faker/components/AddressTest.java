@@ -22,76 +22,76 @@ public class AddressTest {
     }
 
     @Test
-    public void testCitySuffix() throws Exception {
+    public void citySuffix() throws Exception {
         assertNotNull(faker.address.citySuffix());
     }
 
     @Test
-    public void testCountry() throws Exception {
+    public void country() throws Exception {
         assertNotNull(faker.address.country());
     }
 
     @Test
-    public void testCountryCode() throws Exception {
+    public void countryCode() throws Exception {
         assertNotNull(faker.address.countryCode());
     }
 
     @Test
-    public void testBuildingNumber() throws Exception {
+    public void buildingNumber() throws Exception {
         assertNotNull(faker.address.buildingNumber());
     }
     @Test
-    public void testStreetSuffix() throws Exception {
+    public void streetSuffix() throws Exception {
         assertNotNull(faker.address.streetSuffix());
     }
 
     @Test
-    public void testSecondaryAddress() throws Exception {
+    public void secondaryAddress() throws Exception {
         assertNotNull(faker.address.secondaryAddress());
     }
 
     @Test
-    public void testPostcode() throws Exception {
+    public void postcode() throws Exception {
         assertNotNull(faker.address.postcode());
     }
 
     @Test
-    public void testPostcodeByState() throws Exception {
+    public void postcodeByState() throws Exception {
         assertNotNull(faker.address.postcodeByState());
     }
 
     @Test
-    public void testState() throws Exception {
+    public void state() throws Exception {
         assertNotNull(faker.address.state());
     }
 
     @Test
-    public void testStateAbbr() throws Exception {
+    public void stateAbbr() throws Exception {
         assertNotNull(faker.address.stateAbbr());
     }
 
     @Test
-    public void testTimeZone() throws Exception {
+    public void timeZone() throws Exception {
         assertNotNull(faker.address.timeZone());
     }
 
     @Test
-    public void testCity() throws Exception {
+    public void city() throws Exception {
         assertNotNull(faker.address.city());
     }
 
     @Test
-    public void testStreetName() throws Exception {
+    public void streetName() throws Exception {
         assertNotNull(faker.address.streetName());
     }
 
     @Test
-    public void testStreetAddress() throws Exception {
+    public void streetAddress() throws Exception {
         assertNotNull(faker.address.streetAddress());
     }
 
     @Test
-    public void testDefaultCountry() throws Exception {
+    public void defaultCountry() throws Exception {
         assertNotNull(faker.address.defaultCountry());
     }
 }

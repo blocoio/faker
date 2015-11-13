@@ -11,6 +11,7 @@ import java.util.Map;
 import io.bloco.faker.components.Address;
 import io.bloco.faker.components.App;
 import io.bloco.faker.components.Avatar;
+import io.bloco.faker.components.Book;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.helpers.MapHelper;
@@ -22,6 +23,7 @@ public class Faker {
     public final Address address;
     public final App app;
     public final Avatar avatar;
+    public final Book book;
     public final Company company;
     public final Name name;
 
@@ -47,6 +49,7 @@ public class Faker {
         this.address = this.data.getComponent(Address.class);
         this.app = this.data.getComponent(App.class);
         this.avatar = this.data.getComponent(Avatar.class);
+        this.book = this.data.getComponent(Book.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
     }

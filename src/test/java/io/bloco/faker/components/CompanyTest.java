@@ -17,32 +17,32 @@ public class CompanyTest {
     }
 
     @Test
-    public void testSuffix() throws Exception {
+    public void suffix() throws Exception {
         assertNotNull(faker.company.suffix());
     }
 
     @Test
-    public void testBuzzwords() throws Exception {
+    public void buzzwords() throws Exception {
         assertNotNull(faker.company.buzzwords());
     }
 
     @Test
-    public void testBs() throws Exception {
+    public void bs() throws Exception {
         assertNotNull(faker.company.bs());
     }
 
     @Test
-    public void testName() throws Exception {
+    public void name() throws Exception {
         assertNotNull(faker.company.name());
     }
 
     @Test
-    public void testIndustry() throws Exception {
+    public void industry() throws Exception {
         assertNotNull(faker.company.industry());
     }
 
     @Test
-    public void testProfession() throws Exception {
+    public void profession() throws Exception {
         assertNotNull(faker.company.profession());
     }
 
