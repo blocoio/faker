@@ -7,6 +7,7 @@ Generates fake data for testing or populating a development database.
 A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 [![Build Status](https://travis-ci.org/blocoio/faker.svg?branch=master)](https://travis-ci.org/blocoio/faker)
+[![Coverage Status](https://coveralls.io/repos/blocoio/faker/badge.svg?branch=master&service=github)](https://coveralls.io/github/blocoio/faker?branch=master)
 
 ## Installing
 
