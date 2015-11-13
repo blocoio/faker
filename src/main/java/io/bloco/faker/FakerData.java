@@ -5,6 +5,7 @@ import java.util.Map;
 
 import io.bloco.faker.components.Address;
 import io.bloco.faker.components.App;
+import io.bloco.faker.components.Avatar;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
 
@@ -20,8 +21,9 @@ public class FakerData {
         FakerComponent[] componentsList = new FakerComponent[]{
                 new Address(this),
                 new App(this),
+                new Avatar(this),
                 new Company(this),
-                new Name(this)
+                new Name(this),
         };
 
         components = new HashMap<>(componentsList.length);

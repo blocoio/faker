@@ -1,5 +1,6 @@
 package io.bloco.faker.helpers;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,5 +30,18 @@ public class StringHelper {
                 return letter.toUpperCase();
             }
         });
+    }
+
+    public String join(List<String> list, String separator) {
+        StringBuilder sb = new StringBuilder();
+        boolean first = true;
+        for (String item : list) {
+            if (first)
+                first = false;
+            else
+                sb.append(separator);
+            sb.append(item);
+        }
+        return sb.toString();
     }
 }
