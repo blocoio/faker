@@ -12,6 +12,7 @@ import io.bloco.faker.components.Address;
 import io.bloco.faker.components.App;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
+import io.bloco.faker.helpers.MapHelper;
 
 public class Faker {
 
@@ -31,7 +32,14 @@ public class Faker {
 
     public Faker(String locale) {
         this.locale = locale;
-        this.data = new FakerData(loadData(this.locale));
+
+        // Load data
+        MapHelper mapHelper = new MapHelper();
+        Map<String, Object> data = loadData(DEFAULT_LOCALE); // Fallbacks first
+        if (!this.locale.equals(DEFAULT_LOCALE)) {
+            mapHelper.deepMerge(data, loadData(this.locale));
+        }
+        this.data = new FakerData(data);
 
         // Load components
         this.address = this.data.getComponent(Address.class);

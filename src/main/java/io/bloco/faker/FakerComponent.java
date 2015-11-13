@@ -27,6 +27,19 @@ public abstract class FakerComponent {
         return this.getClass().getSimpleName().toLowerCase();
     }
 
+    public String get(String methodKey) {
+        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
+        String value;
+        try {
+            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
+        } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
+            throw new IllegalArgumentException(
+                    "Unsupported method '" + methodKey + "' " +
+                            "for component '" + this.getKey() + "'", e);
+        }
+        return value;
+    }
+
     protected String sample(String listKey) {
         return sample(getList(listKey));
     }
@@ -87,18 +100,5 @@ public abstract class FakerComponent {
         } else {
             return get(key);
         }
-    }
-
-    private String get(String methodKey) {
-        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
-        String value;
-        try {
-            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
-        } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
-            throw new IllegalArgumentException(
-                    "Unsupported method '" + methodKey + "' " +
-                            "for component '" + this.getKey() + "'", e);
-        }
-        return value;
     }
 }

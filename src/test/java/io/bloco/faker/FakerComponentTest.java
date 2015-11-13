@@ -25,7 +25,7 @@ public class FakerComponentTest {
         }
 
         public String test() {
-            return "test";
+            return "ok";
         }
     }
 
@@ -77,11 +77,23 @@ public class FakerComponentTest {
     public void testParse() throws Exception {
         when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
 
-        assertThat(fakerComponent.parse("#{test}"), is(equalTo("test")));
-        assertThat(fakerComponent.parse("#{testcomponent.test}"), is(equalTo("test")));
-        assertThat(fakerComponent.parse("#{TestComponent.test}"), is(equalTo("test")));
+        assertThat(fakerComponent.parse("#{test}"), is(equalTo("ok")));
+        assertThat(fakerComponent.parse("#{testcomponent.test}"), is(equalTo("ok")));
+        assertThat(fakerComponent.parse("#{TestComponent.test}"), is(equalTo("ok")));
         assertThat(fakerComponent.parse("#{TestComponent.test} - #{TestComponent.test}"),
-                is(equalTo("test - test")));
+                is(equalTo("ok - ok")));
+    }
+
+    @Test
+    public void testGet() throws Exception {
+        when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
+        assertThat(fakerComponent.get("test"), is(equalTo("ok")));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetInvalid() throws Exception {
+        when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
+        fakerComponent.get("invalid");
     }
 
     // Helpers

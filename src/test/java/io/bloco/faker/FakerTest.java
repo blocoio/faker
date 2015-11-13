@@ -26,8 +26,16 @@ public class FakerTest {
         assertThat(faker.getLocale(), is(equalTo("nl")));
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testLocaleInvalid() {
         new Faker("invalid-locale");
+    }
+
+    @Test
+    public void testLocaleFallback() throws Exception {
+        // Dutch doesn't have App.name, but English (the default) has
+        Faker faker = new Faker("nl");
+        assertNotNull(faker.app.name());
+        assertNotNull(faker.company.name());
     }
 }
