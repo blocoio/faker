@@ -1,20 +1,19 @@
 package io.bloco.faker;
 
-import org.yaml.snakeyaml.Yaml;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.Map;
-
 import io.bloco.faker.components.Address;
 import io.bloco.faker.components.App;
 import io.bloco.faker.components.Avatar;
 import io.bloco.faker.components.Book;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
+import io.bloco.faker.components.Time;
 import io.bloco.faker.helpers.MapHelper;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Map;
+import org.yaml.snakeyaml.Yaml;
 
 public class Faker {
 
@@ -26,6 +25,7 @@ public class Faker {
     public final Book book;
     public final Company company;
     public final Name name;
+    public final Time time;
 
     private final String locale;
     private final FakerData data;
@@ -52,6 +52,8 @@ public class Faker {
         this.book = this.data.getComponent(Book.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
+        // TODO: CHANGE THIS??
+        this.time = new Time();
     }
 
     public String getLocale() {
