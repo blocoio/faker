@@ -1,6 +1,7 @@
 package io.bloco.faker.components;
 
 import io.bloco.faker.helpers.Period;
+import java.util.Date;
 import java.util.Random;
 import org.joda.time.DateTime;
 
@@ -12,32 +13,36 @@ public class Time {
     this.random = new Random();
   }
 
-  public DateTime between(DateTime from, DateTime to, Period period) {
-    return randomTime(new DateTime(getRandomTimeBetweenTwoDates(from, to)), period);
+  public Date between(Date from, Date to, Period period) {
+    return between(new DateTime(from), new DateTime(to), period).toDate();
   }
 
-  public DateTime between(DateTime from, DateTime to) {
-    return randomTime(new DateTime(getRandomTimeBetweenTwoDates(from, to)), Period.all);
+  public Date between(Date from, Date to) {
+    return between(from, to, Period.all);
   }
 
-  public DateTime forward(int numberOfDays, Period period) {
-    return randomTime(now(), period).plusDays(numberOfDays);
+  public Date forward(int numberOfDays, Period period) {
+    return randomTime(now(), period).plusDays(numberOfDays).toDate();
   }
 
-  public DateTime forward(int numberOfDays) {
-    return randomTime(now(), Period.all).plusDays(numberOfDays);
+  public Date forward(int numberOfDays) {
+    return forward(numberOfDays, Period.all);
   }
 
-  public DateTime backward(int numberOfDays, Period period) {
-    return randomTime(now(), period).minusDays(numberOfDays);
+  public Date backward(int numberOfDays, Period period) {
+    return randomTime(now(), period).minusDays(numberOfDays).toDate();
   }
 
-  public DateTime backward(int numberOfDays) {
-    return randomTime(now(), Period.all).minusDays(numberOfDays);
+  public Date backward(int numberOfDays) {
+    return backward(numberOfDays, Period.all);
   }
 
   private DateTime now() {
     return DateTime.now();
+  }
+
+  private DateTime between(DateTime from, DateTime to, Period period) {
+    return randomTime(new DateTime(getRandomTimeBetweenTwoDates(from, to)), period);
   }
 
   private long getRandomTimeBetweenTwoDates(DateTime from, DateTime to) {
