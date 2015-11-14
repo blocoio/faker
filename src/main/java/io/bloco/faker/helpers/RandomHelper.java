@@ -18,4 +18,8 @@ public class RandomHelper {
     public String digit() {
         return Integer.toString(random.nextInt(10));
     }
+
+    public int number(int max) {
+        return random.nextInt(max);
+    }
 }

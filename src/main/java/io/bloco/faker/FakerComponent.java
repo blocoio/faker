@@ -14,7 +14,7 @@ public abstract class FakerComponent {
     private static final String PARSE_REGEXP = "\\#\\{(.+?)\\}";
 
     private final FakerData data;
-    private final RandomHelper randomHelper;
+    protected final RandomHelper randomHelper;
     private final StringHelper stringHelper;
 
     public FakerComponent(FakerData data) {

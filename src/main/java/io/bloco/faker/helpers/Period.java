@@ -12,7 +12,7 @@ public enum Period {
   evening(new int[] { 17, 18, 19, 20, 21 }),
   midnight(new int[] { 0, 1, 2, 3, 4 });
 
-  private int[] values;
+  private final int[] values;
 
   Period(int[] values) {
     this.values = values;

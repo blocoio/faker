@@ -1,16 +1,15 @@
 package io.bloco.faker.components;
 
+import io.bloco.faker.FakerComponent;
+import io.bloco.faker.FakerData;
 import io.bloco.faker.helpers.Period;
 import java.util.Date;
-import java.util.Random;
 import org.joda.time.DateTime;
 
-public class Time {
+public class Time extends FakerComponent {
 
-  private final Random random;
-
-  public Time() {
-    this.random = new Random();
+  public Time(FakerData fakerData) {
+    super(fakerData);
   }
 
   public Date between(Date from, Date to, Period period) {
@@ -58,14 +57,14 @@ public class Time {
 
   private int hours(Period period) {
     int[] values = period.getValues();
-    return values[random.nextInt(values.length)];
+    return values[randomHelper.number(values.length)];
   }
 
   private int minutes() {
-    return random.nextInt(60);
+    return randomHelper.number(60);
   }
 
   private int seconds() {
-    return random.nextInt(60);
+    return randomHelper.number(60);
   }
 }

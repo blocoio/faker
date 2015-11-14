@@ -52,8 +52,7 @@ public class Faker {
         this.book = this.data.getComponent(Book.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
-        // TODO: CHANGE THIS??
-        this.time = new Time();
+        this.time = this.data.getComponent(Time.class);
     }
 
     public String getLocale() {
