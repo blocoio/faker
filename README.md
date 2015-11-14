@@ -10,23 +10,27 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 ## Installing
 
+``` groovy
     repositories {
         // ...
         maven { url "https://jitpack.io" }
     }
-
     dependencies {
         compile 'com.github.blocoio:faker:-SNAPSHOT'
     }
+```
 
 ## Usage
 
+``` java
     Faker faker = new Faker();
     faker.name.firstName();    // Returns "Aaron"
     faker.company.name();      // Returns "Hirthe-Ritchie"
-
+```
+``` java
     Faker faker = new Faker("nl");
     faker.name.firstName();    // Returns "Thijs"
+```
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 
@@ -38,9 +42,9 @@ For full list of available options, check the [original source](https://github.c
  - Book
  - Company
  - Name
+ - Time
 
 ## TODO
 
- - Dates support
  - Regular expressions support
  - Implement remaining components
