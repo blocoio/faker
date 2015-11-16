@@ -40,6 +40,7 @@ For full list of available options, check the [original source](https://github.c
  - App
  - Avatar
  - Book
+ - Business
  - Company
  - Name
  - Time

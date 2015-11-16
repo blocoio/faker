@@ -1,19 +1,22 @@
 package io.bloco.faker;
 
-import io.bloco.faker.components.Address;
-import io.bloco.faker.components.App;
-import io.bloco.faker.components.Avatar;
-import io.bloco.faker.components.Book;
-import io.bloco.faker.components.Company;
-import io.bloco.faker.components.Name;
-import io.bloco.faker.components.Time;
-import io.bloco.faker.helpers.MapHelper;
+import org.yaml.snakeyaml.Yaml;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
-import org.yaml.snakeyaml.Yaml;
+
+import io.bloco.faker.components.Address;
+import io.bloco.faker.components.App;
+import io.bloco.faker.components.Avatar;
+import io.bloco.faker.components.Book;
+import io.bloco.faker.components.Business;
+import io.bloco.faker.components.Company;
+import io.bloco.faker.components.Name;
+import io.bloco.faker.components.Time;
+import io.bloco.faker.helpers.MapHelper;
 
 public class Faker {
 
@@ -23,6 +26,7 @@ public class Faker {
     public final App app;
     public final Avatar avatar;
     public final Book book;
+    public final Business business;
     public final Company company;
     public final Name name;
     public final Time time;
@@ -50,6 +54,7 @@ public class Faker {
         this.app = this.data.getComponent(App.class);
         this.avatar = this.data.getComponent(Avatar.class);
         this.book = this.data.getComponent(Book.class);
+        this.business = this.data.getComponent(Business.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
         this.time = this.data.getComponent(Time.class);

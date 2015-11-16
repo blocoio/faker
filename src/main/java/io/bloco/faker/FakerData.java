@@ -1,6 +1,5 @@
 package io.bloco.faker;
 
-import io.bloco.faker.components.Time;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +7,10 @@ import io.bloco.faker.components.Address;
 import io.bloco.faker.components.App;
 import io.bloco.faker.components.Avatar;
 import io.bloco.faker.components.Book;
+import io.bloco.faker.components.Business;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
+import io.bloco.faker.components.Time;
 
 public class FakerData {
 
@@ -25,6 +26,7 @@ public class FakerData {
                 new App(this),
                 new Avatar(this),
                 new Book(this),
+                new Business(this),
                 new Company(this),
                 new Name(this),
                 new Time(this),
@@ -32,8 +34,7 @@ public class FakerData {
 
         components = new HashMap<>(componentsList.length);
 
-        for (int i = 0; i < componentsList.length; i++) {
-            FakerComponent component = componentsList[i];
+        for (FakerComponent component : componentsList) {
             components.put(component.getKey(), component);
         }
     }
