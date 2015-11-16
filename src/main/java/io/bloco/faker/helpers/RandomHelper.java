@@ -23,6 +23,10 @@ public class RandomHelper {
         return random.nextInt(max);
     }
 
+    public long number(long max) {
+        return Math.abs(random.nextLong()) % max;
+    }
+
     public double range(double min, double max) {
         if (max < min) {
             double temp = max;

@@ -44,6 +44,7 @@ For full list of available options, check the [original source](https://github.c
  - Color
  - Commerce
  - Company
+ - Date
  - Name
  - Time
 
