@@ -76,13 +76,22 @@ public abstract class FakerComponent {
             @Override
             public String replaceWith(Matcher matcher) {
                 String key = matcher.group(1);
-                return getParsedValue(key);
+                return getTopLevel(key);
             }
         });
     }
 
     protected String getSeparator() {
         return (String) data.get("separator");
+    }
+
+    protected String getTopLevel(String key) {
+        if (key.contains(".")) {
+            String[] keys = key.split("\\.");
+            return data.getComponentByKey(keys[0]).get(keys[1]);
+        } else {
+            return get(key);
+        }
     }
 
     private List getList(String listKey) {
@@ -100,14 +109,5 @@ public abstract class FakerComponent {
             throw new UnsupportedOperationException("Unsupported method '" + listKey + "'");
         }
         return map;
-    }
-
-    private String getParsedValue(String key) {
-        if (key.contains(".")) {
-            String[] keys = key.split("\\.");
-            return data.getComponentByKey(keys[0]).get(keys[1]);
-        } else {
-            return get(key);
-        }
     }
 }

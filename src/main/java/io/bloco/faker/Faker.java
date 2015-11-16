@@ -18,6 +18,7 @@ import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Date;
 import io.bloco.faker.components.Name;
+import io.bloco.faker.components.Team;
 import io.bloco.faker.components.Time;
 import io.bloco.faker.components.University;
 import io.bloco.faker.helpers.MapHelper;
@@ -36,6 +37,7 @@ public class Faker {
     public final Company company;
     public final Date date;
     public final Name name;
+    public final Team team;
     public final Time time;
     public final University university;
 
@@ -68,6 +70,7 @@ public class Faker {
         this.company = this.data.getComponent(Company.class);
         this.date = this.data.getComponent(Date.class);
         this.name = this.data.getComponent(Name.class);
+        this.team = this.data.getComponent(Team.class);
         this.time = this.data.getComponent(Time.class);
         this.university = this.data.getComponent(University.class);
     }
