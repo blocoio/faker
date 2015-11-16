@@ -46,6 +46,7 @@ For full list of available options, check the [original source](https://github.c
  - Company
  - Date
  - Name
+ - PhoneNumber
  - SlackEmoji
  - Team
  - Time

@@ -22,6 +22,11 @@ public class SlackEmojiTest {
     }
 
     @Test
+    public void nature() throws Exception {
+        assertNotNull(faker.slackEmoji.nature());
+    }
+
+    @Test
     public void foodAndDrink() throws Exception {
         assertNotNull(faker.slackEmoji.foodAndDrink());
     }

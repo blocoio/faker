@@ -82,4 +82,9 @@ public class DateTest {
         assertThat(faker.date.birthday(1, 10),
                 allOf(greaterThanOrEqualTo(nextYear), lessThanOrEqualTo(in10Years)));
     }
+
+    @Test
+    public void birthdayDefault() throws Exception {
+        assertNotNull(faker.date.birthday());
+    }
 }

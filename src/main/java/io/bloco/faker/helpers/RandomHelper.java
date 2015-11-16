@@ -27,6 +27,10 @@ public class RandomHelper {
         return Math.abs(random.nextLong()) % max;
     }
 
+    public int numberByLength(int length) {
+        return random.nextInt((int) Math.pow(10, length));
+    }
+
     public double range(double min, double max) {
         if (max < min) {
             double temp = max;

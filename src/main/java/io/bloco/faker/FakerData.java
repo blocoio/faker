@@ -13,6 +13,7 @@ import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Date;
 import io.bloco.faker.components.Name;
+import io.bloco.faker.components.PhoneNumber;
 import io.bloco.faker.components.SlackEmoji;
 import io.bloco.faker.components.Team;
 import io.bloco.faker.components.Time;
@@ -40,6 +41,7 @@ public class FakerData {
                 new Company(this),
                 new Date(this),
                 new Name(this),
+                new PhoneNumber(this),
                 new SlackEmoji(this),
                 new Team(this),
                 new Time(this),
