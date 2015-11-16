@@ -9,6 +9,8 @@ import io.bloco.faker.helpers.StringHelper;
 
 public class Avatar extends FakerComponent {
 
+    public static final List<String> SUPPORTED_FORMATS = Arrays.asList("png", "jpg", "bmp");
+
     private static final String AVATAR_URL = "https://robohash.org/";
 
     private final StringHelper stringHelper;
@@ -17,8 +19,6 @@ public class Avatar extends FakerComponent {
         super(data);
         stringHelper = new StringHelper();
     }
-
-    public static final List<String> SUPPORTED_FORMATS = Arrays.asList("png", "jpg", "bmp");
 
     public String image() {
         return image(null);
