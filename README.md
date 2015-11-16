@@ -47,6 +47,7 @@ For full list of available options, check the [original source](https://github.c
  - Date
  - Name
  - Time
+ - University
 
 ## TODO
 

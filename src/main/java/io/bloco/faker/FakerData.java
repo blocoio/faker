@@ -14,6 +14,7 @@ import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Date;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Time;
+import io.bloco.faker.components.University;
 
 public class FakerData {
 
@@ -36,6 +37,7 @@ public class FakerData {
                 new Date(this),
                 new Name(this),
                 new Time(this),
+                new University(this),
         };
 
         components = new HashMap<>(componentsList.length);
