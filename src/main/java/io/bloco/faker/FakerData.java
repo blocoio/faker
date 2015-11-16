@@ -9,6 +9,7 @@ import io.bloco.faker.components.Avatar;
 import io.bloco.faker.components.Book;
 import io.bloco.faker.components.Business;
 import io.bloco.faker.components.Color;
+import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Time;
@@ -29,6 +30,7 @@ public class FakerData {
                 new Book(this),
                 new Business(this),
                 new Color(this),
+                new Commerce(this),
                 new Company(this),
                 new Name(this),
                 new Time(this),
@@ -57,6 +59,10 @@ public class FakerData {
     }
 
     public Map<String, Object> getComponentData(String componentKey) {
-        return (Map<String, Object>) data.get(componentKey);
+        return (Map<String, Object>) get(componentKey);
+    }
+
+    public Object get(String componentKey) {
+        return data.get(componentKey);
     }
 }

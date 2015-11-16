@@ -15,7 +15,7 @@ public abstract class FakerComponent {
 
     private final FakerData data;
     protected final RandomHelper randomHelper;
-    private final StringHelper stringHelper;
+    protected final StringHelper stringHelper;
 
     public FakerComponent(FakerData data) {
         this.data = data;
@@ -79,6 +79,10 @@ public abstract class FakerComponent {
                 return getParsedValue(key);
             }
         });
+    }
+
+    protected String getSeparator() {
+        return (String) data.get("separator");
     }
 
     private List getList(String listKey) {

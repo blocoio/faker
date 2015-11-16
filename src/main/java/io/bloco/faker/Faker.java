@@ -14,6 +14,7 @@ import io.bloco.faker.components.Avatar;
 import io.bloco.faker.components.Book;
 import io.bloco.faker.components.Business;
 import io.bloco.faker.components.Color;
+import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Time;
@@ -29,6 +30,7 @@ public class Faker {
     public final Book book;
     public final Business business;
     public final Color color;
+    public final Commerce commerce;
     public final Company company;
     public final Name name;
     public final Time time;
@@ -58,6 +60,7 @@ public class Faker {
         this.book = this.data.getComponent(Book.class);
         this.business = this.data.getComponent(Business.class);
         this.color = this.data.getComponent(Color.class);
+        this.commerce = this.data.getComponent(Commerce.class);
         this.company = this.data.getComponent(Company.class);
         this.name = this.data.getComponent(Name.class);
         this.time = this.data.getComponent(Time.class);

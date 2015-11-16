@@ -1,0 +1,91 @@
+package io.bloco.faker.components;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.bloco.faker.FakerComponent;
+import io.bloco.faker.FakerData;
+import io.bloco.faker.helpers.MathHelper;
+
+public class Commerce extends FakerComponent {
+
+    private final MathHelper mathHelper;
+
+    public Commerce(FakerData data) {
+        super(data);
+        mathHelper = new MathHelper();
+    }
+
+    public String color() {
+        return sample("color");
+    }
+
+    public String department() {
+        return department(3);
+    }
+
+    public String department(int max) {
+        return department(max, false);
+    }
+
+    public String department(int max, boolean fixedAmount) {
+        int num;
+
+        if (fixedAmount) {
+            num = max;
+        } else {
+            num = 1 + randomHelper.number(max);
+        }
+
+        List<String> categories = getCategories(num);
+
+        if (num > 1) {
+            return mergeCategories(categories);
+        } else {
+            return categories.get(0);
+        }
+    }
+
+    public String productName() {
+        return sample("product_name.adjective")
+                + " " + sample("product_name.material")
+                + " " + sample("product_name.product");
+    }
+
+    public String material() {
+        return sample("product_name.material");
+    }
+
+    public BigDecimal price() {
+        return price(0, 100);
+    }
+
+    public BigDecimal price(int min, int max) {
+        return new BigDecimal(randomHelper.range(min, max))
+                .round(new MathContext(2, RoundingMode.HALF_UP));
+    }
+
+    // Helpers
+
+    private List<String> getCategories(int num) {
+        List<String> categories = new ArrayList<>(num);
+
+        while (categories.size() != num) {
+            String category = sample("department");
+            if (!categories.contains(category)) {
+                categories.add(category);
+            }
+        }
+
+        return categories;
+    }
+
+    private String mergeCategories(List<String> categories) {
+        List<String> commaCategories = categories.subList(0, categories.size() - 1);
+        String commaSeparated = stringHelper.join(commaCategories, ", ");
+        return commaSeparated + getSeparator() + categories.get(categories.size() - 1);
+    }
+}
