@@ -16,7 +16,7 @@ public class Business extends FakerComponent {
     }
 
     public String creditCardNumber() {
-        return sample("credit_card_numbers");
+        return fetch("business.credit_card_numbers");
     }
 
     public Date creditCardExpireDate() {
@@ -26,6 +26,6 @@ public class Business extends FakerComponent {
     }
 
     public String creditCardType() {
-        return sample("credit_card_types");
+        return fetch("business.credit_card_types");
     }
 }

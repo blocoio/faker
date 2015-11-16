@@ -14,6 +14,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -39,35 +40,41 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testSample() throws Exception {
+    public void testFetch() throws Exception {
+        String componentKey = "wtv";
+
         List<String> options = Arrays.asList("John", "Mary");
         Map<String, Object> data = new HashMap<>();
         data.put("list", options);
-        when(fakerData.getComponentData(anyString())).thenReturn(data);
+        when(fakerData.getComponentData(eq(componentKey))).thenReturn(data);
 
-        assertThat(options, hasItem(fakerComponent.sample("list")));
+        assertThat(options, hasItem(fakerComponent.fetch("wtv.list")));
     }
 
     @Test
-    public void testSampleComposed() throws Exception {
+    public void testFetchComposed() throws Exception {
+        String componentKey = "wtv";
+
         List<String> options = Arrays.asList("John", "Mary");
         Map<String, Object> internal = new HashMap<>();
         internal.put("list", options);
         Map<String, Object> data = new HashMap<>();
         data.put("composed", internal);
-        when(fakerData.getComponentData(anyString())).thenReturn(data);
+        when(fakerData.getComponentData(eq(componentKey))).thenReturn(data);
 
-        assertThat(options, hasItem(fakerComponent.sample("composed.list")));
+        assertThat(options, hasItem(fakerComponent.fetch("wtv.composed.list")));
     }
 
     @Test
     public void testSampleNestedLists() throws Exception {
+        String componentKey = "wtv";
+
         List<String> options = Arrays.asList("John", "Mary");
         Map<String, Object> data = new HashMap<>();
         data.put("list", Arrays.asList(options, options));
-        when(fakerData.getComponentData(anyString())).thenReturn(data);
+        when(fakerData.getComponentData(eq(componentKey))).thenReturn(data);
 
-        assertThat(options, hasItem(fakerComponent.sample("list")));
+        assertThat(options, hasItem(fakerComponent.fetch("wtv.list")));
     }
 
     @Test
@@ -97,15 +104,15 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testGet() throws Exception {
+    public void testCall() throws Exception {
         when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
-        assertThat(fakerComponent.get("test"), is(equalTo("ok")));
+        assertThat(fakerComponent.call("test"), is(equalTo("ok")));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGetInvalid() throws Exception {
+    public void testCallInvalid() throws Exception {
         when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
-        fakerComponent.get("invalid");
+        fakerComponent.call("invalid");
     }
 
     // Helpers

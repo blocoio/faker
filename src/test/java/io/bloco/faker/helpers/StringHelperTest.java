@@ -41,4 +41,12 @@ public class StringHelperTest {
         assertThat(stringHelper.snakeToCamel("first_name"), is(equalTo("firstName")));
         assertThat(stringHelper.snakeToCamel("once_upon_a_time"), is(equalTo("onceUponATime")));
     }
+
+    @Test
+    public void testCamelToSnake() throws Exception {
+        assertThat(stringHelper.camelToSnake("HelloWorld"), is(equalTo("hello_world")));
+        assertThat(stringHelper.camelToSnake("SlackEmoji"), is(equalTo("slack_emoji")));
+        assertThat(stringHelper.camelToSnake("RGB"), is(equalTo("r_g_b")));
+        assertThat(stringHelper.camelToSnake("Rgb"), is(equalTo("rgb")));
+    }
 }

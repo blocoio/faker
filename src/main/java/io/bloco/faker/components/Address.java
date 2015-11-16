@@ -10,66 +10,62 @@ public class Address extends FakerComponent {
     }
 
     public String cityPrefix() {
-        return sample("city_prefix");
+        return fetch("address.city_prefix");
     }
 
     public String citySuffix() {
-        return sample("city_suffix");
+        return fetch("address.city_suffix");
     }
 
     public String country() {
-        return sample("country");
+        return fetch("address.country");
     }
 
     public String countryCode() {
-        return sample("country_code");
+        return fetch("address.country_code");
     }
 
     public String buildingNumber() {
-        return numerify(sample("building_number"));
+        return numerify(fetch("address.building_number"));
     }
 
     public String streetSuffix() {
-        return sample("street_suffix");
+        return fetch("address.street_suffix");
     }
 
     public String secondaryAddress() {
-        return sample("secondary_address");
+        return fetch("address.secondary_address");
     }
 
     public String postcode() {
-        return sample("postcode");
-    }
-
-    public String postcodeByState() {
-        return sample("postcode_by_state");
+        return fetch("address.postcode");
     }
 
     public String state() {
-        return sample("state");
+        return fetch("address.state");
     }
 
     public String stateAbbr() {
-        return sample("state_abbr");
+        return fetch("address.state_abbr");
     }
 
     public String timeZone() {
-        return sample("time_zone");
+        return fetch("address.time_zone");
     }
 
     public String city() {
-        return parse(sample("city"));
+        return parse(fetch("address.city"));
     }
 
     public String streetName() {
-        return parse(sample("street_name"));
+        return parse(fetch("address.street_name"));
     }
 
     public String streetAddress() {
-        return parse(sample("street_address"));
+        return parse(fetch("address.street_address"));
     }
 
     public String defaultCountry() {
-        return sample("default_country");
+        return fetch("address.default_country");
     }
 }

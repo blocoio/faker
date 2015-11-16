@@ -13,14 +13,17 @@ import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Date;
 import io.bloco.faker.components.Name;
+import io.bloco.faker.components.SlackEmoji;
 import io.bloco.faker.components.Team;
 import io.bloco.faker.components.Time;
 import io.bloco.faker.components.University;
+import io.bloco.faker.helpers.StringHelper;
 
 public class FakerData {
 
     private final Map<String, Object> data;
     private final Map<String, FakerComponent> components;
+    private final StringHelper stringHelper;
 
     public FakerData(Map<String, Object> data) {
         this.data = data;
@@ -37,16 +40,19 @@ public class FakerData {
                 new Company(this),
                 new Date(this),
                 new Name(this),
+                new SlackEmoji(this),
                 new Team(this),
                 new Time(this),
                 new University(this),
         };
 
-        components = new HashMap<>(componentsList.length);
+        this.components = new HashMap<>(componentsList.length);
 
         for (FakerComponent component : componentsList) {
-            components.put(component.getKey(), component);
+            this.components.put(component.getKey(), component);
         }
+
+        this.stringHelper = new StringHelper();
     }
 
     public <K extends FakerComponent> K getComponent(Class<K> componentClass) {
@@ -55,7 +61,8 @@ public class FakerData {
     }
 
     public FakerComponent getComponentByKey(String componentKey) {
-        FakerComponent component = components.get(componentKey.toLowerCase());
+        String componentKeyInSnake = stringHelper.camelToSnake(componentKey);
+        FakerComponent component = components.get(componentKeyInSnake);
 
         if (component == null) {
             throw new IllegalArgumentException("Unsupported component '" + componentKey + "'");
@@ -65,7 +72,11 @@ public class FakerData {
     }
 
     public Map<String, Object> getComponentData(String componentKey) {
-        return (Map<String, Object>) get(componentKey);
+        Map<String, Object> component = (Map<String, Object>) get(componentKey);
+        if (component == null) {
+            throw new IllegalArgumentException("Unsupported component '" + componentKey + "'");
+        }
+        return component;
     }
 
     public Object get(String componentKey) {

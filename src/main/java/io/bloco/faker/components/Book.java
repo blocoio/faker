@@ -10,18 +10,18 @@ public class Book extends FakerComponent {
     }
 
     public String title() {
-        return sample("title");
+        return fetch("book.title");
     }
 
     public String author() {
-        return parse("title");
+        return parse("book.title");
     }
 
     public String publisher() {
-        return sample("publisher");
+        return fetch("book.publisher");
     }
 
     public String genre() {
-        return sample("genre");
+        return fetch("book.genre");
     }
 }

@@ -10,14 +10,14 @@ public class University extends FakerComponent {
     }
 
     public String name() {
-        return parse(sample("name"));
+        return parse(fetch("university.name"));
     }
 
     public String prefix() {
-        return sample("prefix");
+        return fetch("university.prefix");
     }
 
     public String suffix() {
-        return sample("suffix");
+        return fetch("university.suffix");
     }
 }

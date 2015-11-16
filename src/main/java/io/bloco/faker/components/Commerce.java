@@ -20,7 +20,7 @@ public class Commerce extends FakerComponent {
     }
 
     public String color() {
-        return sample("color");
+        return fetch("commerce.color");
     }
 
     public String department() {
@@ -50,13 +50,13 @@ public class Commerce extends FakerComponent {
     }
 
     public String productName() {
-        return sample("product_name.adjective")
-                + " " + sample("product_name.material")
-                + " " + sample("product_name.product");
+        return fetch("commerce.product_name.adjective")
+                + " " + fetch("commerce.product_name.material")
+                + " " + fetch("commerce.product_name.product");
     }
 
     public String material() {
-        return sample("product_name.material");
+        return fetch("commerce.product_name.material");
     }
 
     public BigDecimal price() {
@@ -74,7 +74,7 @@ public class Commerce extends FakerComponent {
         List<String> categories = new ArrayList<>(num);
 
         while (categories.size() != num) {
-            String category = sample("department");
+            String category = fetch("commerce.department");
             if (!categories.contains(category)) {
                 categories.add(category);
             }

@@ -10,14 +10,14 @@ public class App extends FakerComponent {
     }
 
     public String name() {
-        return sample("name");
+        return fetch("app.name");
     }
 
     public String version() {
-        return numerify(sample("version"));
+        return numerify(fetch("app.version"));
     }
 
     public String author() {
-        return parse(sample("author"));
+        return parse(fetch("app.author"));
     }
 }

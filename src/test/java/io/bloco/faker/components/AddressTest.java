@@ -56,11 +56,6 @@ public class AddressTest {
     }
 
     @Test
-    public void postcodeByState() throws Exception {
-        assertNotNull(faker.address.postcodeByState());
-    }
-
-    @Test
     public void state() throws Exception {
         assertNotNull(faker.address.state());
     }

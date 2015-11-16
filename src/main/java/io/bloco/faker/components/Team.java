@@ -10,18 +10,18 @@ public class Team extends FakerComponent {
     }
 
     public String name() {
-        return parse(sample("name"));
+        return parse(fetch("team.name"));
     }
 
     public String creature() {
-        return sample("creature");
+        return fetch("team.creature");
     }
 
     public String state() {
-        return getTopLevel("address.state");
+        return call("address.state");
     }
 
     public String sport() {
-        return sample("sport");
+        return fetch("team.sport");
     }
 }

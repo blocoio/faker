@@ -10,26 +10,28 @@ public class Name extends FakerComponent {
     }
 
     public String firstName() {
-        return sample("first_name");
+        return fetch("name.first_name");
     }
 
     public String lastName() {
-        return sample("last_name");
+        return fetch("name.last_name");
     }
 
     public String prefix() {
-        return sample("prefix");
+        return fetch("name.prefix");
     }
 
     public String suffix() {
-        return sample("suffix");
+        return fetch("name.suffix");
     }
 
     public String title() {
-        return sample("title.descriptor") + " " + sample("title.level") + " " + sample("title.job");
+        return fetch("name.title.descriptor")
+                + " " + fetch("name.title.level")
+                + " " + fetch("name.title.job");
     }
 
     public String name() {
-        return parse(sample("name"));
+        return parse(fetch("name.name"));
     }
 }

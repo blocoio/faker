@@ -10,26 +10,26 @@ public class Company extends FakerComponent {
     }
 
     public String suffix() {
-        return sample("suffix");
+        return fetch("company.suffix");
     }
 
     public String buzzwords() {
-        return sample("buzzwords");
+        return fetch("company.buzzwords");
     }
 
     public String bs() {
-        return sample("bs");
+        return fetch("company.bs");
     }
 
     public String name() {
-        return parse(sample("name"));
+        return parse(fetch("company.name"));
     }
 
     public String industry() {
-        return sample("industry");
+        return fetch("company.industry");
     }
 
     public String profession() {
-        return sample("profession");
+        return fetch("company.profession");
     }
 }

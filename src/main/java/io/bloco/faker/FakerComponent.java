@@ -24,42 +24,20 @@ public abstract class FakerComponent {
     }
 
     public String getKey() {
-        return this.getClass().getSimpleName().toLowerCase();
+        return stringHelper.camelToSnake(this.getClass().getSimpleName());
     }
 
-    public String get(String methodKey) {
-        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
-        String value;
-        try {
-            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
-        } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
-            throw new IllegalArgumentException(
-                    "Unsupported method '" + methodKey + "' " +
-                            "for component '" + this.getKey() + "'", e);
-        }
-        return value;
-    }
+    protected String fetch(String key) {
+        String[] keys = key.split("\\.");
 
-    protected String sample(String listKey) {
-        if (listKey.contains(".")) {
-            String[] keys = listKey.split("\\.");
-            return sample((List) getMap(keys[0]).get(keys[1]));
+        List list;
+        if (keys.length == 2) {
+            list = getList(keys[0], keys[1]);
         } else {
-            return sample(getList(listKey));
+            list = (List) getMap(keys[0], keys[1]).get(keys[2]);
         }
-    }
 
-    protected String sample(List options) {
-        Object option = randomHelper.sample(options);
-
-        if (option instanceof String) {
-            return (String) option;
-        } else if (option instanceof List) {
-            // List of lists
-            return (String) randomHelper.sample((List) option);
-        } else {
-            throw new UnsupportedOperationException("Unsupported data type");
-        }
+        return sampleFromList(list);
     }
 
     protected String numerify(String input) {
@@ -76,38 +54,66 @@ public abstract class FakerComponent {
             @Override
             public String replaceWith(Matcher matcher) {
                 String key = matcher.group(1);
-                return getTopLevel(key);
+                return call(key);
             }
         });
+    }
+
+    protected String call(String key) {
+        if (key.contains(".")) {
+            String[] keys = key.split("\\.");
+            return data.getComponentByKey(keys[0]).callMethod(keys[1]);
+        } else {
+            return callMethod(key);
+        }
+    }
+
+    private String callMethod(String methodKey) {
+        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
+        String value;
+        try {
+            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
+        } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
+            throw new IllegalArgumentException(
+                    "Unsupported method '" + methodKey + "' " +
+                            "for component '" + this.getKey() + "'", e);
+        }
+        return value;
     }
 
     protected String getSeparator() {
         return (String) data.get("separator");
     }
 
-    protected String getTopLevel(String key) {
-        if (key.contains(".")) {
-            String[] keys = key.split("\\.");
-            return data.getComponentByKey(keys[0]).get(keys[1]);
+    private String sampleFromList(List options) {
+        Object option = randomHelper.sample(options);
+
+        if (option instanceof String) {
+            return (String) option;
+        } else if (option instanceof List) { // List of lists
+            return (String) randomHelper.sample((List) option);
         } else {
-            return get(key);
+            throw new UnsupportedOperationException("Unsupported data type");
         }
     }
 
-    private List getList(String listKey) {
-        List list = (List) data.getComponentData(getKey()).get(listKey);
+    private List getList(String componentKey, String listKey) {
+        List list = (List) getComponentData(componentKey).get(listKey);
         if (list == null) {
             throw new UnsupportedOperationException("Unsupported method '" + listKey + "'");
         }
         return list;
     }
 
-    private Map<String, Object> getMap(String listKey) {
-        Map<String, Object> map =
-                (Map<String, Object>) data.getComponentData(getKey()).get(listKey);
+    private Map<String, Object> getMap(String componentKey, String listKey) {
+        Map<String, Object> map = (Map<String, Object>) getComponentData(componentKey).get(listKey);
         if (map == null) {
             throw new UnsupportedOperationException("Unsupported method '" + listKey + "'");
         }
         return map;
+    }
+
+    private Map<String, Object> getComponentData(String componentKey) {
+        return data.getComponentData(componentKey);
     }
 }

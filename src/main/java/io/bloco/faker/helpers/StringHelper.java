@@ -32,6 +32,15 @@ public class StringHelper {
         });
     }
 
+    public String camelToSnake(String input) {
+        return replaceMethod(input, "(?<=\\w)(\\p{Upper})", new StringReplacer() {
+            @Override
+            public String replaceWith(Matcher matcher) {
+                return "_" + matcher.group(1);
+            }
+        }).toLowerCase();
+    }
+
     public String join(List<String> list, String separator) {
         StringBuilder sb = new StringBuilder();
         boolean first = true;
