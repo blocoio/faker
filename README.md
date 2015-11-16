@@ -41,6 +41,7 @@ For full list of available options, check the [original source](https://github.c
  - Avatar
  - Book
  - Business
+ - Color
  - Company
  - Name
  - Time

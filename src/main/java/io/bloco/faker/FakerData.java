@@ -8,6 +8,7 @@ import io.bloco.faker.components.App;
 import io.bloco.faker.components.Avatar;
 import io.bloco.faker.components.Book;
 import io.bloco.faker.components.Business;
+import io.bloco.faker.components.Color;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Time;
@@ -27,6 +28,7 @@ public class FakerData {
                 new Avatar(this),
                 new Book(this),
                 new Business(this),
+                new Color(this),
                 new Company(this),
                 new Name(this),
                 new Time(this),
