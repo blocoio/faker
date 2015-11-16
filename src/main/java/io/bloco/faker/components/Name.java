@@ -1,17 +1,12 @@
 package io.bloco.faker.components;
 
-import java.util.List;
-
 import io.bloco.faker.FakerComponent;
 import io.bloco.faker.FakerData;
 
 public class Name extends FakerComponent {
 
-    public Title title;
-
     public Name(FakerData data) {
         super(data);
-        title = new Title();
     }
 
     public String firstName() {
@@ -30,22 +25,11 @@ public class Name extends FakerComponent {
         return sample("suffix");
     }
 
-    public String name() {
-        return parse(sample("name"));
+    public String title() {
+        return sample("title.descriptor") + " " + sample("title.level") + " " + sample("title.job");
     }
 
-
-    public class Title {
-        public String descriptor() {
-            return sample((List) getMap("title").get("descriptor"));
-        }
-
-        public String level() {
-            return sample((List) getMap("title").get("level"));
-        }
-
-        public String job() {
-            return sample((List) getMap("title").get("job"));
-        }
+    public String name() {
+        return parse(sample("name"));
     }
 }

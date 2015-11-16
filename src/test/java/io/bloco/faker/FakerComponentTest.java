@@ -49,6 +49,18 @@ public class FakerComponentTest {
     }
 
     @Test
+    public void testSampleComposed() throws Exception {
+        List<String> options = Arrays.asList("John", "Mary");
+        Map<String, Object> internal = new HashMap<>();
+        internal.put("list", options);
+        Map<String, Object> data = new HashMap<>();
+        data.put("composed", internal);
+        when(fakerData.getComponentData(anyString())).thenReturn(data);
+
+        assertThat(options, hasItem(fakerComponent.sample("composed.list")));
+    }
+
+    @Test
     public void testSampleNestedLists() throws Exception {
         List<String> options = Arrays.asList("John", "Mary");
         Map<String, Object> data = new HashMap<>();

@@ -41,7 +41,12 @@ public abstract class FakerComponent {
     }
 
     protected String sample(String listKey) {
-        return sample(getList(listKey));
+        if (listKey.contains(".")) {
+            String[] keys = listKey.split("\\.");
+            return sample((List) getMap(keys[0]).get(keys[1]));
+        } else {
+            return sample(getList(listKey));
+        }
     }
 
     protected String sample(List options) {
@@ -76,7 +81,7 @@ public abstract class FakerComponent {
         });
     }
 
-    protected List getList(String listKey) {
+    private List getList(String listKey) {
         List list = (List) data.getComponentData(getKey()).get(listKey);
         if (list == null) {
             throw new UnsupportedOperationException("Unsupported method '" + listKey + "'");
@@ -84,7 +89,7 @@ public abstract class FakerComponent {
         return list;
     }
 
-    protected Map<String, Object> getMap(String listKey) {
+    private Map<String, Object> getMap(String listKey) {
         Map<String, Object> map =
                 (Map<String, Object>) data.getComponentData(getKey()).get(listKey);
         if (map == null) {

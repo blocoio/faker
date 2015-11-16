@@ -37,18 +37,8 @@ public class NameTest {
     }
 
     @Test
-    public void titleDescription() throws Exception {
-        assertNotNull(faker.name.title.descriptor());
-    }
-
-    @Test
-    public void titleLevel() throws Exception {
-        assertNotNull(faker.name.title.level());
-    }
-
-    @Test
-    public void titleJob() throws Exception {
-        assertNotNull(faker.name.title.job());
+    public void title() throws Exception {
+        assertNotNull(faker.name.title());
     }
 
     @Test
