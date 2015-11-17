@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Map;
 
 import io.bloco.faker.components.Address;
@@ -111,10 +113,21 @@ public class Faker {
     }
 
     private File getDataFile(String locale) {
-        File file = new File("locales/" + locale + ".yml");
-        if (!file.exists()) {
+        URL fileUrl = getClass().getClassLoader().getResource("locales/" + locale + ".yml");
+
+        File file = null;
+        if (fileUrl != null) {
+            try {
+                file = new File(fileUrl.toURI());
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        if (file == null || !file.exists()) {
             throw new IllegalArgumentException("Unavailable locale '" + locale + "'");
         }
+
         return file;
     }
 }
