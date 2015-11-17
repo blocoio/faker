@@ -12,6 +12,7 @@ import io.bloco.faker.components.Color;
 import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Date;
+import io.bloco.faker.components.Internet;
 import io.bloco.faker.components.Lorem;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Number;
@@ -43,6 +44,7 @@ public class FakerData {
                 new Commerce(this),
                 new Company(this),
                 new Date(this),
+                new Internet(this),
                 new Lorem(this),
                 new Name(this),
                 new Number(this),

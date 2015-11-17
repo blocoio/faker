@@ -1,5 +1,6 @@
 package io.bloco.faker.helpers;
 
+import java.text.Normalizer;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,5 +53,12 @@ public class StringHelper {
             sb.append(item);
         }
         return sb.toString();
+    }
+
+    public String normalize(String input) {
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD); // Separate glyphs
+        normalized = normalized.replaceAll("[^\\p{ASCII}]", ""); // Remove glyphs
+        normalized = normalized.replaceAll("\\W", ""); // Remove anything but letters and numbers
+        return normalized.toLowerCase();
     }
 }

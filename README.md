@@ -15,7 +15,7 @@ The goal was to reuse their locale data files.
 ``` groovy
     repositories {
         // ...
-        maven { url "https://jitpack.io" }
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -49,6 +49,7 @@ We have tried to keep the operations as close as possible.
  - Commerce
  - Company
  - Date
+ - Internet
  - Lorem
  - Name
  - Number
@@ -72,7 +73,6 @@ We have tried to keep the operations as close as possible.
    - Hacker
    - Hipster
    - IDNumber
-   - Internet
    - Shakespeare
 
 ## Contact
@@ -82,4 +82,4 @@ Feel free to send an [email](mailto:hello@bloco.io) or submit a pull request.
 
 ## License
 
-This code is free to use under the terms of the MIT license.
+This code is free to use under the terms of the [MIT license](http://opensource.org/licenses/MIT).

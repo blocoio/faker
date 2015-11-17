@@ -17,6 +17,7 @@ import io.bloco.faker.components.Color;
 import io.bloco.faker.components.Commerce;
 import io.bloco.faker.components.Company;
 import io.bloco.faker.components.Date;
+import io.bloco.faker.components.Internet;
 import io.bloco.faker.components.Lorem;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Number;
@@ -41,6 +42,7 @@ public class Faker {
     public final Commerce commerce;
     public final Company company;
     public final Date date;
+    public final Internet internet;
     public final Lorem lorem;
     public final Name name;
     public final Number number;
@@ -79,6 +81,7 @@ public class Faker {
         this.commerce = this.data.getComponent(Commerce.class);
         this.company = this.data.getComponent(Company.class);
         this.date = this.data.getComponent(Date.class);
+        this.internet = this.data.getComponent(Internet.class);
         this.lorem = this.data.getComponent(Lorem.class);
         this.name = this.data.getComponent(Name.class);
         this.number = this.data.getComponent(Number.class);

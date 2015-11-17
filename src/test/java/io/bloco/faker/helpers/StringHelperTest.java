@@ -49,4 +49,11 @@ public class StringHelperTest {
         assertThat(stringHelper.camelToSnake("RGB"), is(equalTo("r_g_b")));
         assertThat(stringHelper.camelToSnake("Rgb"), is(equalTo("rgb")));
     }
+
+    @Test
+    public void testNormalize() throws Exception {
+        assertThat(stringHelper.normalize("Sérgio Santos"), is(equalTo("sergiosantos")));
+        assertThat(stringHelper.normalize("áàãâäå"), is(equalTo("aaaaaa")));
+        assertThat(stringHelper.normalize("-.@,;!?"), is(equalTo("")));
+    }
 }

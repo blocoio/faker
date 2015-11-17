@@ -11,7 +11,7 @@ public class RandomHelper {
         random = new Random();
     }
 
-    public Object sample(List options) {
+    public <T> T sample(List<T> options) {
         return options.get(random.nextInt(options.size()));
     }
 
