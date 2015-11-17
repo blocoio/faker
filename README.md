@@ -17,7 +17,7 @@ The goal was to reuse their locale data files.
         // ...
         maven { url "https://jitpack.io" }
     }
-    
+
     dependencies {
         compile 'com.github.blocoio:faker:-SNAPSHOT'
     }
@@ -50,6 +50,7 @@ We have tried to keep the operations as close as possible.
  - Company
  - Date
  - Name
+ - Number
  - PhoneNumber
  - SlackEmoji
  - Team
@@ -72,7 +73,6 @@ We have tried to keep the operations as close as possible.
    - IDNumber
    - Internet
    - Lorem
-   - Number
    - Shakespeare
 
 ## Contact

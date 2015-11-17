@@ -31,6 +31,15 @@ public class RandomHelper {
         return random.nextInt((int) Math.pow(10, length));
     }
 
+    public int range(int min, int max) {
+        if (max < min) {
+            int temp = max;
+            max = min;
+            min = temp;
+        }
+        return number(max - min) + min;
+    }
+
     public double range(double min, double max) {
         if (max < min) {
             double temp = max;
