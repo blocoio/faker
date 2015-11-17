@@ -1,7 +1,5 @@
 # Faker
 
-*Work in progress*
-
 Generates fake data for testing or populating a development database.
 Run your tests with realistic data like names, emails, dates, countries...
 
@@ -19,7 +17,7 @@ The goal was to reuse their locale data files.
     }
 
     dependencies {
-        compile 'com.github.blocoio:faker:-SNAPSHOT'
+        compile 'com.github.blocoio:faker:1.0.0'
     }
 ```
 
