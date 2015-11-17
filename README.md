@@ -3,8 +3,10 @@
 *Work in progress*
 
 Generates fake data for testing or populating a development database.
+Run your tests with realistic data like names, emails, dates, countries...
 
 A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
+The goal was to reuse their locale data files.
 
 [![Build Status](https://travis-ci.org/blocoio/faker.svg?branch=master)](https://travis-ci.org/blocoio/faker)
 
@@ -15,6 +17,7 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
         // ...
         maven { url "https://jitpack.io" }
     }
+    
     dependencies {
         compile 'com.github.blocoio:faker:-SNAPSHOT'
     }
@@ -33,6 +36,7 @@ A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 ```
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
+We have tried to keep the operations as close as possible.
 
 ### Available components
 
@@ -52,7 +56,30 @@ For full list of available options, check the [original source](https://github.c
  - Time
  - University
 
+### Warnings
+
+ - Currently we don't support locale specific operations
+ like ```Address.postcode_by_state``` or ```Business.swedish_organisation_number```.
+
 ## TODO
 
- - Regular expressions support
- - Implement remaining components
+ - Implement remaining components:
+   - Bitcoin
+   - Code
+   - Finance
+   - Hacker
+   - Hipster
+   - IDNumber
+   - Internet
+   - Lorem
+   - Number
+   - Shakespeare
+
+## Contact
+
+Feedback and contributions are welcome.
+Feel free to send an [email](mailto:hello@bloco.io) or submit a pull request.
+
+## License
+
+This code is free to use under the terms of the MIT license.
