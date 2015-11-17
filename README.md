@@ -17,7 +17,7 @@ The goal was to reuse their locale data files.
     }
 
     dependencies {
-        compile 'com.github.blocoio:faker:1.0.0'
+        compile 'com.github.blocoio:faker:1.0.1'
     }
 ```
 
