@@ -19,6 +19,10 @@ public class RandomHelper {
         return Integer.toString(random.nextInt(10));
     }
 
+    public boolean randBoolean() {
+        return random.nextBoolean();
+    }
+
     public int number(int max) {
         return random.nextInt(max);
     }

@@ -49,6 +49,7 @@ We have tried to keep the operations as close as possible.
  - Commerce
  - Company
  - Date
+ - Lorem
  - Name
  - Number
  - PhoneNumber
@@ -72,7 +73,6 @@ We have tried to keep the operations as close as possible.
    - Hipster
    - IDNumber
    - Internet
-   - Lorem
    - Shakespeare
 
 ## Contact
