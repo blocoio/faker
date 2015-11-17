@@ -2,12 +2,8 @@ package io.bloco.faker;
 
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Map;
 
 import io.bloco.faker.components.Address;
@@ -101,33 +97,23 @@ public class Faker {
 
     private Map<String, Object> loadData(String locale) {
         Yaml yaml = new Yaml();
-        InputStream input = null;
-        try {
-            input = new FileInputStream(getDataFile(locale));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        InputStream input = getDataInputStream(locale);
+
         Map<String, Object> root = (Map<String, Object>) yaml.load(input);
         Map<String, Object> fakerData = (Map<String, Object>) root.values().iterator().next();
         return (Map<String, Object>) fakerData.values().iterator().next();
     }
 
-    private File getDataFile(String locale) {
-        URL fileUrl = getClass().getClassLoader().getResource("locales/" + locale + ".yml");
+    private InputStream getDataInputStream(String locale) {
+        InputStream input = getClass().getClassLoader()
+                .getResourceAsStream("locales/" + locale + ".yml");
 
-        File file = null;
-        if (fileUrl != null) {
-            try {
-                file = new File(fileUrl.toURI());
-            } catch (URISyntaxException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            assert input != null && input.available() != 0;
+        } catch (AssertionError|IOException e) {
+            throw new IllegalArgumentException("Unavailable locale \'" + locale + "\'");
         }
 
-        if (file == null || !file.exists()) {
-            throw new IllegalArgumentException("Unavailable locale '" + locale + "'");
-        }
-
-        return file;
+        return input;
     }
 }
