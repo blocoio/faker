@@ -45,7 +45,7 @@ public class NumberTest {
     @Test
     public void decimal() throws Exception {
         assertThat(faker.number.decimal(4), matchesPattern("[1-9]\\d{3}\\.\\d[1-9]"));
-        assertThat(faker.number.decimal(1, 4), matchesPattern("[1-9]\\.\\d{3}[1-9]"));
+        assertThat(faker.number.decimal(1, 4), matchesPattern("\\d\\.\\d{3}[1-9]"));
     }
 
     @Test
