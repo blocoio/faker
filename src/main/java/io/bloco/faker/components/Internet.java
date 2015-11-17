@@ -116,11 +116,19 @@ public class Internet extends FakerComponent {
     }
 
     public String ipV4Cidr() {
-        List<String> parts = new ArrayList<>(4);
-        for (int i = 0; i < 4; i++) {
-            parts.add(Integer.toString(randomHelper.number(255)));
-        }
         return ipV4Address() + "/" + randomHelper.range(1, 32);
+    }
+
+    public String ipV6Address() {
+        List<String> parts = new ArrayList<>(8);
+        for (int i = 0; i < 8; i++) {
+            parts.add(String.format("%x", randomHelper.number(65536)));
+        }
+        return stringHelper.join(parts, ":");
+    }
+
+    public String ipV6Cidr() {
+        return ipV6Address() + "/" + randomHelper.range(1, 128);
     }
 
     public String url() {

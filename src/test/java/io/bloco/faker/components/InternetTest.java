@@ -88,7 +88,20 @@ public class InternetTest {
 
     @Test
     public void ipV4Cidr() throws Exception {
-        assertThat(faker.internet.ipV4Cidr(), matchesPattern("\\d{1,3}(\\.\\d{1,3}){3}\\/\\d\\d"));
+        assertThat(faker.internet.ipV4Cidr(),
+                matchesPattern("\\d{1,3}(\\.\\d{1,3}){3}/\\d{1,2}"));
+    }
+
+    @Test
+    public void ipV6Address() throws Exception {
+        assertThat(faker.internet.ipV6Address(),
+                matchesPattern("[0-9a-f]{1,4}(:[0-9a-f]{1,4}){7}"));
+    }
+
+    @Test
+    public void ipV6Cidr() throws Exception {
+        assertThat(faker.internet.ipV6Cidr(),
+                matchesPattern("[0-9a-f]{1,4}(:[0-9a-f]{1,4}){7}/\\d{1,3}"));
     }
 
     @Test
