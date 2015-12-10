@@ -4,8 +4,8 @@ apply plugin: 'maven'
 version = '1.0.1'
 group = 'com.github.blocoio'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 repositories {
     mavenCentral()

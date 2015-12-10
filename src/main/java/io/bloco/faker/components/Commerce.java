@@ -8,19 +8,15 @@ import java.util.List;
 
 import io.bloco.faker.FakerComponent;
 import io.bloco.faker.FakerData;
-import io.bloco.faker.helpers.MathHelper;
 
 public class Commerce extends FakerComponent {
 
-    private final MathHelper mathHelper;
-
     public Commerce(FakerData data) {
         super(data);
-        mathHelper = new MathHelper();
     }
 
     public String color() {
-        return fetch("commerce.color");
+        return call("color.colorName");
     }
 
     public String department() {

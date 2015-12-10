@@ -20,6 +20,10 @@ public class Color extends FakerComponent {
         return String.format("#%06x", randomHelper.number((int) Math.pow(MAX_RGB, 3)));
     }
 
+    public String colorName() {
+        return fetch("color.name");
+    }
+
     public int singleRgbColor() {
         return randomHelper.number(MAX_RGB);
     }

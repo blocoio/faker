@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class ColorTest {
@@ -26,6 +27,11 @@ public class ColorTest {
     @Test
     public void hexColor() throws Exception {
         assertThat(faker.color.hexColor(), matchesPattern("^#[0-9a-f]{6}$"));
+    }
+
+    @Test
+    public void color() throws Exception {
+        assertNotNull(faker.color.colorName());
     }
 
     @Test

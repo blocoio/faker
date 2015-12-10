@@ -30,6 +30,7 @@ public class CommerceTest {
 
     @Test
     public void testDepartment() throws Exception {
+        assertNotNull(faker.commerce.department());
         assertThat(faker.commerce.department(1, true), matchesPattern("\\w+"));
         assertThat(faker.commerce.department(1, false), matchesPattern("\\w+"));
         assertThat(faker.commerce.department(2, true), matchesPattern("\\w+ & \\w+"));
