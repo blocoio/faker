@@ -1,5 +1,7 @@
 package io.bloco.faker.components;
 
+import java.util.List;
+
 import io.bloco.faker.FakerComponent;
 import io.bloco.faker.FakerData;
 
@@ -9,8 +11,25 @@ public class Company extends FakerComponent {
         super(data);
     }
 
+    public String name() {
+        return parse(fetch("company.name"));
+    }
+
     public String suffix() {
         return fetch("company.suffix");
+    }
+
+    public String industry() {
+        return fetch("company.industry");
+    }
+
+    public String catchPhrase() {
+        List buzzwordsSections = getList("company", "buzzwords");
+        String catchPhrase = "";
+        for (Object buzzwordsSection : buzzwordsSections) {
+            catchPhrase += sampleFromList((List) buzzwordsSection) + " ";
+        }
+        return catchPhrase.substring(0, catchPhrase.length() - 1);
     }
 
     public String buzzwords() {
@@ -21,12 +40,9 @@ public class Company extends FakerComponent {
         return fetch("company.bs");
     }
 
-    public String name() {
-        return parse(fetch("company.name"));
-    }
-
-    public String industry() {
-        return fetch("company.industry");
+    public String logo() {
+        int randomNum = randomHelper.range(1, 13);
+        return "https://pigment.github.io/fake-logos/logos/medium/color/" + randomNum + ".png";
     }
 
     public String profession() {

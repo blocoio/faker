@@ -68,24 +68,11 @@ public abstract class FakerComponent {
         }
     }
 
-    private String callMethod(String methodKey) {
-        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
-        String value;
-        try {
-            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
-        } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
-            throw new IllegalArgumentException(
-                    "Unsupported method '" + methodKey + "' " +
-                            "for component '" + this.getKey() + "'", e);
-        }
-        return value;
-    }
-
     protected String getSeparator() {
         return (String) data.get("separator");
     }
 
-    private String sampleFromList(List options) {
+    protected String sampleFromList(List options) {
         Object option = randomHelper.sample(options);
 
         if (option instanceof String) {
@@ -97,12 +84,25 @@ public abstract class FakerComponent {
         }
     }
 
-    private List getList(String componentKey, String listKey) {
+    protected List getList(String componentKey, String listKey) {
         List list = (List) getComponentData(componentKey).get(listKey);
         if (list == null) {
             throw new UnsupportedOperationException("Unsupported method '" + listKey + "'");
         }
         return list;
+    }
+
+    private String callMethod(String methodKey) {
+        String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
+        String value;
+        try {
+            value = (String) getClass().getDeclaredMethod(methodKeyCamel).invoke(this);
+        } catch (NoSuchMethodException|IllegalAccessException|InvocationTargetException e) {
+            throw new IllegalArgumentException(
+                    "Unsupported method '" + methodKey + "' " +
+                            "for component '" + this.getKey() + "'", e);
+        }
+        return value;
     }
 
     private Map<String, Object> getMap(String componentKey, String listKey) {
