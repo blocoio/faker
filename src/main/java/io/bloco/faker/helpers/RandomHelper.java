@@ -36,12 +36,15 @@ public class RandomHelper {
     }
 
     public int range(int min, int max) {
+        if (min == max) {
+            return min;
+        }
         if (max < min) {
             int temp = max;
             max = min;
             min = temp;
         }
-        return number(max - min) + min;
+        return number(max - min + 1) + min;
     }
 
     public double range(double min, double max) {

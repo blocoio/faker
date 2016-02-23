@@ -92,6 +92,15 @@ public abstract class FakerComponent {
         return list;
     }
 
+    protected <K extends FakerComponent> K getComponent(Class<K> klass) {
+        try {
+            return klass.getConstructor(FakerData.class).newInstance(data);
+        } catch (InstantiationException|NoSuchMethodException|
+                IllegalAccessException|InvocationTargetException e) {
+            throw new IllegalArgumentException("Unsupported component '" + klass + "'", e);
+        }
+    }
+
     private String callMethod(String methodKey) {
         String methodKeyCamel = stringHelper.snakeToCamel(methodKey);
         String value;

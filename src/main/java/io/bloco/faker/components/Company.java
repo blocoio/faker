@@ -41,7 +41,7 @@ public class Company extends FakerComponent {
     }
 
     public String logo() {
-        int randomNum = randomHelper.range(1, 13);
+        int randomNum = randomHelper.range(1, 12);
         return "https://pigment.github.io/fake-logos/logos/medium/color/" + randomNum + ".png";
     }
 

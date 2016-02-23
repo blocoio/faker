@@ -18,7 +18,7 @@ The goal was to reuse their locale data files.
     }
 
     dependencies {
-        compile 'com.github.blocoio:faker:1.1.1'
+        compile 'com.github.blocoio:faker:1.1.2'
     }
 ```
 
@@ -53,6 +53,7 @@ We have tried to keep the operations as close as possible.
  - Name
  - Number
  - PhoneNumber
+ - Placeholdit
  - SlackEmoji
  - Team
  - Time
@@ -67,12 +68,15 @@ We have tried to keep the operations as close as possible.
 
  - Implement remaining components:
    - Bitcoin
+   - Boolean
    - Code
    - Finance
    - Hacker
    - Hipster
    - IDNumber
    - Shakespeare
+   - Superhero
+   - StarWars
 
 ## Contact
 

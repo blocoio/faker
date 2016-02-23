@@ -13,6 +13,12 @@ public class Internet extends FakerComponent {
     private static final List<String> SAFE_EMAIL_TLDS = Arrays.asList("org", "com", "net");
     private static final List<String> DEFAULT_SEPARATORS = Arrays.asList(".", "_");
     private static final List<String> DEFAULT_SLUG_GLUE = Arrays.asList(".", "_", "-");
+    private static final int PASSWORD_MIN_LENGTH = 8;
+    private static final int PASSWORD_MAX_LENGTH = 16;
+    private static final boolean PASSWORD_MIX_CASE = true;
+    private static final boolean PASSWORD_SPECIAL_CHARS = false;
+    private static final List<String> PASSWORD_SPECIAL_CHARS_LIST
+            = Arrays.asList("!","@","#","$","%","^","&","*");
     private static final int DEVICE_TOKEN_LENGTH = 64;
 
     public Internet(FakerData data) {
@@ -70,6 +76,45 @@ public class Internet extends FakerComponent {
         } else {
             return stringHelper.normalize(call("Name.first_name"));
         }
+    }
+
+    public String password() {
+        return password(PASSWORD_MIN_LENGTH);
+    }
+
+    public String password(int minLength) {
+        return password(minLength, PASSWORD_MAX_LENGTH);
+    }
+
+    public String password(int minLength, int maxLength) {
+        return password(minLength, maxLength, PASSWORD_MIX_CASE);
+    }
+
+    public String password(int minLength, int maxLength, boolean mixCase) {
+        return password(minLength, maxLength, mixCase, PASSWORD_SPECIAL_CHARS);
+    }
+
+    public String password(int minLength, int maxLength, boolean mixCase, boolean specialChars) {
+        int characterCount = randomHelper.range(minLength, maxLength);
+        String password = getComponent(Lorem.class).characters(characterCount);
+
+        if (mixCase && password.length() >= 2) {
+            int middlePoint = randomHelper.number(password.length() - 1) + 1;
+            password = password.substring(0, middlePoint).toLowerCase() +
+                    password.substring(middlePoint).toUpperCase();
+        }
+
+        if (specialChars && password.length() >= 2) {
+            int numSpecialChars = randomHelper.number(password.length() - 1) + 1;
+            for (int i = 0; i < numSpecialChars; i++) {
+                String specialChar = randomHelper.sample(PASSWORD_SPECIAL_CHARS_LIST);
+                int index = randomHelper.number(password.length());
+                password = password.substring(0, index).toLowerCase() + specialChar +
+                        password.substring(index + 1).toUpperCase();
+            }
+        }
+
+        return password;
     }
 
     public String domainName() {

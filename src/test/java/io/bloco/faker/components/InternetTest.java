@@ -7,9 +7,13 @@ import java.util.Arrays;
 
 import io.bloco.faker.Faker;
 
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.Matchers.matchesPattern;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class InternetTest {
@@ -57,6 +61,23 @@ public class InternetTest {
                 matchesPattern("sergio&santos"));
         assertThat(faker.internet.userName(null, Arrays.asList("&")),
                 matchesPattern("\\w+(&\\w+)?"));
+    }
+
+    @Test
+    public void password() throws Exception {
+        assertNotNull(faker.internet.password());
+        assertThat(faker.internet.password(1).length(), is(greaterThanOrEqualTo(1)));
+
+        assertThat(faker.internet.password(2, 4).length(),
+                allOf(greaterThanOrEqualTo(2), lessThanOrEqualTo(4)));
+        assertThat(faker.internet.password(2, 2).length(), is(2));
+
+        assertThat(faker.internet.password(2, 2, true),
+                allOf(matchesPattern(".*[a-z].*"), matchesPattern(".*[A-Z].*")));
+
+        assertThat(faker.internet.password(2, 2, true, true),
+                matchesPattern(".*[\\!\\@\\#\\$\\%\\^\\&\\*].*"));
+        assertThat(faker.internet.password(2, 2, true, true).length(), is(2));
     }
 
     @Test
