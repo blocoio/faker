@@ -17,7 +17,7 @@ The goal was to reuse their locale data files.
     }
 
     dependencies {
-        compile 'com.github.blocoio:faker:1.1.2'
+        compile 'com.github.blocoio:faker:1.2.0'
     }
 
 You can use ```testCompile``` or ```androidTestCompile```, if you only want to use Faker for testing.
@@ -40,6 +40,7 @@ We have tried to keep the operations as close as possible.
  - App
  - Avatar
  - Book
+ - Bool
  - Business
  - Color
  - Commerce

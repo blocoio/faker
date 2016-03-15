@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-version = '1.1.2'
+version = '1.2.0'
 group = 'com.github.blocoio'
 
 sourceCompatibility = JavaVersion.VERSION_1_7
