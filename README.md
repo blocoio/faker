@@ -11,7 +11,6 @@ The goal was to reuse their locale data files.
 
 ## Installing
 
-``` groovy
     repositories {
         // ...
         maven { url 'https://jitpack.io' }
@@ -20,19 +19,17 @@ The goal was to reuse their locale data files.
     dependencies {
         compile 'com.github.blocoio:faker:1.1.2'
     }
-```
+
+You can use ```testCompile``` or ```androidTestCompile```, if you only want to use Faker for testing.
 
 ## Usage
 
-``` java
     Faker faker = new Faker();
     faker.name.firstName();    // Returns "Aaron"
     faker.company.name();      // Returns "Hirthe-Ritchie"
-```
-``` java
+
     Faker faker = new Faker("nl");
     faker.name.firstName();    // Returns "Thijs"
-```
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 We have tried to keep the operations as close as possible.
@@ -67,8 +64,10 @@ We have tried to keep the operations as close as possible.
 ## TODO
 
  - Implement remaining components:
+   - Beer
    - Bitcoin
    - Boolean
+   - Cat
    - Code
    - Finance
    - Hacker
