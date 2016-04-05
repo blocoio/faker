@@ -69,6 +69,7 @@ We have tried to keep the operations as close as possible.
    - Bitcoin
    - Boolean
    - Cat
+   - ChuckNorris
    - Code
    - Finance
    - Hacker
