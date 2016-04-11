@@ -4,16 +4,10 @@ apply plugin: 'maven-publish'
 publishing {
     publications {
         maven(MavenPublication) {
-           groupId 'com.github.blocoio'
-           artifactId 'faker'
-           version '1.2.0'
-        }
-    }
-}
+            groupId 'com.github.blocoio'
+            artifactId 'faker'
+            version '1.2.1'
 
-publishing {
-    publications {
-        maven(MavenPublication) {
             from components.java
 
             artifact sourceJar {
