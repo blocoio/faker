@@ -47,6 +47,18 @@ public class RandomHelper {
         return number(max - min + 1) + min;
     }
 
+    public long range(long min, long max) {
+        if (min == max) {
+            return min;
+        }
+        if (max < min) {
+            long temp = max;
+            max = min;
+            min = temp;
+        }
+        return number(max - min + 1) + min;
+    }
+
     public double range(double min, double max) {
         if (max < min) {
             double temp = max;
@@ -54,6 +66,14 @@ public class RandomHelper {
             min = temp;
         }
         return random.nextDouble() * (max - min) + min;
+    }
+
+    public double randLong() {
+        return random.nextLong();
+    }
+
+    public double randInt() {
+        return random.nextInt();
     }
 
     public double randDouble() {

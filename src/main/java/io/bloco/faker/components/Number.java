@@ -71,6 +71,10 @@ public class Number extends FakerComponent {
         return randomHelper.range(from, to);
     }
 
+    public long between(long from, long to) {
+      return randomHelper.range(from, to);
+    }
+
     public double between(double from, double to) {
         return randomHelper.range(from, to);
     }
@@ -83,6 +87,10 @@ public class Number extends FakerComponent {
         return Math.abs(between(from, to));
     }
 
+    public long positive(long from, long to) {
+        return Math.abs(between(from, to));
+    }
+
     public double positive(double from, double to) {
         return Math.abs(between(from, to));
     }
@@ -92,6 +100,10 @@ public class Number extends FakerComponent {
     }
 
     public int negative(int from, int to) {
+        return Math.abs(between(from, to)) * -1;
+    }
+
+    public long negative(long from, long to) {
         return Math.abs(between(from, to)) * -1;
     }
 
