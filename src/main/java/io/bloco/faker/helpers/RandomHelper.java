@@ -68,14 +68,6 @@ public class RandomHelper {
         return random.nextDouble() * (max - min) + min;
     }
 
-    public double randLong() {
-        return random.nextLong();
-    }
-
-    public double randInt() {
-        return random.nextInt();
-    }
-
     public double randDouble() {
         return random.nextDouble();
     }
