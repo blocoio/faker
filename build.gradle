@@ -27,12 +27,13 @@ targetCompatibility = JavaVersion.VERSION_1_7
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
-    compile fileTree(include: ['snakeyaml-1.18-SNAPSHOT.jar'], dir: 'libs')
 
     compile "joda-time:joda-time:2.9.1"
+    compile "com.github.bmoliveira:snake-yaml:1.18.android.rc1"
     testCompile "junit:junit:4.11"
     testCompile "org.hamcrest:hamcrest-junit:2.0.0.0"
     testCompile "org.mockito:mockito-core:2.0.+"
