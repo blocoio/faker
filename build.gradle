@@ -1,39 +1,20 @@
 apply plugin: 'java'
-apply plugin: 'maven-publish'
+apply plugin: 'maven'
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId 'com.github.blocoio'
-            artifactId 'faker'
-            version '1.2.1'
-
-            from components.java
-
-            artifact sourceJar {
-                classifier "sources"
-            }
-        }
-    }
-}
-
-task sourceJar(type: Jar) {
-    from sourceSets.main.allJava
-}
+version = '1.2.2'
+group = 'com.github.blocoio'
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 repositories {
-    mavenLocal()
     mavenCentral()
     maven { url "https://jitpack.io" }
 }
 
 dependencies {
-
+    compile 'com.github.bmoliveira:snake-yaml:v1.18-android'
     compile "joda-time:joda-time:2.9.1"
-    compile 'com.github.bmoliveira:snake-yaml:1.18.1-android-rc2'
     testCompile "junit:junit:4.11"
     testCompile "org.hamcrest:hamcrest-junit:2.0.0.0"
     testCompile "org.mockito:mockito-core:2.0.+"
