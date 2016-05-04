@@ -49,6 +49,11 @@ public class NameTest {
     }
 
     @Test
+    public void nameWithMiddle() throws Exception {
+        assertNotNull(faker.name.nameWithMiddle());
+    }
+
+    @Test
     public void jobTitles() throws Exception {
         assertThat(faker.name.jobTitles(), hasItem("Engineer"));
     }

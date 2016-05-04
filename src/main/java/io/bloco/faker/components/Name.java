@@ -37,6 +37,10 @@ public class Name extends FakerComponent {
         return parse(fetch("name.name"));
     }
 
+    public String nameWithMiddle() {
+        return parse(fetch("name.name_with_middle"));
+    }
+
     public List<String> jobTitles() {
         return (List<String>) getMap("name", "title").get("job");
     }
