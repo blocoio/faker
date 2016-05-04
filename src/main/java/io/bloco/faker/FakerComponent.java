@@ -114,7 +114,7 @@ public abstract class FakerComponent {
         return value;
     }
 
-    private Map<String, Object> getMap(String componentKey, String listKey) {
+    protected Map<String, Object> getMap(String componentKey, String listKey) {
         Map<String, Object> map = (Map<String, Object>) getComponentData(componentKey).get(listKey);
         if (map == null) {
             throw new UnsupportedOperationException("Unsupported method '" + listKey + "'");

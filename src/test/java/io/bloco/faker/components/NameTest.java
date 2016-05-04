@@ -5,7 +5,9 @@ import org.junit.Test;
 
 import io.bloco.faker.Faker;
 
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 public class NameTest {
 
@@ -44,5 +46,10 @@ public class NameTest {
     @Test
     public void name() throws Exception {
         assertNotNull(faker.name.name());
+    }
+
+    @Test
+    public void jobTitles() throws Exception {
+        assertThat(faker.name.jobTitles(), hasItem("Engineer"));
     }
 }

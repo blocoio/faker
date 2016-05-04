@@ -1,5 +1,7 @@
 package io.bloco.faker.components;
 
+import java.util.List;
+
 import io.bloco.faker.FakerComponent;
 import io.bloco.faker.FakerData;
 
@@ -33,5 +35,9 @@ public class Name extends FakerComponent {
 
     public String name() {
         return parse(fetch("name.name"));
+    }
+
+    public List<String> jobTitles() {
+        return (List<String>) getMap("name", "title").get("job");
     }
 }
