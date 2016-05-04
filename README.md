@@ -67,10 +67,11 @@ We have tried to keep the operations as close as possible.
  - Implement remaining components:
    - Beer
    - Bitcoin
-   - Boolean
    - Cat
    - ChuckNorris
    - Code
+   - Crypto
+   - Educator
    - Finance
    - Hacker
    - Hipster
