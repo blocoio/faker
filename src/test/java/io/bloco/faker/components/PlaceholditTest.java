@@ -24,7 +24,6 @@ public class PlaceholditTest {
         assertThat(defaultUrl, containsString("placehold.it"));
         assertThat(defaultUrl, containsString("300x300"));
         assertThat(defaultUrl, containsString("png"));
-        assertThat(defaultUrl, containsString("000"));
         assertThat(defaultUrl, not(containsString("text")));
     }
 
@@ -54,6 +53,10 @@ public class PlaceholditTest {
         faker.placeholdit.image("80x80", "gif", "###");
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void imageTextColorWithoutBackgroundColor() {
+        faker.placeholdit.image("80x80", "gif", null, "000");
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void imageInvalidTextColor() {

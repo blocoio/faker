@@ -32,7 +32,7 @@ public class Placeholdit extends FakerComponent {
     }
 
     public String image(String size, String format) {
-        return image(size, format, "000");
+        return image(size, format, null);
     }
 
     public String image(String size, String format, String backgroundColor) {
@@ -55,15 +55,23 @@ public class Placeholdit extends FakerComponent {
                     + stringHelper.join(SUPPORTED_FORMATS, ","));
         }
 
-        if (!backgroundColor.matches(HEX_REGEX)) {
+        if (backgroundColor != null && !backgroundColor.matches(HEX_REGEX)) {
             throw new IllegalArgumentException("backgroundColor must be a hex value without '#'");
+        }
+
+        if (backgroundColor == null && textColor != null) {
+            throw new IllegalArgumentException("backgroundColor must be used with the textColor");
         }
 
         if (textColor != null && !textColor.matches(HEX_REGEX)) {
             throw new IllegalArgumentException("textColor must be a hex value without '#'");
         }
 
-        String imageUrl = PLACEHOLDER_URL + size + "." + format + "/" + backgroundColor;
+        String imageUrl = PLACEHOLDER_URL + size + "." + format;
+
+        if (backgroundColor != null) {
+            imageUrl += "/" + backgroundColor;
+        }
 
         if (textColor != null) {
             imageUrl += "/" + textColor;
