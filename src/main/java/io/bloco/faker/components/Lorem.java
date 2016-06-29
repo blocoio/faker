@@ -134,4 +134,40 @@ public class Lorem extends FakerComponent {
         }
         return paragraphs;
     }
+
+    public String question() {
+        return question(4);
+    }
+
+    public String question(int wordCount) {
+        return question(wordCount, false);
+    }
+
+    public String question(int wordCount, boolean supplemental) {
+        return question(wordCount, supplemental, 6);
+    }
+
+    public String question(int wordCount, boolean supplemental, int randomWordsToAdd) {
+        int finalWordCount = wordCount + randomHelper.number(randomWordsToAdd + 1);
+        List<String> questionWords = words(finalWordCount, supplemental);
+        String sentence = stringHelper.join(questionWords, " ");
+        sentence = sentence.substring(0, 1).toUpperCase() + sentence.substring(1); // capitalize
+        return sentence + "?";
+    }
+
+    public List<String> questions() {
+        return questions(3);
+    }
+
+    public List<String> questions(int questionsCount) {
+        return questions(questionsCount, false);
+    }
+
+    public List<String> questions(int questionsCount, boolean supplemental) {
+        List<String> questions = new ArrayList<>(questionsCount);
+        for (int i = 0; i < questionsCount; i++) {
+            questions.add(question(3, supplemental));
+        }
+        return questions;
+    }
 }

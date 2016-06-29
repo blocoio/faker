@@ -106,4 +106,29 @@ public class LoremTest {
         assertThat(faker.lorem.paragraphs(1, false).size(), is(equalTo(1)));
         assertThat(faker.lorem.paragraphs(10, false).size(), is(equalTo(10)));
     }
+
+    @Test
+    public void questionDefault() throws Exception {
+        assertNotNull(faker.lorem.question());
+        assertNotNull(faker.lorem.question(4));
+        assertNotNull(faker.lorem.question(4, false));
+    }
+
+    @Test
+    public void question() throws Exception {
+        assertThat(faker.lorem.question(4, true, 0), matchesPattern("[A-Z]\\w*( \\w+){3}\\?"));
+        assertThat(faker.lorem.question(1, true, 4), matchesPattern("[A-Z]\\w*( \\w+){0,4}\\?"));
+    }
+
+    @Test
+    public void questionsDefault() throws Exception {
+        assertNotNull(faker.lorem.questions());
+        assertNotNull(faker.lorem.questions(4));
+    }
+
+    @Test
+    public void questions() throws Exception {
+        assertThat(faker.lorem.questions(1, false).size(), is(equalTo(1)));
+        assertThat(faker.lorem.questions(10, false).size(), is(equalTo(10)));
+    }
 }
