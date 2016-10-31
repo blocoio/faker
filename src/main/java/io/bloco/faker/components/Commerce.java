@@ -64,6 +64,16 @@ public class Commerce extends FakerComponent {
                 .round(new MathContext(2, RoundingMode.HALF_UP));
     }
 
+    public String promotionCode() {
+        return promotionCode(6);
+    }
+
+    public String promotionCode(int digits) {
+        return fetch("commerce.promotion_code.adjective")
+                + fetch("commerce.promotion_code.noun")
+                + getComponent(Number.class).number(digits);
+    }
+
     // Helpers
 
     private List<String> getCategories(int num) {

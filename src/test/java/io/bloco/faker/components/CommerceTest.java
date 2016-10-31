@@ -54,4 +54,10 @@ public class CommerceTest {
         assertThat(faker.commerce.price(0, 1), allOf(
                 greaterThanOrEqualTo(new BigDecimal(0)), lessThanOrEqualTo(new BigDecimal(1))));
     }
+
+    @Test
+    public void promotionCode() throws Exception {
+        assertNotNull(faker.commerce.promotionCode());
+        assertThat(faker.commerce.promotionCode(5), matchesPattern("\\w+\\d{5}"));
+    }
 }
