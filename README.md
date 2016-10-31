@@ -46,6 +46,7 @@ We have tried to keep the operations as close as possible.
  - Commerce
  - Company
  - Date
+ - Food
  - Internet
  - Lorem
  - Name
@@ -73,13 +74,16 @@ We have tried to keep the operations as close as possible.
    - Crypto
    - Educator
    - Finance
+   - GameOfThrones
    - Hacker
    - Hipster
    - IDNumber
+   - Pokemon
    - Shakespeare
    - Space
    - Superhero
    - StarWars
+   - Vehicle
 
 ## Proguard
 
