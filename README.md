@@ -25,11 +25,11 @@ You can use ```testCompile``` or ```androidTestCompile```, if you only want to u
 ## Usage
 
     Faker faker = new Faker();
-    faker.name.firstName();    // Returns "Aaron"
+    faker.firstName();    // Returns "Aaron"
     faker.company.name();      // Returns "Hirthe-Ritchie"
 
     Faker faker = new Faker("nl");
-    faker.name.firstName();    // Returns "Thijs"
+    faker.firstName();    // Returns "Thijs"
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 We have tried to keep the operations as close as possible.
