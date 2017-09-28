@@ -36,7 +36,7 @@ You can use ```testCompile``` or ```androidTestCompile```, if you only want to u
 
     enum CurrencyEnum{ KES,USD,GBP,EUR }
     Faker faker = new Faker();
-    faker.pickRandom.from(CurrencyEnum); // Return "GBP"
+    faker.pickRandom.from(CurrencyEnum.class); // Return "GBP"
 
     String[] workWeek =
                 new String[]{"Monday", "Tuesday", "Wednesday", "Friday"};

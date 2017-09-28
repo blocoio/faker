@@ -17,6 +17,10 @@ public class PickRandomTest {
 
         double rate = 0.00;
 
+        public double getRate() {
+            return rate;
+        }
+
         private CurrencyEnum(double r) {
             rate = r;
         }
@@ -30,6 +34,16 @@ public class PickRandomTest {
 
     @Test
     public void fromEnum() throws Exception {
+
+        Enum money = faker.pickRandom.fromEnum(CurrencyEnum.class);
+
+        Collection currencyCollection = Arrays.asList(CurrencyEnum.class.getEnumConstants());
+
+        assertTrue(currencyCollection.contains(money));
+    }
+
+    @Test
+    public void valuesFromEnum() throws Exception {
 
         Enum money = faker.pickRandom.fromEnum(CurrencyEnum.class);
 
