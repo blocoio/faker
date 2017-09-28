@@ -1,7 +1,6 @@
 package io.bloco.faker.components;
 
 import io.bloco.faker.Faker;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import static org.junit.Assert.assertTrue;
@@ -17,11 +16,7 @@ public class PickRandomTest {
 
         double rate = 0.00;
 
-        public double getRate() {
-            return rate;
-        }
-
-        private CurrencyEnum(double r) {
+        CurrencyEnum(double r) {
             rate = r;
         }
     }

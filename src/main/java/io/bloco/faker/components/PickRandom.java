@@ -4,8 +4,6 @@ import io.bloco.faker.FakerComponent;
 import io.bloco.faker.FakerData;
 
 import java.util.Collection;
-import java.util.Optional;
-
 /**
  * Class to pick random items from a known collection, enum, array or VargArgs
  */
@@ -15,45 +13,39 @@ public class PickRandom extends FakerComponent {
         super(data);
     }
 
-    @SuppressWarnings("all")
-    public < T extends Enum<T>>T fromEnum(Class<T> clazz){
+    < T extends Enum<T>>T fromEnum(Class<T> clazz){
 
-        Optional<Object[]> possibleValues = Optional.empty();
+        Object[] possibleValues = null;
 
         if(clazz != null) {
 
-            possibleValues = Optional.of(clazz.getEnumConstants());
+            possibleValues = clazz.getEnumConstants();
 
         } else {
 
-            throw new IllegalArgumentException("The class : "+clazz+" is empty");
+            throw new IllegalArgumentException("The class passed in the argument is null");
         }
 
 
-        return fromArray((T[]) possibleValues.get());
+        return fromArray((T[]) possibleValues);
     }
 
-    @SuppressWarnings("all")
-    public <T > T fromArray(T[] array) {
+    <T > T fromArray(T[] array) {
 
-        Optional<T[]> randomArray = Optional.of(array);
+        Integer  randex = randomHelper.number(array.length - 1);
 
-        Optional<Integer> randex =
-                Optional.of(randomHelper.number(randomArray.get().length - 1));
-
-        return randomArray.get()[randex.get()];
+        return array[randex];
     }
 
 
     @SafeVarargs
-    @SuppressWarnings("all")
-    public final <T > T fromVarArgs(T... array){
+    final <T > T fromVarArgs(T... array){
 
         return fromArray(array);
     }
 
-    @SuppressWarnings({"unused","unchecked","all"})
-    public <T > T fromCollection(Collection<T> coll){
+    @SuppressWarnings("unchecked")
+    <T > T fromCollection(Collection<T> coll){
 
         return fromArray((T[]) coll.toArray());
     }
