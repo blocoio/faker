@@ -13,7 +13,7 @@ public class PickRandom extends FakerComponent {
         super(data);
     }
 
-    < T extends Enum<T>>T fromEnum(Class<T> clazz){
+    public < T extends Enum<T>>T fromEnum(Class<T> clazz){
 
         Object[] possibleValues = null;
 
@@ -30,7 +30,7 @@ public class PickRandom extends FakerComponent {
         return fromArray((T[]) possibleValues);
     }
 
-    <T > T fromArray(T[] array) {
+    public <T > T fromArray(T[] array) {
 
         Integer  randex = randomHelper.number(array.length - 1);
 
@@ -39,13 +39,13 @@ public class PickRandom extends FakerComponent {
 
 
     @SafeVarargs
-    final <T > T fromVarArgs(T... array){
+    public final <T > T fromVarArgs(T... array){
 
         return fromArray(array);
     }
 
     @SuppressWarnings("unchecked")
-    <T > T fromCollection(Collection<T> coll){
+    public <T > T fromCollection(Collection<T> coll){
 
         return fromArray((T[]) coll.toArray());
     }
