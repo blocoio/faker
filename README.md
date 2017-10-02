@@ -6,7 +6,7 @@ Run your tests with realistic data like names, emails, dates, countries...
 A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 The goal was to reuse their locale data files.
 
-[![Build Status](https://travis-ci.org/blocoio/faker.svg?branch=master)](https://travis-ci.org/blocoio/faker)
+[![Build Status](https://travis-ci.org/ghacupha/faker.svg?branch=master)](https://travis-ci.org/ghacupha/faker)
 [![Release](https://img.shields.io/github/release/blocoio/faker.svg?label=maven)](https://jitpack.io/#blocoio/faker)
 
 ## Installing
@@ -30,6 +30,19 @@ You can use ```testCompile``` or ```androidTestCompile```, if you only want to u
 
     Faker faker = new Faker("nl");
     faker.name.firstName();    // Returns "Thijs"
+
+    Faker faker = new Faker();
+    faker.pickRandom.fromVarArgs("Mon","Tue","Wed","Thur"); // Return "Tue"
+
+    enum CurrencyEnum{ KES,USD,GBP,EUR }
+    Faker faker = new Faker();
+    faker.pickRandom.from(CurrencyEnum.class); // Return "GBP"
+
+    String[] workWeek =
+                new String[]{"Monday", "Tuesday", "Wednesday", "Friday"};
+    List<String> workWeek = Arrays.asList(workWeek)
+    Faker faker = new Faker();
+    faker.pickRandom.fromCollection(workWeek); // Return "Tue"
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 We have tried to keep the operations as close as possible.

@@ -21,6 +21,7 @@ import io.bloco.faker.components.Lorem;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Number;
 import io.bloco.faker.components.PhoneNumber;
+import io.bloco.faker.components.PickRandom;
 import io.bloco.faker.components.Placeholdit;
 import io.bloco.faker.components.SlackEmoji;
 import io.bloco.faker.components.Team;
@@ -42,6 +43,7 @@ public class Faker {
     public final Commerce commerce;
     public final Company company;
     public final Date date;
+    public final PickRandom pickRandom;
     public final Internet internet;
     public final Lorem lorem;
     public final Name name;
@@ -92,6 +94,7 @@ public class Faker {
         this.team = this.data.getComponent(Team.class);
         this.time = this.data.getComponent(Time.class);
         this.university = this.data.getComponent(University.class);
+        this.pickRandom = this.data.getComponent(PickRandom.class);
     }
 
     public String getLocale() {

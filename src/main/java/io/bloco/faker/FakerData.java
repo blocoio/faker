@@ -18,6 +18,7 @@ import io.bloco.faker.components.Lorem;
 import io.bloco.faker.components.Name;
 import io.bloco.faker.components.Number;
 import io.bloco.faker.components.PhoneNumber;
+import io.bloco.faker.components.PickRandom;
 import io.bloco.faker.components.Placeholdit;
 import io.bloco.faker.components.SlackEmoji;
 import io.bloco.faker.components.Team;
@@ -56,6 +57,7 @@ public class FakerData {
                 new Team(this),
                 new Time(this),
                 new University(this),
+                new PickRandom(this)
         };
 
         this.components = new HashMap<>(componentsList.length);
