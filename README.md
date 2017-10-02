@@ -6,7 +6,7 @@ Run your tests with realistic data like names, emails, dates, countries...
 A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
 The goal was to reuse their locale data files.
 
-[![Build Status](https://travis-ci.org/blocoio/faker.svg?branch=master)](https://travis-ci.org/blocoio/faker)
+[![Build Status](https://travis-ci.org/ghacupha/faker.svg?branch=master)](https://travis-ci.org/ghacupha/faker)
 [![Release](https://img.shields.io/github/release/blocoio/faker.svg?label=maven)](https://jitpack.io/#blocoio/faker)
 
 ## Installing
