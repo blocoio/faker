@@ -29,7 +29,7 @@ public class CommerceTest {
     }
 
     @Test
-    public void testDepartment() {
+    public void department() {
         assertNotNull(faker.commerce.department());
         assertThat(faker.commerce.department(1, true), matchesPattern("\\w+"));
         assertThat(faker.commerce.department(1, false), matchesPattern("\\w+"));

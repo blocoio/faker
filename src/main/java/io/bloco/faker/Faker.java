@@ -2,8 +2,14 @@ package io.bloco.faker;
 
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.bloco.faker.components.Address;
@@ -64,10 +70,9 @@ public class Faker {
         this.locale = locale;
 
         // Load data
-        MapHelper mapHelper = new MapHelper();
         Map<String, Object> data = loadData(DEFAULT_LOCALE); // Fallbacks first
         if (!this.locale.equals(DEFAULT_LOCALE)) {
-            mapHelper.deepMerge(data, loadData(this.locale));
+            MapHelper.deepMerge(data, loadData(this.locale));
         }
         this.data = new FakerData(data);
 
@@ -99,25 +104,48 @@ public class Faker {
     }
 
     private Map<String, Object> loadData(String locale) {
-        Yaml yaml = new Yaml();
-        InputStream input = getDataInputStream(locale);
-
-        Map<String, Object> root = (Map<String, Object>) yaml.load(input);
-        Map<String, Object> fakerData = (Map<String, Object>) root.values().iterator().next();
-        return (Map<String, Object>) fakerData.values().iterator().next();
+        List<File> localeFiles = getLocaleFiles(locale);
+        Map<String, Object> fullData = new HashMap<>();
+        for (File localeFile : localeFiles) {
+            MapHelper.deepMerge(fullData, getDataFromLocaleFile(localeFile));
+        }
+        return fullData;
     }
 
-    private InputStream getDataInputStream(String locale) {
-        InputStream input = getClass().getClassLoader()
-                .getResourceAsStream("locales/" + locale + ".yml");
+    private List<File> getLocaleFiles(String locale) {
+        ClassLoader classLoader = getClass().getClassLoader();
 
-        try {
-            if (input != null && input.available() != 0) {
-                return input;
-            }
-        } catch (IOException e) {
+        URL baseResource = classLoader.getResource("locales/" + locale + ".yml");
+        if (baseResource == null) {
+            throw new IllegalArgumentException("Unavailable locale \'" + locale + "\'");
         }
 
-        throw new IllegalArgumentException("Unavailable locale \'" + locale + "\'");
+        List<File> files = new ArrayList<>();
+        files.add(new File(baseResource.getPath()));
+
+        URL folderResource = classLoader.getResource("locales/" + locale);
+        if (folderResource != null) {
+            File[] folderFiles = new File(folderResource.getPath()).listFiles();
+            if (folderFiles != null) {
+                files.addAll(Arrays.asList(folderFiles));
+            }
+        }
+
+        return files;
     }
+
+    private Map<String, Object> getDataFromLocaleFile(File file) {
+        FileInputStream fileInputStream;
+        try {
+            fileInputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+        Yaml yaml = new Yaml();
+        Map<String, Object> root = (Map<String, Object>) yaml.load(fileInputStream);
+        Map<String, Object> fakerData = (Map<String, Object>) root.values().iterator().next();
+        return (Map<String, Object>) fakerData.get("faker");
+    }
+
 }
