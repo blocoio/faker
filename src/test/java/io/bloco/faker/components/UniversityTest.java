@@ -12,22 +12,22 @@ public class UniversityTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void name() throws Exception {
+    public void name() {
         assertNotNull(faker.university.name());
     }
 
     @Test
-    public void prefix() throws Exception {
+    public void prefix() {
         assertNotNull(faker.university.prefix());
     }
 
     @Test
-    public void suffix() throws Exception {
+    public void suffix() {
         assertNotNull(faker.university.suffix());
     }
 }

@@ -14,50 +14,50 @@ public class CompanyTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void name() throws Exception {
+    public void name() {
         assertNotNull(faker.company.name());
     }
 
     @Test
-    public void suffix() throws Exception {
+    public void suffix() {
         assertNotNull(faker.company.suffix());
     }
 
     @Test
-    public void industry() throws Exception {
+    public void industry() {
         assertNotNull(faker.company.industry());
     }
 
     @Test
-    public void catchPhrase() throws Exception {
+    public void catchPhrase() {
         // Should have three or more words
         assertThat(faker.company.catchPhrase(), matchesPattern("^\\S+(\\s\\S+){2,}$"));
     }
 
     @Test
-    public void buzzwords() throws Exception {
+    public void buzzwords() {
         assertNotNull(faker.company.buzzwords());
     }
 
     @Test
-    public void bs() throws Exception {
+    public void bs() {
         assertNotNull(faker.company.bs());
     }
 
     @Test
-    public void logo() throws Exception {
+    public void logo() {
         assertThat(faker.company.logo(),
                 matchesPattern(
                         "^https://pigment.github.io/fake-logos/logos/medium/color/\\d{1,2}.png$"));
     }
 
     @Test
-    public void profession() throws Exception {
+    public void profession() {
         assertNotNull(faker.company.profession());
     }
 

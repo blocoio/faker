@@ -14,12 +14,12 @@ public class StringHelperTest {
     private StringHelper stringHelper;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         stringHelper = new StringHelper();
     }
 
     @Test
-    public void testReplaceMethod() throws Exception {
+    public void testReplaceMethod() {
         assertThat(stringHelper.replaceMethod("aaa", ".", new StringHelper.StringReplacer() {
             @Override
             public String replaceWith(Matcher matcher) {
@@ -36,14 +36,14 @@ public class StringHelperTest {
     }
 
     @Test
-    public void testSnakeToCamel() throws Exception {
+    public void testSnakeToCamel() {
         assertThat(stringHelper.snakeToCamel("hello"), is(equalTo("hello")));
         assertThat(stringHelper.snakeToCamel("first_name"), is(equalTo("firstName")));
         assertThat(stringHelper.snakeToCamel("once_upon_a_time"), is(equalTo("onceUponATime")));
     }
 
     @Test
-    public void testCamelToSnake() throws Exception {
+    public void testCamelToSnake() {
         assertThat(stringHelper.camelToSnake("HelloWorld"), is(equalTo("hello_world")));
         assertThat(stringHelper.camelToSnake("SlackEmoji"), is(equalTo("slack_emoji")));
         assertThat(stringHelper.camelToSnake("RGB"), is(equalTo("r_g_b")));
@@ -51,7 +51,7 @@ public class StringHelperTest {
     }
 
     @Test
-    public void testNormalize() throws Exception {
+    public void testNormalize() {
         assertThat(stringHelper.normalize("Sérgio Santos"), is(equalTo("sergiosantos")));
         assertThat(stringHelper.normalize("áàãâäå"), is(equalTo("aaaaaa")));
         assertThat(stringHelper.normalize("-.@,;!?"), is(equalTo("")));

@@ -12,27 +12,27 @@ public class TeamTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void name() throws Exception {
+    public void name() {
         assertNotNull(faker.team.name());
     }
 
     @Test
-    public void creature() throws Exception {
+    public void creature() {
         assertNotNull(faker.team.creature());
     }
 
     @Test
-    public void state() throws Exception {
+    public void state() {
         assertNotNull(faker.team.state());
     }
 
     @Test
-    public void sport() throws Exception {
+    public void sport() {
         assertNotNull(faker.team.sport());
     }
 }

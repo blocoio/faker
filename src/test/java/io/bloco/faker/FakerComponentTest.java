@@ -34,13 +34,13 @@ public class FakerComponentTest {
     private FakerComponent fakerComponent;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         fakerData = mock(FakerData.class);
         fakerComponent = new TestComponent(fakerData);
     }
 
     @Test
-    public void testFetch() throws Exception {
+    public void testFetch() {
         String componentKey = "wtv";
 
         List<String> options = Arrays.asList("John", "Mary");
@@ -52,7 +52,7 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testFetchComposed() throws Exception {
+    public void testFetchComposed() {
         String componentKey = "wtv";
 
         List<String> options = Arrays.asList("John", "Mary");
@@ -66,7 +66,7 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testSampleNestedLists() throws Exception {
+    public void testSampleNestedLists() {
         String componentKey = "wtv";
 
         List<String> options = Arrays.asList("John", "Mary");
@@ -78,7 +78,7 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testNumerify() throws Exception {
+    public void testNumerify() {
         String digit = "#";
         assertThat(fakerComponent.numerify(digit), matchesPattern("\\d"));
 
@@ -93,7 +93,7 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testParse() throws Exception {
+    public void testParse() {
         when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
 
         assertThat(fakerComponent.parse("#{test}"), is(equalTo("ok")));
@@ -104,23 +104,15 @@ public class FakerComponentTest {
     }
 
     @Test
-    public void testCall() throws Exception {
+    public void testCall() {
         when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
         assertThat(fakerComponent.call("test"), is(equalTo("ok")));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testCallInvalid() throws Exception {
+    public void testCallInvalid() {
         when(fakerData.getComponentByKey(anyString())).thenReturn(fakerComponent);
         fakerComponent.call("invalid");
     }
 
-    // Helpers
-
-    private Map<String, Object> newComponentData(String componentKey,
-                                                 Map<String, Object> internalData) {
-        Map<String, Object> data = new HashMap<>();
-        data.put(componentKey, internalData);
-        return data;
-    }
 }

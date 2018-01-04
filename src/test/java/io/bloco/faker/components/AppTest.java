@@ -12,22 +12,22 @@ public class AppTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void name() throws Exception {
+    public void name() {
         assertNotNull(faker.app.name());
     }
 
     @Test
-    public void version() throws Exception {
+    public void version() {
         assertNotNull(faker.app.version());
     }
 
     @Test
-    public void author() throws Exception {
+    public void author() {
         assertNotNull(faker.app.author());
     }
 }

@@ -12,81 +12,81 @@ public class AddressTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void testCityPrefix() throws Exception {
+    public void testCityPrefix() {
         assertNotNull(faker.address.cityPrefix());
     }
 
     @Test
-    public void citySuffix() throws Exception {
+    public void citySuffix() {
         assertNotNull(faker.address.citySuffix());
     }
 
     @Test
-    public void country() throws Exception {
+    public void country() {
         assertNotNull(faker.address.country());
     }
 
     @Test
-    public void countryCode() throws Exception {
+    public void countryCode() {
         assertNotNull(faker.address.countryCode());
     }
 
     @Test
-    public void buildingNumber() throws Exception {
+    public void buildingNumber() {
         assertNotNull(faker.address.buildingNumber());
     }
     @Test
-    public void streetSuffix() throws Exception {
+    public void streetSuffix() {
         assertNotNull(faker.address.streetSuffix());
     }
 
     @Test
-    public void secondaryAddress() throws Exception {
+    public void secondaryAddress() {
         assertNotNull(faker.address.secondaryAddress());
     }
 
     @Test
-    public void postcode() throws Exception {
+    public void postcode() {
         assertNotNull(faker.address.postcode());
     }
 
     @Test
-    public void state() throws Exception {
+    public void state() {
         assertNotNull(faker.address.state());
     }
 
     @Test
-    public void stateAbbr() throws Exception {
+    public void stateAbbr() {
         assertNotNull(faker.address.stateAbbr());
     }
 
     @Test
-    public void timeZone() throws Exception {
+    public void timeZone() {
         assertNotNull(faker.address.timeZone());
     }
 
     @Test
-    public void city() throws Exception {
+    public void city() {
         assertNotNull(faker.address.city());
     }
 
     @Test
-    public void streetName() throws Exception {
+    public void streetName() {
         assertNotNull(faker.address.streetName());
     }
 
     @Test
-    public void streetAddress() throws Exception {
+    public void streetAddress() {
         assertNotNull(faker.address.streetAddress());
     }
 
     @Test
-    public void defaultCountry() throws Exception {
+    public void defaultCountry() {
         assertNotNull(faker.address.defaultCountry());
     }
 }

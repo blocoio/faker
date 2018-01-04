@@ -12,12 +12,12 @@ public class BoolTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void bool() throws Exception {
+    public void bool() {
         float trueRatio = Math.round(Math.random() * 10f) / 10f;
         int times = 1000;
         int trueCounter = 0;

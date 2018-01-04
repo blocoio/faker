@@ -20,27 +20,27 @@ public class ColorTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void hexColor() throws Exception {
+    public void hexColor() {
         assertThat(faker.color.hexColor(), matchesPattern("^#[0-9a-f]{6}$"));
     }
 
     @Test
-    public void color() throws Exception {
+    public void color() {
         assertNotNull(faker.color.colorName());
     }
 
     @Test
-    public void singleRgbColor() throws Exception {
+    public void singleRgbColor() {
         assertSingleRgbColor(faker.color.singleRgbColor());
     }
 
     @Test
-    public void rgbColor() throws Exception {
+    public void rgbColor() {
         int[] color = faker.color.rgbColor();
         assertThat(color.length, is(equalTo(3)));
         assertSingleRgbColor(color[0]);
@@ -49,17 +49,17 @@ public class ColorTest {
     }
 
     @Test
-    public void singleHslColor() throws Exception {
+    public void singleHslColor() {
         assertSingleHslColor(faker.color.singleHslColor());
     }
 
     @Test
-    public void alphaChannel() throws Exception {
+    public void alphaChannel() {
         assertAlphaChannel(faker.color.alphaChannel());
     }
 
     @Test
-    public void hslColor() throws Exception {
+    public void hslColor() {
         double[] color = faker.color.hslColor();
         assertThat(color.length, is(equalTo(3)));
         assertSingleHslColor(color[0]);
@@ -68,7 +68,7 @@ public class ColorTest {
     }
 
     @Test
-    public void hslaColor() throws Exception {
+    public void hslaColor() {
         double[] color = faker.color.hslaColor();
         assertThat(color.length, is(equalTo(4)));
         assertSingleHslColor(color[0]);

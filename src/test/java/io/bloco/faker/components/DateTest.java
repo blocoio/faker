@@ -1,19 +1,17 @@
 package io.bloco.faker.components;
 
+import io.bloco.faker.Faker;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-import io.bloco.faker.Faker;
-
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
-import static org.hamcrest.core.AllOf.allOf;
-import static org.hamcrest.core.AnyOf.anyOf;
-import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -23,7 +21,7 @@ public class DateTest {
     private DateFormat dateFormat;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     }
@@ -41,7 +39,7 @@ public class DateTest {
     }
 
     @Test
-    public void forward() throws Exception {
+    public void forward() {
         java.util.Date today = new DateTime().withTimeAtStartOfDay().toDate();
         java.util.Date tomorrow = new DateTime().plusDays(1).withTimeAtStartOfDay().toDate();
         java.util.Date in100Days = new DateTime().plusDays(100).withTimeAtStartOfDay().toDate();
@@ -53,12 +51,12 @@ public class DateTest {
     }
 
     @Test
-    public void forwardDefault() throws Exception {
+    public void forwardDefault() {
         assertNotNull(faker.date.forward());
     }
 
     @Test
-    public void backward() throws Exception {
+    public void backward() {
         java.util.Date today = new DateTime().withTimeAtStartOfDay().toDate();
         java.util.Date yesterday = new DateTime().minusDays(1).withTimeAtStartOfDay().toDate();
         java.util.Date minus100Days = new DateTime().minusDays(100).withTimeAtStartOfDay().toDate();
@@ -70,12 +68,12 @@ public class DateTest {
     }
 
     @Test
-    public void backwardDefault() throws Exception {
+    public void backwardDefault() {
         assertNotNull(faker.date.backward());
     }
 
     @Test
-    public void birthday() throws Exception {
+    public void birthday() {
         java.util.Date nextYear = new DateTime().plusYears(1).withTimeAtStartOfDay().toDate();
         java.util.Date in10Years = new DateTime().plusYears(10).withTimeAtStartOfDay().toDate();
 
@@ -84,7 +82,7 @@ public class DateTest {
     }
 
     @Test
-    public void birthdayDefault() throws Exception {
+    public void birthdayDefault() {
         assertNotNull(faker.date.birthday());
     }
 }

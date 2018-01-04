@@ -19,17 +19,17 @@ public class CommerceTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void color() throws Exception {
+    public void color() {
         assertNotNull(faker.commerce.color());
     }
 
     @Test
-    public void testDepartment() throws Exception {
+    public void testDepartment() {
         assertNotNull(faker.commerce.department());
         assertThat(faker.commerce.department(1, true), matchesPattern("\\w+"));
         assertThat(faker.commerce.department(1, false), matchesPattern("\\w+"));
@@ -38,17 +38,17 @@ public class CommerceTest {
     }
 
     @Test
-    public void productName() throws Exception {
+    public void productName() {
         assertNotNull(faker.commerce.productName());
     }
 
     @Test
-    public void material() throws Exception {
+    public void material() {
         assertNotNull(faker.commerce.material());
     }
 
     @Test
-    public void price() throws Exception {
+    public void price() {
         assertThat(faker.commerce.price(), allOf(
                 greaterThanOrEqualTo(new BigDecimal(0)), lessThanOrEqualTo(new BigDecimal(100))));
         assertThat(faker.commerce.price(0, 1), allOf(
@@ -56,7 +56,7 @@ public class CommerceTest {
     }
 
     @Test
-    public void promotionCode() throws Exception {
+    public void promotionCode() {
         assertNotNull(faker.commerce.promotionCode());
         assertThat(faker.commerce.promotionCode(5), matchesPattern("\\w+\\d{5}"));
     }

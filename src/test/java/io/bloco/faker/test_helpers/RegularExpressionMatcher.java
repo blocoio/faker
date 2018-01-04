@@ -14,6 +14,7 @@ public class RegularExpressionMatcher extends TypeSafeMatcher<String> {
     public RegularExpressionMatcher(String pattern) {
         this(Pattern.compile(pattern));
     }
+
     public RegularExpressionMatcher(Pattern pattern) {
         this.pattern = pattern;
     }
@@ -32,6 +33,7 @@ public class RegularExpressionMatcher extends TypeSafeMatcher<String> {
     public static Matcher matchesPattern(Pattern pattern) {
         return new RegularExpressionMatcher(pattern);
     }
+
     @Factory
     public static Matcher matchesPattern(String pattern) {
         return new RegularExpressionMatcher(pattern);

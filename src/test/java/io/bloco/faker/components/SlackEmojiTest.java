@@ -12,52 +12,52 @@ public class SlackEmojiTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void people() throws Exception {
+    public void people() {
         assertNotNull(faker.slackEmoji.people());
     }
 
     @Test
-    public void nature() throws Exception {
+    public void nature() {
         assertNotNull(faker.slackEmoji.nature());
     }
 
     @Test
-    public void foodAndDrink() throws Exception {
+    public void foodAndDrink() {
         assertNotNull(faker.slackEmoji.foodAndDrink());
     }
 
     @Test
-    public void celebration() throws Exception {
+    public void celebration() {
         assertNotNull(faker.slackEmoji.celebration());
     }
 
     @Test
-    public void activity() throws Exception {
+    public void activity() {
         assertNotNull(faker.slackEmoji.activity());
     }
 
     @Test
-    public void travelAndPlaces() throws Exception {
+    public void travelAndPlaces() {
         assertNotNull(faker.slackEmoji.travelAndPlaces());
     }
 
     @Test
-    public void objectsAndSymbols() throws Exception {
+    public void objectsAndSymbols() {
         assertNotNull(faker.slackEmoji.objectsAndSymbols());
     }
 
     @Test
-    public void custom() throws Exception {
+    public void custom() {
         assertNotNull(faker.slackEmoji.custom());
     }
 
     @Test
-    public void emoji() throws Exception {
+    public void emoji() {
         assertNotNull(faker.slackEmoji.emoji());
     }
 }

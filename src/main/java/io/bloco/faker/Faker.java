@@ -112,11 +112,12 @@ public class Faker {
                 .getResourceAsStream("locales/" + locale + ".yml");
 
         try {
-            assert input != null && input.available() != 0;
-        } catch (AssertionError|IOException e) {
-            throw new IllegalArgumentException("Unavailable locale \'" + locale + "\'");
+            if (input != null && input.available() != 0) {
+                return input;
+            }
+        } catch (IOException e) {
         }
 
-        return input;
+        throw new IllegalArgumentException("Unavailable locale \'" + locale + "\'");
     }
 }

@@ -46,7 +46,6 @@ We have tried to keep the operations as close as possible.
  - Commerce
  - Company
  - Date
- - Food
  - Internet
  - Lorem
  - Name
@@ -65,25 +64,7 @@ We have tried to keep the operations as close as possible.
 
 ## TODO
 
- - Implement remaining components:
-   - Beer
-   - Bitcoin
-   - Cat
-   - ChuckNorris
-   - Code
-   - Crypto
-   - Educator
-   - Finance
-   - GameOfThrones
-   - Hacker
-   - Hipster
-   - IDNumber
-   - Pokemon
-   - Shakespeare
-   - Space
-   - Superhero
-   - StarWars
-   - Vehicle
+ - Implement remaining components of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 ## Proguard
 

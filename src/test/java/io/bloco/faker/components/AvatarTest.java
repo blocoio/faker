@@ -14,12 +14,12 @@ public class AvatarTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void imageDefault() throws Exception {
+    public void imageDefault() {
         String defaultUrl = faker.avatar.image();
         assertThat(defaultUrl, containsString("robohash.org"));
         assertThat(defaultUrl, containsString("image"));
@@ -30,7 +30,7 @@ public class AvatarTest {
     }
 
     @Test
-    public void imageParams() throws Exception {
+    public void imageParams() {
         String specificUrl = faker.avatar.image("my-slug", "80x80", "bmp", "set2", "bgset1");
         assertThat(specificUrl, containsString("robohash.org"));
         assertThat(specificUrl, containsString("my-slug"));

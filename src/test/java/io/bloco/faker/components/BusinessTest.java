@@ -16,24 +16,24 @@ public class BusinessTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void creditCardNumber() throws Exception {
+    public void creditCardNumber() {
         assertNotNull(faker.business.creditCardNumber());
     }
 
     @Test
-    public void creditCardExpireDate() throws Exception {
+    public void creditCardExpireDate() {
         Date date = faker.business.creditCardExpireDate();
         Date today = new GregorianCalendar().getTime();
         assertTrue(date.after(today));
     }
 
     @Test
-    public void creditCardType() throws Exception {
+    public void creditCardType() {
         assertNotNull(faker.business.creditCardType());
     }
 }

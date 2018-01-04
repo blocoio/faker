@@ -14,12 +14,12 @@ public class PlaceholditTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void imageDefault() throws Exception {
+    public void imageDefault() {
         String defaultUrl = faker.placeholdit.image();
         assertThat(defaultUrl, containsString("placehold.it"));
         assertThat(defaultUrl, containsString("300x300"));
@@ -28,7 +28,7 @@ public class PlaceholditTest {
     }
 
     @Test
-    public void imageParams() throws Exception {
+    public void imageParams() {
         String specificUrl = faker.placeholdit.image("80x80", "gif", "F0F", "0F0", "blah");
         assertThat(specificUrl, containsString("placehold.it"));
         assertThat(specificUrl, containsString("80x80"));

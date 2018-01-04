@@ -14,47 +14,47 @@ public class NameTest {
     private Faker faker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         faker = new Faker();
     }
 
     @Test
-    public void firstName() throws Exception {
+    public void firstName() {
         assertNotNull(faker.name.firstName());
     }
 
     @Test
-    public void lastName() throws Exception {
+    public void lastName() {
         assertNotNull(faker.name.lastName());
     }
 
     @Test
-    public void prefix() throws Exception {
+    public void prefix() {
         assertNotNull(faker.name.prefix());
     }
 
     @Test
-    public void suffix() throws Exception {
+    public void suffix() {
         assertNotNull(faker.name.suffix());
     }
 
     @Test
-    public void title() throws Exception {
+    public void title() {
         assertNotNull(faker.name.title());
     }
 
     @Test
-    public void name() throws Exception {
+    public void name() {
         assertNotNull(faker.name.name());
     }
 
     @Test
-    public void nameWithMiddle() throws Exception {
+    public void nameWithMiddle() {
         assertNotNull(faker.name.nameWithMiddle());
     }
 
     @Test
-    public void jobTitles() throws Exception {
+    public void jobTitles() {
         assertThat(faker.name.jobTitles(), hasItem("Engineer"));
     }
 }
