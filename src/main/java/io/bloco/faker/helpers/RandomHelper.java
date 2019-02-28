@@ -1,14 +1,14 @@
 package io.bloco.faker.helpers;
 
+import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 
 public class RandomHelper {
 
-    private Random random;
+    private SecureRandom random;
 
     public RandomHelper() {
-        random = new Random();
+        random = new SecureRandom();
     }
 
     public <T> T sample(List<T> options) {
