@@ -1,4 +1,4 @@
-<img src="bloco_faker.png"alt="Faker" />
+<img src="bloco_faker.png" alt="Faker" />
 
 Generates fake data for testing or populating a development database.
 Run your tests with realistic data like names, emails, dates, countries...
