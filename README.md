@@ -1,5 +1,7 @@
 # Faker
 
+<img src="bloco_faker.png" height="200" alt="Circles" />
+
 Generates fake data for testing or populating a development database.
 Run your tests with realistic data like names, emails, dates, countries...
 
@@ -33,6 +35,8 @@ You can use ```testCompile``` or ```androidTestCompile```, if you only want to u
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 We have tried to keep the operations as close as possible.
+
+You can also check our [blog post](https://www.bloco.io/blog/faker-a-library-to-generate-fake-data-for-java-android).
 
 ### Available components
 
