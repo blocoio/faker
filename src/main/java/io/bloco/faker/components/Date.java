@@ -77,6 +77,9 @@ public class Date extends FakerComponent {
     private DateTime getRandomDate(DateTime from, DateTime to) {
         Duration duration = new Duration(from, to);
         long diffInDays = duration.getStandardDays();
+        if (diffInDays == 0) {
+            diffInDays = 1;
+        }
         return from.plusDays((int) randomHelper.number(diffInDays) + 1);
     }
 }
