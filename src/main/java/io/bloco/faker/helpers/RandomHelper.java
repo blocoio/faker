@@ -28,7 +28,7 @@ public class RandomHelper {
     }
 
     public long number(long max) {
-        return Math.abs(random.nextLong()) % max;
+        return (max != 0) ? Math.abs(random.nextLong()) % max : 0;
     }
 
     public int numberByLength(int length) {
