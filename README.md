@@ -17,10 +17,10 @@ The goal was to reuse their locale data files.
     }
 
     dependencies {
-        compile 'com.github.blocoio:faker:1.2.9'
+        implementation 'com.github.blocoio:faker:1.2.9'
     }
 
-You can use ```testCompile``` or ```androidTestCompile```, if you only want to use Faker for testing.
+You can use ```testImplementation``` or ```androidTestImplementation```, if you only want to use Faker for testing.
 
 ## Usage
 
