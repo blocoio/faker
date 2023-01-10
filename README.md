@@ -3,7 +3,7 @@
 Generates fake data for testing or populating a development database.
 Run your tests with realistic data like names, emails, dates, countries...
 
-A Java port of the [Faker ruby gem](https://github.com/stympy/faker/).
+A Kotlin port of the [Faker ruby gem](https://github.com/stympy/faker/).
 The goal was to reuse their locale data files.
 
 [![Build Status](https://travis-ci.org/blocoio/faker.svg?branch=master)](https://travis-ci.org/blocoio/faker)
@@ -24,11 +24,11 @@ You can use ```testImplementation``` or ```androidTestImplementation```, if you 
 
 ## Usage
 
-    Faker faker = new Faker();
+    val faker = Faker();
     faker.name.firstName();    // Returns "Aaron"
     faker.company.name();      // Returns "Hirthe-Ritchie"
 
-    Faker faker = new Faker("nl");
+    val faker = Faker("nl");
     faker.name.firstName();    // Returns "Thijs"
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
@@ -62,7 +62,7 @@ You can also check our [blog post](https://www.bloco.io/blog/faker-a-library-to-
 
 ### Warnings
 
- - Currently we don't support locale specific operations
+ - Currently, we don't support locale specific operations
  like ```Address.postcode_by_state``` or ```Business.swedish_organisation_number```.
 
 ## TODO
@@ -77,13 +77,6 @@ To use Faker with proguard, here are the rules you need to add:
     -keep class org.yaml.snakeyaml.** { public protected private *; }
     -keep class org.yaml.snakeyaml.** { public protected private *; }
     -dontwarn org.yaml.snakeyaml.**
-    
-    # Joda Time
-    -dontwarn org.joda.convert.**
-    -dontwarn org.joda.time.**
-    -keep class org.joda.time.** { *; }
-    -keep interface org.joda.time.** { *; }
-
 
 ## Contact
 
