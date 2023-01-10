@@ -24,12 +24,12 @@ You can use ```testImplementation``` or ```androidTestImplementation```, if you 
 
 ## Usage
 
-    val faker = Faker();
-    faker.name.firstName();    // Returns "Aaron"
-    faker.company.name();      // Returns "Hirthe-Ritchie"
+    val faker = Faker()
+    faker.name.firstName()    // Returns "Aaron"
+    faker.company.name()      // Returns "Hirthe-Ritchie"
 
-    val faker = Faker("nl");
-    faker.name.firstName();    // Returns "Thijs"
+    val faker = Faker("nl")
+    faker.name.firstName()    // Returns "Thijs"
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 We have tried to keep the operations as close as possible.
