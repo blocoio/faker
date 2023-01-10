@@ -11,12 +11,9 @@ repositories {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.google.guava:guava:31.0.1-jre")
     implementation("com.github.bmoliveira:snake-yaml:v1.18-android")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("io.mockk:mockk:1.13.3")
-
-    api("org.apache.commons:commons-math3:3.6.1")
 }
