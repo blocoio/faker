@@ -34,6 +34,7 @@ class Name(data: FakerData) : FakerComponent(data) {
         return parse(fetch("name.name_with_middle"))
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun jobTitles(): List<String> {
         return getMap("name", "title")["job"] as List<String>
     }

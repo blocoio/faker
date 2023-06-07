@@ -31,7 +31,7 @@ class FoodTest {
     @Test
     fun measurement() {
         assertNotNull(faker.food.measurement())
-        assertTrue(faker.food.measurement().matches(Regex("[\\d/]+ \\w+")))
+        assertTrue(faker.food.measurement().matches(Regex("[\\d\\/]+ \\w+")))
     }
 
     @Test

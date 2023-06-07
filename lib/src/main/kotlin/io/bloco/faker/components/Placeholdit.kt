@@ -32,7 +32,7 @@ class Placeholdit(data: FakerData) : FakerComponent(data) {
     companion object {
         val SUPPORTED_FORMATS = listOf("png", "jpg", "jpeg", "gif")
         private const val PLACEHOLDER_URL = "https://placehold.it/"
-        private const val SIZE_REGEX = "^\\d+x\\d+$"
-        private const val HEX_REGEX = "(^[\\da-fA-F]{3}$|^[\\da-fA-F]{6}$)(?!.*[^\\da-fA-F])"
+        private const val SIZE_REGEX =  "^[0-9]+x[0-9]+$";
+        private const val HEX_REGEX = "((?:^[0-9a-fA-F]{3}$)|(?:^[0-9a-fA-F]{6}$)){1}(?!.*[^0-9a-fA-F])"
     }
 }

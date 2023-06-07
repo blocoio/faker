@@ -78,8 +78,8 @@ class LoremTest {
 
     @Test
     fun paragraph() {
-        assertTrue(faker.lorem.paragraph(4, true, 0).matches(Regex("([^.]+\\.){4}")))
-        assertTrue(faker.lorem.paragraph(1, true, 4).matches(Regex("([^.]+\\.){1,5}")))
+        assertTrue(faker.lorem.paragraph(4, true, 0).matches(Regex("([^\\.]+\\.){4}")))
+        assertTrue(faker.lorem.paragraph(1, true, 4).matches(Regex("([^\\.]+\\.){1,5}")))
     }
 
     @Test
