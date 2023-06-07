@@ -3,7 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 
 class ColorTest {
@@ -11,7 +10,7 @@ class ColorTest {
 
     @Test
     fun hexColor() {
-        assertTrue(faker.color.hexColor().matches(Regex("^#[0-9a-f]{6}\$")))
+        assertTrue(faker.color.hexColor().matches(Regex("^#[\\da-f]{6}\$")))
     }
 
     @Test

@@ -72,7 +72,7 @@ class FakerComponentTest {
 
     @Test
     fun testParse() {
-        every { fakerData.getComponentByKey(any()) } returns fakerComponent
+        every { fakerData.getComponentByKey<FakerComponent>(any()) } returns fakerComponent
 
         assertTrue(fakerComponent.parse("#{test}") == "ok")
         assertTrue(fakerComponent.parse("#{testcomponent.test}") == "ok")
@@ -82,13 +82,13 @@ class FakerComponentTest {
 
     @Test
     fun testCall() {
-        every { fakerData.getComponentByKey(any()) } returns fakerComponent
+        every { fakerData.getComponentByKey<FakerComponent>(any()) } returns fakerComponent
         assertTrue(fakerComponent.call("test") == "ok")
     }
 
     @Test(expected = IllegalArgumentException::class)
     fun testCallInvalid() {
-        every { fakerData.getComponentByKey(any()) } returns fakerComponent
+        every { fakerData.getComponentByKey<FakerComponent>(any()) } returns fakerComponent
         fakerComponent.call("invalid")
     }
 }

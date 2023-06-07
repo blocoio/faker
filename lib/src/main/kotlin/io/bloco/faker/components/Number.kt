@@ -7,7 +7,13 @@ import kotlin.math.pow
 
 class Number(data: FakerData) : FakerComponent(data) {
     fun number(digits: Int): String {
-        return leadingZeroNumber(digits)
+        var tempDigits = digits
+        var num = ""
+        if (tempDigits > 1) {
+            num = nonZeroDigit()
+            tempDigits -= 1
+        }
+        return num + leadingZeroNumber(tempDigits)
     }
 
     fun leadingZeroNumber(digits: Int): String {

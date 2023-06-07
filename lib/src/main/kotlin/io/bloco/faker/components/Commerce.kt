@@ -3,7 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 import java.math.BigDecimal
-import java.math.MathContext
 import java.math.RoundingMode
 
 class Commerce(data: FakerData) : FakerComponent(data) {
@@ -39,7 +38,7 @@ class Commerce(data: FakerData) : FakerComponent(data) {
         return listOf(
             fetch("commerce.promotion_code.adjective"),
             fetch("commerce.promotion_code.noun"),
-            getComponent(Number::class.java).number(digits)
+            getComponent(Number::class).number(digits)
         ).joinToString("")
     }
 
@@ -52,7 +51,7 @@ class Commerce(data: FakerData) : FakerComponent(data) {
     }
 
     private fun mergeCategories(categories: List<String>): String {
-        val commaSeparated = categories.subList(0, categories.size - 1).joinToString(", ")
+        val commaSeparated = categories.take(categories.size - 1).joinToString(", ")
         return commaSeparated + separator + categories.last()
     }
 }

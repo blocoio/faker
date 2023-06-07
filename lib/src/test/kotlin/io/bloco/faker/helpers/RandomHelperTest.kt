@@ -1,9 +1,6 @@
 package io.bloco.faker.helpers
 
 import junit.framework.TestCase.assertTrue
-import org.hamcrest.core.Is
-import org.hamcrest.core.IsNot
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import java.security.SecureRandom

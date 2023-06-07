@@ -3,9 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertTrue
-import org.hamcrest.CoreMatchers
-import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 
 class PlaceholditTest {

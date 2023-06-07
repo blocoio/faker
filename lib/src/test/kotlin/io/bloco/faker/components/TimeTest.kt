@@ -4,7 +4,6 @@ import io.bloco.faker.Faker
 import io.bloco.faker.helpers.Period
 import io.bloco.faker.helpers.toLocalDateTime
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -39,43 +38,43 @@ class TimeTest {
 
     @Test
     fun allPeriod() {
-        val allPeriod = faker.time.forward(1, Period.all).toLocalDateTime()
+        val allPeriod = faker.time.forward(1, Period.All).toLocalDateTime()
         assertTrue(allPeriod.hour in 0..23)
     }
 
     @Test
     fun dayPeriod() {
-        val dayPeriod = faker.time.forward(1, Period.day).toLocalDateTime()
+        val dayPeriod = faker.time.forward(1, Period.Day).toLocalDateTime()
         assertTrue(dayPeriod.hour in 9..17)
     }
 
     @Test
     fun nightPeriod() {
-        val nightPeriod = faker.time.forward(1, Period.night).toLocalDateTime()
+        val nightPeriod = faker.time.forward(1, Period.Night).toLocalDateTime()
         assertTrue(nightPeriod.hour in 18..23)
     }
 
     @Test
     fun morningPeriod() {
-        val morningPeriod = faker.time.forward(1, Period.morning).toLocalDateTime()
+        val morningPeriod = faker.time.forward(1, Period.Morning).toLocalDateTime()
         assertTrue(morningPeriod.hour in 6..11)
     }
 
     @Test
     fun afternoonPeriod() {
-        val afternoonPeriod = faker.time.forward(1, Period.afternoon).toLocalDateTime()
+        val afternoonPeriod = faker.time.forward(1, Period.Afternoon).toLocalDateTime()
         assertTrue(afternoonPeriod.hour in 12..17)
     }
 
     @Test
     fun eveningPeriod() {
-        val eveningPeriod = faker.time.forward(1, Period.evening).toLocalDateTime()
+        val eveningPeriod = faker.time.forward(1, Period.Evening).toLocalDateTime()
         assertTrue(eveningPeriod.hour in 17..21)
     }
 
     @Test
     fun midnightPeriod() {
-        val midnightPeriod = faker.time.forward(1, Period.midnight).toLocalDateTime()
+        val midnightPeriod = faker.time.forward(1, Period.Midnight).toLocalDateTime()
         assertTrue(midnightPeriod.hour in 0..4)
     }
 }

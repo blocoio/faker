@@ -2,7 +2,6 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
-import java.util.*
 
 class Internet(data: FakerData) : FakerComponent(data) {
     fun email(name: String? = null): String {
@@ -21,7 +20,7 @@ class Internet(data: FakerData) : FakerComponent(data) {
         val separator = randomHelper.sample(separators)
         return when {
             specifier != null -> {
-                specifier.split("\\s".toRegex())
+                specifier.split("\\s+".toRegex())
                     .joinToString(separator) { stringHelper.normalize(it) }
             }
             randomHelper.randBoolean() -> {
@@ -42,7 +41,7 @@ class Internet(data: FakerData) : FakerComponent(data) {
         specialChars: Boolean = PASSWORD_SPECIAL_CHARS
     ): String {
         val characterCount = randomHelper.range(minLength, maxLength)
-        var password: String = getComponent(Lorem::class.java).characters(characterCount)
+        var password: String = getComponent(Lorem::class).characters(characterCount)
         if (mixCase && password.length >= 2) {
             val middlePoint = randomHelper.number(password.length - 1) + 1
             password = password.substring(0, middlePoint).lowercase() +
@@ -51,7 +50,7 @@ class Internet(data: FakerData) : FakerComponent(data) {
 
         if (specialChars && password.length >= 2) {
             val numSpecialChars = randomHelper.number(password.length - 1) + 1
-            for (i in 0 until numSpecialChars) {
+            repeat(numSpecialChars) {
                 val specialChar = randomHelper.sample(PASSWORD_SPECIAL_CHARS_LIST)
                 val index = randomHelper.number(password.length)
                 password = password.substring(0, index).lowercase() +
@@ -77,14 +76,14 @@ class Internet(data: FakerData) : FakerComponent(data) {
 
     @JvmOverloads
     fun macAddress(prefix: String = ""): String {
-        val prefixDigits = prefix.split(":").takeWhile { it.isNotEmpty() }
-        val addressDigits =
-            (0 until (6 - prefixDigits.size)).map { "%02x".format(randomHelper.number(256)) }
+        val prefixDigits = prefix.split(":").filterNot { it.isEmpty() }
+        val addressDigits = (0 until (6 - prefixDigits.size))
+            .map { "%02x".format(randomHelper.number(256)) }
         return (prefixDigits + addressDigits).joinToString(":")
     }
 
     fun ipV4Address(): String {
-        val parts = List(4) { randomHelper.number(255) }
+        val parts = List(4) { randomHelper.number(256) }
         return parts.joinToString(".")
     }
 
@@ -114,11 +113,9 @@ class Internet(data: FakerData) : FakerComponent(data) {
     }
 
     fun deviceToken(): String {
-        val deviceToken = StringBuilder()
-        repeat(DEVICE_TOKEN_LENGTH) {
-            deviceToken.append(randomHelper.number(16).toString(16))
+        return (1..DEVICE_TOKEN_LENGTH).joinToString("") {
+            randomHelper.number(16).toString(16)
         }
-        return deviceToken.toString()
     }
 
     companion object {

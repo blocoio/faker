@@ -3,7 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 
 class FoodTest {
@@ -32,7 +31,7 @@ class FoodTest {
     @Test
     fun measurement() {
         assertNotNull(faker.food.measurement())
-        assertTrue(faker.food.measurement().matches(Regex("[\\d\\/]+ \\w+")))
+        assertTrue(faker.food.measurement().matches(Regex("[\\d/]+ \\w+")))
     }
 
     @Test

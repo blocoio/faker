@@ -27,7 +27,7 @@ import org.yaml.snakeyaml.Yaml
 import java.io.IOException
 import java.io.InputStream
 
-class Faker constructor(val locale: String = DEFAULT_LOCALE) {
+class Faker(val locale: String = DEFAULT_LOCALE) {
     val address: Address
     val app: App
     val avatar: Avatar
@@ -54,36 +54,37 @@ class Faker constructor(val locale: String = DEFAULT_LOCALE) {
     init {
 
         // Load data
-        val data = loadData(DEFAULT_LOCALE) // Fallbacks first
+        val rawData = loadData(DEFAULT_LOCALE) // Fallbacks first
         if (locale != DEFAULT_LOCALE) {
-            MapHelper.deepMerge(data as MutableMap<String, Any>, loadData(locale))
+            MapHelper.deepMerge(rawData as MutableMap<String, Any>, loadData(locale))
         }
-        this.data = FakerData(data)
+        this.data = FakerData(rawData)
 
         // Load components
-        address = this.data.getComponent(Address::class.java)
-        app = this.data.getComponent(App::class.java)
-        avatar = this.data.getComponent(Avatar::class.java)
-        book = this.data.getComponent(Book::class.java)
-        bool = this.data.getComponent(Bool::class.java)
-        business = this.data.getComponent(Business::class.java)
-        color = this.data.getComponent(Color::class.java)
-        commerce = this.data.getComponent(Commerce::class.java)
-        company = this.data.getComponent(Company::class.java)
-        date = this.data.getComponent(Date::class.java)
-        food = this.data.getComponent(Food::class.java)
-        internet = this.data.getComponent(Internet::class.java)
-        lorem = this.data.getComponent(Lorem::class.java)
-        name = this.data.getComponent(Name::class.java)
-        number = this.data.getComponent(Number::class.java)
-        placeholdit = this.data.getComponent(Placeholdit::class.java)
-        phoneNumber = this.data.getComponent(PhoneNumber::class.java)
-        slackEmoji = this.data.getComponent(SlackEmoji::class.java)
-        team = this.data.getComponent(Team::class.java)
-        time = this.data.getComponent(Time::class.java)
-        university = this.data.getComponent(University::class.java)
+        address = data.getComponent(Address::class)
+        app = data.getComponent(App::class)
+        avatar = data.getComponent(Avatar::class)
+        book = data.getComponent(Book::class)
+        bool = data.getComponent(Bool::class)
+        business = data.getComponent(Business::class)
+        color = data.getComponent(Color::class)
+        commerce = data.getComponent(Commerce::class)
+        company = data.getComponent(Company::class)
+        date = data.getComponent(Date::class)
+        food = data.getComponent(Food::class)
+        internet = data.getComponent(Internet::class)
+        lorem = data.getComponent(Lorem::class)
+        name = data.getComponent(Name::class)
+        number = data.getComponent(Number::class)
+        placeholdit = data.getComponent(Placeholdit::class)
+        phoneNumber = data.getComponent(PhoneNumber::class)
+        slackEmoji = data.getComponent(SlackEmoji::class)
+        team = data.getComponent(Team::class)
+        time = data.getComponent(Time::class)
+        university = data.getComponent(University::class)
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun loadData(locale: String): Map<String, Any> {
         val yaml = Yaml()
         val input = getDataInputStream(locale)
@@ -100,9 +101,9 @@ class Faker constructor(val locale: String = DEFAULT_LOCALE) {
                 return input
             }
         } catch (e: IOException) {
-            //TODO
+            throw IllegalArgumentException("Unavailable locale '$locale'", e)
         }
-        throw IllegalArgumentException("Unavailable locale \'$locale\'")
+        throw IllegalArgumentException("Unavailable locale '$locale'")
     }
 
     companion object {

@@ -2,9 +2,6 @@ package io.bloco.faker
 
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.hamcrest.core.Is
-import org.hamcrest.core.IsEqual
-import org.junit.Assert
 import org.junit.Test
 
 class FakerTest {

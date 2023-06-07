@@ -32,42 +32,42 @@ class RandomHelper {
     }
 
     fun range(min: Int, max: Int): Int {
-        var min = min
-        var max = max
-        if (min == max) {
-            return min
+        var tempMin = min
+        var tempMax = max
+        if (tempMin == tempMax) {
+            return tempMin
         }
-        if (max < min) {
-            val temp = max
-            max = min
-            min = temp
+        if (tempMax < tempMin) {
+            val temp = tempMax
+            tempMax = tempMin
+            tempMin = temp
         }
-        return number(max - min + 1) + min
+        return number(tempMax - tempMin + 1) + tempMin
     }
 
     fun range(min: Long, max: Long): Long {
-        var min = min
-        var max = max
-        if (min == max) {
-            return min
+        var tempMin = min
+        var tempMax = max
+        if (tempMin == tempMax) {
+            return tempMin
         }
-        if (max < min) {
-            val temp = max
-            max = min
-            min = temp
+        if (tempMax < tempMin) {
+            val temp = tempMax
+            tempMax = tempMin
+            tempMin = temp
         }
-        return number(max - min + 1) + min
+        return number(tempMax - tempMin + 1) + tempMin
     }
 
     fun range(min: Double, max: Double): Double {
-        var min = min
-        var max = max
-        if (max < min) {
-            val temp = max
-            max = min
-            min = temp
+        var tempMin = min
+        var tempMax = max
+        if (tempMax < tempMin) {
+            val temp = tempMax
+            tempMax = tempMin
+            tempMin = temp
         }
-        return random.nextDouble() * (max - min) + min
+        return random.nextDouble() * (tempMax - tempMin) + tempMin
     }
 
     fun randDouble(): Double {

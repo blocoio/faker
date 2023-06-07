@@ -2,7 +2,6 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
-import java.util.Locale
 
 class Lorem(data: FakerData?) : FakerComponent(data!!) {
     fun word(): String {

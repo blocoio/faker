@@ -3,7 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 
 class LoremTest {
@@ -79,8 +78,8 @@ class LoremTest {
 
     @Test
     fun paragraph() {
-        assertTrue(faker.lorem.paragraph(4, true, 0).matches(Regex("([^\\.]+\\.){4}")))
-        assertTrue(faker.lorem.paragraph(1, true, 4).matches(Regex("([^\\.]+\\.){1,5}")))
+        assertTrue(faker.lorem.paragraph(4, true, 0).matches(Regex("([^.]+\\.){4}")))
+        assertTrue(faker.lorem.paragraph(1, true, 4).matches(Regex("([^.]+\\.){1,5}")))
     }
 
     @Test

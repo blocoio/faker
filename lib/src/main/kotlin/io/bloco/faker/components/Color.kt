@@ -33,7 +33,7 @@ class Color(data: FakerData) : FakerComponent(data) {
     }
 
     fun hslaColor(): DoubleArray {
-        return doubleArrayOf(singleHslColor(), singleHslColor(), singleHslColor(), alphaChannel())
+        return hslColor() + alphaChannel()
     }
 
     companion object {

@@ -1,6 +1,7 @@
 package io.bloco.faker.helpers
 
 object MapHelper {
+    @Suppress("UNCHECKED_CAST")
     fun deepMerge(original: MutableMap<String, Any>, newMap: Map<String, Any>): Map<String, Any> {
         for ((key, value) in newMap) {
             if (value is Map<*, *> && original[key] is MutableMap<*, *>) {

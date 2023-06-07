@@ -3,7 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 
 class InternetTest {
@@ -34,8 +33,8 @@ class InternetTest {
 
     @Test
     fun userName() {
-        assertTrue(faker.internet.userName().matches(Regex("[\\w\\_\\.]+")))
-        assertTrue(faker.internet.userName("Sérgio Santos").matches(Regex("sergio[\\_\\.]santos")))
+        assertTrue(faker.internet.userName().matches(Regex("[\\w_.]+")))
+        assertTrue(faker.internet.userName("Sérgio Santos").matches(Regex("sergio[_.]santos")))
         assertTrue(
             faker.internet.userName("Sérgio Santos", listOf("&")).matches(Regex("sergio&santos"))
         )
@@ -49,39 +48,39 @@ class InternetTest {
         assertTrue(faker.internet.password(2, 4).length in 2..4)
         assertTrue(faker.internet.password(2, 2).length == 2)
         assertTrue(
-            faker.internet.password(2, 2, true, true)
-                .matches(Regex(".*[\\!\\@\\#\\\$\\%\\^\\&\\*].*"))
+            faker.internet.password(2, 2, mixCase = true, specialChars = true)
+                .matches(Regex(".*[!@#$%^&*].*"))
         )
-        assertTrue(faker.internet.password(2, 2, true, true).length == 2)
+        assertTrue(faker.internet.password(2, 2, mixCase = true, specialChars = true).length == 2)
 
         assertTrue(faker.internet.password(2, 2, true).matches(Regex(".*[A-Z].*")))
     }
 
     @Test
     fun domainName() {
-        assertTrue(faker.internet.domainName().matches(Regex("[\\w\\.\\-]+\\.[\\w\\.\\-]+")))
+        assertTrue(faker.internet.domainName().matches(Regex("[\\w.\\-]+\\.[\\w.\\-]+")))
     }
 
     @Test
     fun domainWord() {
-        assertTrue(faker.internet.domainWord().matches(Regex("[\\w\\.\\-]+")))
+        assertTrue(faker.internet.domainWord().matches(Regex("[\\w.\\-]+")))
     }
 
     @Test
     fun domainSuffix() {
-        assertTrue(faker.internet.domainSuffix().matches(Regex("[\\w\\.\\-]+")))
+        assertTrue(faker.internet.domainSuffix().matches(Regex("[\\w.\\-]+")))
     }
 
     @Test
     fun macAddress() {
-        assertTrue(faker.internet.macAddress().matches(Regex("[0-9a-f]{2}(:[0-9a-f]{2}){5}")))
-        assertTrue(faker.internet.macAddress("ff").matches(Regex("ff(:[0-9a-f]{2}){5}")))
-        assertTrue(faker.internet.macAddress("ff:ee").matches(Regex("ff:ee(:[0-9a-f]{2}){4}")))
+        assertTrue(faker.internet.macAddress().matches(Regex("[\\da-f]{2}(:[\\da-f]{2}){5}")))
+        assertTrue(faker.internet.macAddress("ff").matches(Regex("ff(:[\\da-f]{2}){5}")))
+        assertTrue(faker.internet.macAddress("ff:ee").matches(Regex("ff:ee(:[\\da-f]{2}){4}")))
     }
 
     @Test
     fun ipV4Address() {
-        assertTrue(faker.internet.ipV4Address().matches(Regex("[0-9]{1,3}(\\.[0-9]{1,3}){3}")))
+        assertTrue(faker.internet.ipV4Address().matches(Regex("\\d{1,3}(\\.\\d{1,3}){3}")))
     }
 
     @Test
@@ -91,35 +90,35 @@ class InternetTest {
 
     @Test
     fun ipV6Address() {
-        assertTrue(faker.internet.ipV6Address().matches(Regex("[0-9a-f]{1,4}(:[0-9a-f]{1,4}){7}")))
+        assertTrue(faker.internet.ipV6Address().matches(Regex("[\\da-f]{1,4}(:[\\da-f]{1,4}){7}")))
     }
 
     @Test
     fun ipV6Cidr() {
         assertTrue(
-            faker.internet.ipV6Cidr().matches(Regex("[0-9a-f]{1,4}(:[0-9a-f]{1,4}){7}/\\d{1,3}"))
+            faker.internet.ipV6Cidr().matches(Regex("[\\da-f]{1,4}(:[\\da-f]{1,4}){7}/\\d{1,3}"))
         )
     }
 
     @Test
     fun url() {
-        assertTrue(faker.internet.url().matches(Regex("http://[\\w\\.\\-]+/[\\w\\.\\-]+")))
+        assertTrue(faker.internet.url().matches(Regex("http://[\\w.\\-]+/[\\w.\\-]+")))
         assertTrue(
-            faker.internet.url("example.com").matches(Regex("http://example\\.com/[\\w\\.\\-]+"))
+            faker.internet.url("example.com").matches(Regex("http://example\\.com/[\\w.\\-]+"))
         )
         assertTrue(faker.internet.url("example.com", "/hello") == "http://example.com/hello")
     }
 
     @Test
     fun slug() {
-        assertTrue(faker.internet.slug().matches(Regex("\\w+([\\.\\_\\-]\\w+)+")))
-        assertTrue(faker.internet.slug(listOf("a", "b")).matches(Regex("a[\\.\\_\\-]b")))
+        assertTrue(faker.internet.slug().matches(Regex("\\w+([._\\-]\\w+)+")))
+        assertTrue(faker.internet.slug(listOf("a", "b")).matches(Regex("a[._\\-]b")))
         assertTrue(faker.internet.slug(listOf("a", "b"), "&") == "a&b")
     }
 
     @Test
     fun deviceToken() {
-        assertTrue(faker.internet.deviceToken().matches(Regex("[0-9a-f]{64}")))
+        assertTrue(faker.internet.deviceToken().matches(Regex("[\\da-f]{64}")))
     }
 
     companion object {

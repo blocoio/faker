@@ -16,14 +16,14 @@ class Time(fakerData: FakerData) : FakerComponent(fakerData) {
     }
 
     fun between(from: Date, to: Date): Date {
-        return between(from, to, Period.all)
+        return between(from, to, Period.All)
     }
 
-    fun forward(numberOfDays: Int, period: Period = Period.all): Date {
+    fun forward(numberOfDays: Int, period: Period = Period.All): Date {
         return randomTime(now(), period).plusDays(numberOfDays.toLong()).toDate()
     }
 
-    fun backward(numberOfDays: Int, period: Period = Period.all): Date {
+    fun backward(numberOfDays: Int, period: Period = Period.All): Date {
         return randomTime(now(), period).minusDays(numberOfDays.toLong()).toDate()
     }
 

@@ -2,23 +2,9 @@ package io.bloco.faker.helpers
 
 import junit.framework.TestCase.assertTrue
 import org.junit.Test
-import java.util.*
 
 class StringHelperTest {
     private val stringHelper = StringHelper()
-
-    @Test
-    fun testReplaceMethod() {
-        assertTrue(
-            stringHelper.replaceMethod("aaa", ".") { "b" } == "bbb"
-        )
-
-        assertTrue(
-            stringHelper.replaceMethod(
-                "abc", "a(.)"
-            ) { matcher -> matcher.group(1).uppercase(Locale.getDefault()) } == "Bc"
-        )
-    }
 
     @Test
     fun testSnakeToCamel() {

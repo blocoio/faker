@@ -11,16 +11,14 @@ class Avatar(data: FakerData) : FakerComponent(data) {
         set: String = "set1",
         bgset: String? = null
     ): String {
-        require(size.matches("^[0-9]+x[0-9]+$".toRegex())) { "Size should be specified in format 300x300" }
+        require(size.matches("^\\d+x\\d+$".toRegex())) {
+            "Size should be specified in format 300x300"
+        }
         require(SUPPORTED_FORMATS.contains(format)) {
-            "Supported formats are ${
-                SUPPORTED_FORMATS.joinToString(
-                    ","
-                )
-            }"
+            "Supported formats are ${SUPPORTED_FORMATS.joinToString(",")}"
         }
 
-        val bgsetQuery = bgset?.let { "&bgset=$it" } ?: ""
+        val bgsetQuery = bgset?.let { "&bgset=$it" }.orEmpty()
         return "$AVATAR_URL${slug}.$format?size=$size&set=$set$bgsetQuery"
     }
 

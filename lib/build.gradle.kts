@@ -11,7 +11,8 @@ repositories {
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.github.bmoliveira:snake-yaml:v1.18-android")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")

@@ -3,7 +3,6 @@ package io.bloco.faker.components
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 
 class NumberTest {
@@ -45,8 +44,8 @@ class NumberTest {
 
     @Test
     fun hexadecimal() {
-        assertTrue(faker.number.hexadecimal(1).matches(Regex("[0-9a-f]")))
-        assertTrue(faker.number.hexadecimal(10).matches(Regex("[0-9a-f]{10}")))
+        assertTrue(faker.number.hexadecimal(1).matches(Regex("[\\da-f]")))
+        assertTrue(faker.number.hexadecimal(10).matches(Regex("[\\da-f]{10}")))
     }
 
     @Test

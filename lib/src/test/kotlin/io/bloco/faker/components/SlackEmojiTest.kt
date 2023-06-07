@@ -2,7 +2,6 @@ package io.bloco.faker.components
 
 import io.bloco.faker.Faker
 import junit.framework.TestCase.assertNotNull
-import org.junit.Before
 import org.junit.Test
 
 class SlackEmojiTest {

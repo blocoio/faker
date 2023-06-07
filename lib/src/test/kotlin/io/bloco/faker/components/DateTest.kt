@@ -4,7 +4,6 @@ import io.bloco.faker.Faker
 import io.bloco.faker.helpers.toDate
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertTrue
-import org.junit.Before
 import org.junit.Test
 import java.text.SimpleDateFormat
 import java.time.LocalDate
