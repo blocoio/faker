@@ -10,14 +10,8 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 
 class TimeTest {
-    private lateinit var faker: Faker
-    private lateinit var formatter: SimpleDateFormat
-
-    @Before
-    fun setUp() {
-        faker = Faker()
-        formatter = SimpleDateFormat("yyyy-MM-dd")
-    }
+    private val faker = Faker()
+    private val formatter = SimpleDateFormat("yyyy-MM-dd")
 
     @Test
     fun between() {

@@ -8,11 +8,7 @@ import org.junit.Test
 import java.time.LocalDate
 
 class BusinessTest {
-    private lateinit var faker: Faker
-    @Before
-    fun setUp() {
-        faker = Faker()
-    }
+    private val faker = Faker()
 
     @Test
     fun creditCardNumber() {
@@ -22,8 +18,7 @@ class BusinessTest {
     @Test
     fun creditCardExpireDate() {
         val date = faker.business.creditCardExpireDate()
-        val today = LocalDate.now()
-        assertTrue(date.isAfter(today))
+        assertTrue(date.isAfter(LocalDate.now()))
     }
 
     @Test

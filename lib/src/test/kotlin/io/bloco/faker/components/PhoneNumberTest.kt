@@ -7,11 +7,7 @@ import org.junit.Before
 import org.junit.Test
 
 class PhoneNumberTest {
-    private lateinit var faker: Faker
-    @Before
-    fun setUp() {
-        faker = Faker("en-US")
-    }
+    private val faker = Faker("en-US")
 
     @Test
     fun phoneNumber() {

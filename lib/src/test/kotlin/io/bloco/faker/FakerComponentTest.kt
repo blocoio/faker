@@ -25,7 +25,7 @@ class FakerComponentTest {
     @Test
     fun testFetch() {
         val componentKey = "wtv"
-        val options: List<String> = mutableListOf("John", "Mary")
+        val options: List<String> = listOf("John", "Mary")
         val data: MutableMap<String, Any> = HashMap()
         data["list"] = options
         every { fakerData.getComponentData(eq(componentKey)) } returns data
@@ -37,8 +37,8 @@ class FakerComponentTest {
     @Test
     fun testFetchComposed() {
         val componentKey = "wtv"
-        val options: List<String> = mutableListOf("John", "Mary")
-        val internal: MutableMap<String, Any> = HashMap()
+        val options: List<String> = listOf("John", "Mary")
+        val internal = mutableMapOf<String, Any>()
         internal["list"] = options
         val data: MutableMap<String, Any> = HashMap()
         data["composed"] = internal
@@ -50,7 +50,7 @@ class FakerComponentTest {
     @Test
     fun testSampleNestedLists() {
         val componentKey = "wtv"
-        val options: List<String> = mutableListOf("John", "Mary")
+        val options = listOf("John", "Mary")
         val data: MutableMap<String, Any> = HashMap()
         data["list"] = listOf(options, options)
         every { fakerData.getComponentData(eq(componentKey)) } returns data

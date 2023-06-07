@@ -2,14 +2,10 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
-import io.bloco.faker.helpers.MathHelper
-import kotlin.math.pow
 
 class Color(data: FakerData) : FakerComponent(data) {
-    private val mathHelper: MathHelper = MathHelper()
-
     fun hexColor(): String {
-        return String.format("#%06x", randomHelper.number(MAX_RGB.toDouble().pow(3.0).toInt()))
+        return "#%06x".format(randomHelper.number(MAX_RGB * MAX_RGB * MAX_RGB))
     }
 
     fun colorName(): String {
@@ -21,11 +17,11 @@ class Color(data: FakerData) : FakerComponent(data) {
     }
 
     fun rgbColor(): IntArray {
-        return intArrayOf(singleRgbColor(), singleRgbColor(), singleRgbColor())
+        return IntArray(3) { singleRgbColor() }
     }
 
     fun singleHslColor(): Double {
-        return mathHelper.round(randomHelper.range(0.0, MAX_HSL), 2)
+        return randomHelper.range(0.0, MAX_HSL)
     }
 
     fun alphaChannel(): Double {
@@ -33,7 +29,7 @@ class Color(data: FakerData) : FakerComponent(data) {
     }
 
     fun hslColor(): DoubleArray {
-        return doubleArrayOf(singleHslColor(), singleHslColor(), singleHslColor())
+        return DoubleArray(3) { singleHslColor() }
     }
 
     fun hslaColor(): DoubleArray {

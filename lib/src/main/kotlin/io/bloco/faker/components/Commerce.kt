@@ -12,55 +12,47 @@ class Commerce(data: FakerData) : FakerComponent(data) {
     }
 
     fun department(max: Int = 3, fixedAmount: Boolean = false): String {
-        val num: Int = if (fixedAmount) {
-            max
-        } else {
-            1 + randomHelper.number(max)
-        }
+        val num = if (fixedAmount) max else randomHelper.number(max) + 1
         val categories = getCategories(num)
-        return if (num > 1) {
-            mergeCategories(categories)
-        } else {
-            categories[0]
-        }
+        return if (num > 1) mergeCategories(categories) else categories.first()
     }
 
+
     fun productName(): String {
-        return (fetch("commerce.product_name.adjective")
-                + " " + fetch("commerce.product_name.material")
-                + " " + fetch("commerce.product_name.product"))
+        return listOf(
+            fetch("commerce.product_name.adjective"),
+            fetch("commerce.product_name.material"),
+            fetch("commerce.product_name.product")
+        ).joinToString(" ")
     }
+
 
     fun material(): String {
         return fetch("commerce.product_name.material")
     }
 
     fun price(min: Int = 0, max: Int = 100): BigDecimal {
-        return BigDecimal(randomHelper.range(min, max))
-            .round(MathContext(2, RoundingMode.HALF_UP))
+        return BigDecimal(randomHelper.range(min, max)).setScale(2, RoundingMode.HALF_UP)
     }
 
     fun promotionCode(digits: Int = 6): String {
-        return (fetch("commerce.promotion_code.adjective")
-                + fetch("commerce.promotion_code.noun")
-                + getComponent(Number::class.java).number(digits))
+        return listOf(
+            fetch("commerce.promotion_code.adjective"),
+            fetch("commerce.promotion_code.noun"),
+            getComponent(Number::class.java).number(digits)
+        ).joinToString("")
     }
 
     // Helpers
     private fun getCategories(num: Int): List<String> {
-        val categories: MutableList<String> = ArrayList(num)
-        while (categories.size != num) {
-            val category = fetch("commerce.department")
-            if (!categories.contains(category)) {
-                categories.add(category)
-            }
-        }
-        return categories
+        return generateSequence { fetch("commerce.department") }
+            .distinct()
+            .take(num)
+            .toList()
     }
 
     private fun mergeCategories(categories: List<String>): String {
-        val commaCategories = categories.subList(0, categories.size - 1)
-        val commaSeparated = stringHelper.join(commaCategories, ", ")
-        return commaSeparated + separator + categories[categories.size - 1]
+        val commaSeparated = categories.subList(0, categories.size - 1).joinToString(", ")
+        return commaSeparated + separator + categories.last()
     }
 }

@@ -19,17 +19,17 @@ fun Long.toLocalDateTime(): LocalDateTime {
     return LocalDateTime.ofInstant(
         Instant.ofEpochMilli(this),
         TimeZone.getDefault().toZoneId()
-    );
+    )
 }
 
 fun Date.toLocalDateTime(): LocalDateTime {
     return this.toInstant()
         .atZone(ZoneId.systemDefault())
-        .toLocalDateTime();
+        .toLocalDateTime()
 }
 
 fun Date.toLocalDate() : LocalDate {
     return this.toInstant()
         .atZone(ZoneId.systemDefault())
-        .toLocalDate();
+        .toLocalDate()
 }

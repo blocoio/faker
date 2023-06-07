@@ -20,7 +20,7 @@ class Date(fakerData: FakerData) : FakerComponent(fakerData) {
             val toDate = formatter.parse(to)
             between(fromDate, toDate)
         } catch (exception: ParseException) {
-            throw RuntimeException(exception) //TODO: exception nossa
+            throw RuntimeException(exception)
         }
     }
 

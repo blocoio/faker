@@ -6,7 +6,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class StringHelper {
-    interface StringReplacer {
+    fun interface StringReplacer {
         fun replaceWith(matcher: Matcher): String
     }
 
@@ -23,36 +23,25 @@ class StringHelper {
     }
 
     fun snakeToCamel(input: String): String {
-        return replaceMethod(input, "_(\\p{Lower})", object : StringReplacer {
-            override fun replaceWith(matcher: Matcher): String {
-                val letter = matcher.group(1)
-                return letter.uppercase(Locale.getDefault())
-            }
-        })
+        return replaceMethod(input, "_(\\p{Lower})") { matcher ->
+            matcher.group(1).uppercase(Locale.getDefault())
+        }
     }
 
     fun camelToSnake(input: String): String {
-        return replaceMethod(input, "(?<=\\w)(\\p{Upper})", object : StringReplacer {
-            override fun replaceWith(matcher: Matcher): String {
-                return "_" + matcher.group(1)
-            }
-        }).lowercase(Locale.getDefault())
-    }
-
-    fun join(list: List<String>, separator: String): String {
-        val sb = StringBuilder()
-        var first = true
-        for (item in list) {
-            if (first) first = false else sb.append(separator)
-            sb.append(item)
-        }
-        return sb.toString()
+        return replaceMethod(input, "(?<=[a-zA-Z0-9])(\\p{Upper})") { matcher ->
+            "_" + matcher.group(1).lowercase(Locale.getDefault())
+        }.lowercase(Locale.getDefault())
     }
 
     fun normalize(input: String): String {
+        val asciiPattern = Pattern.compile("[^\\p{ASCII}]")
+        val nonWordPattern = Pattern.compile("\\W")
+
         var normalized = Normalizer.normalize(input, Normalizer.Form.NFD) // Separate glyphs
-        normalized = normalized.replace("[^\\p{ASCII}]".toRegex(), "") // Remove glyphs
-        normalized = normalized.replace("\\W".toRegex(), "") // Remove anything but letters and numbers
+        normalized = asciiPattern.matcher(normalized).replaceAll("") // Remove glyphs
+        normalized = nonWordPattern.matcher(normalized)
+            .replaceAll("") // Remove anything but letters and numbers
         return normalized.lowercase(Locale.getDefault())
     }
 }

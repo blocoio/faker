@@ -19,20 +19,19 @@ class Internet(data: FakerData) : FakerComponent(data) {
 
     fun userName(specifier: String? = null, separators: List<String> = DEFAULT_SEPARATORS): String {
         val separator = randomHelper.sample(separators)
-        return if (specifier != null) {
-            val words = listOf(*specifier.split("\\s".toRegex()).dropLastWhile { it.isEmpty() }
-                .toTypedArray())
-            val normalizedWords: MutableList<String> = ArrayList(words.size)
-            for (word in words) {
-                normalizedWords.add(stringHelper.normalize(word))
+        return when {
+            specifier != null -> {
+                specifier.split("\\s".toRegex())
+                    .joinToString(separator) { stringHelper.normalize(it) }
             }
-            stringHelper.join(normalizedWords, separator)
-        } else if (randomHelper.randBoolean()) {
-            (stringHelper.normalize(call("Name.first_name"))
-                    + separator
-                    + stringHelper.normalize(call("Name.last_name")))
-        } else {
-            stringHelper.normalize(call("Name.first_name"))
+            randomHelper.randBoolean() -> {
+                stringHelper.normalize(call("Name.first_name")) + separator + stringHelper.normalize(
+                    call("Name.last_name")
+                )
+            }
+            else -> {
+                stringHelper.normalize(call("Name.first_name"))
+            }
         }
     }
 
@@ -46,17 +45,18 @@ class Internet(data: FakerData) : FakerComponent(data) {
         var password: String = getComponent(Lorem::class.java).characters(characterCount)
         if (mixCase && password.length >= 2) {
             val middlePoint = randomHelper.number(password.length - 1) + 1
-            password = password.substring(0, middlePoint).lowercase(Locale.getDefault()) +
-                    password.substring(middlePoint).uppercase(Locale.getDefault())
+            password = password.substring(0, middlePoint).lowercase() +
+                    password.substring(middlePoint).uppercase()
         }
+
         if (specialChars && password.length >= 2) {
             val numSpecialChars = randomHelper.number(password.length - 1) + 1
             for (i in 0 until numSpecialChars) {
                 val specialChar = randomHelper.sample(PASSWORD_SPECIAL_CHARS_LIST)
                 val index = randomHelper.number(password.length)
-                password = password.substring(0, index)
-                    .lowercase(Locale.getDefault()) + specialChar + password.substring(index + 1)
-                    .uppercase(Locale.getDefault())
+                password = password.substring(0, index).lowercase() +
+                        specialChar +
+                        password.substring(index + 1).uppercase()
             }
         }
         return password
@@ -77,27 +77,15 @@ class Internet(data: FakerData) : FakerComponent(data) {
 
     @JvmOverloads
     fun macAddress(prefix: String = ""): String {
-        val prefixDigits: List<String> = if (prefix.isNotEmpty()) {
-            listOf(*prefix.split(":".toRegex()).dropLastWhile { it.isEmpty() }
-                .toTypedArray())
-        } else {
-            ArrayList()
-        }
-        val addressDigitsCount = 6 - prefixDigits.size
-        val addressDigits: MutableList<String> = ArrayList(addressDigitsCount)
-        for (i in 0 until addressDigitsCount) {
-            addressDigits.add(String.format("%02x", randomHelper.number(256)))
-        }
-        addressDigits.addAll(0, prefixDigits)
-        return stringHelper.join(addressDigits, ":")
+        val prefixDigits = prefix.split(":").takeWhile { it.isNotEmpty() }
+        val addressDigits =
+            (0 until (6 - prefixDigits.size)).map { "%02x".format(randomHelper.number(256)) }
+        return (prefixDigits + addressDigits).joinToString(":")
     }
 
     fun ipV4Address(): String {
-        val parts: MutableList<String> = ArrayList(4)
-        for (i in 0..3) {
-            parts.add(randomHelper.number(255).toString())
-        }
-        return stringHelper.join(parts, ".")
+        val parts = List(4) { randomHelper.number(255) }
+        return parts.joinToString(".")
     }
 
     fun ipV4Cidr(): String {
@@ -105,11 +93,8 @@ class Internet(data: FakerData) : FakerComponent(data) {
     }
 
     fun ipV6Address(): String {
-        val parts: MutableList<String> = ArrayList(8)
-        for (i in 0..7) {
-            parts.add(String.format("%x", randomHelper.number(65536)))
-        }
-        return stringHelper.join(parts, ":")
+        val parts = List(8) { "%x".format(randomHelper.number(65536)) }
+        return parts.joinToString(":")
     }
 
     fun ipV6Cidr(): String {
@@ -121,36 +106,31 @@ class Internet(data: FakerData) : FakerComponent(data) {
         return "http://$host$path"
     }
 
-    fun slug(words: List<String>? = null, glue: String? = null): String {
-        var words = words
-        var glue = glue
-        if (glue == null) {
-            glue = randomHelper.sample(DEFAULT_SLUG_GLUE)
-        }
-        if (words.isNullOrEmpty()) {
-            words = listOf(fetch("lorem.words"), fetch("lorem.words"))
-        }
-        return stringHelper.join(words, glue)
+    fun slug(
+        words: List<String> = listOf(fetch("lorem.words"), fetch("lorem.words")),
+        glue: String = randomHelper.sample(DEFAULT_SLUG_GLUE)
+    ): String {
+        return words.joinToString(glue)
     }
 
     fun deviceToken(): String {
         val deviceToken = StringBuilder()
-        for (i in 0 until DEVICE_TOKEN_LENGTH) {
-            deviceToken.append(String.format("%x", randomHelper.number(16)))
+        repeat(DEVICE_TOKEN_LENGTH) {
+            deviceToken.append(randomHelper.number(16).toString(16))
         }
         return deviceToken.toString()
     }
 
     companion object {
         private const val SAFE_EMAIL_HOST = "example."
-        private val SAFE_EMAIL_TLDS: List<String> = mutableListOf("org", "com", "net")
-        private val DEFAULT_SEPARATORS: List<String> = mutableListOf(".", "_")
-        private val DEFAULT_SLUG_GLUE: List<String> = mutableListOf(".", "_", "-")
+        private val SAFE_EMAIL_TLDS = listOf("org", "com", "net")
+        private val DEFAULT_SEPARATORS = listOf(".", "_")
+        private val DEFAULT_SLUG_GLUE = listOf(".", "_", "-")
         private const val PASSWORD_MIN_LENGTH = 8
         private const val PASSWORD_MAX_LENGTH = 16
         private const val PASSWORD_MIX_CASE = true
         private const val PASSWORD_SPECIAL_CHARS = false
-        private val PASSWORD_SPECIAL_CHARS_LIST: List<String> = mutableListOf("!", "@", "#", "$", "%", "^", "&", "*")
+        private val PASSWORD_SPECIAL_CHARS_LIST = listOf("!", "@", "#", "$", "%", "^", "&", "*")
         private const val DEVICE_TOKEN_LENGTH = 64
     }
 }

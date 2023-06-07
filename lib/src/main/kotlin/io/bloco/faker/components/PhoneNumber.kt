@@ -24,12 +24,12 @@ class PhoneNumber(data: FakerData) : FakerComponent(data) {
 
     // US only
     fun subscriberNumber(): String {
-        return subscriberNumber(DEFAULT_EXTENSION_LENGHT)
+        return subscriberNumber(DEFAULT_EXTENSION_LENGTH)
     }
 
     // US only
     fun subscriberNumber(length: Int): String {
-        return String.format("%0" + length + "d", randomHelper.numberByLength(length))
+        return "%0${length}d".format(randomHelper.numberByLength(length))
     }
 
     // US only
@@ -43,6 +43,6 @@ class PhoneNumber(data: FakerData) : FakerComponent(data) {
     }
 
     companion object {
-        private const val DEFAULT_EXTENSION_LENGHT = 4
+        private const val DEFAULT_EXTENSION_LENGTH = 4
     }
 }

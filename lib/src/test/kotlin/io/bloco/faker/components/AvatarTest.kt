@@ -7,11 +7,7 @@ import org.junit.Test
 import kotlin.test.assertTrue
 
 class AvatarTest {
-    private lateinit var faker: Faker
-    @Before
-    fun setUp() {
-        faker = Faker()
-    }
+    private val faker = Faker()
 
     @Test
     fun imageDefault() {

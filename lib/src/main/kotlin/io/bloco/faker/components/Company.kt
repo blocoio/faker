@@ -18,11 +18,9 @@ class Company(data: FakerData) : FakerComponent(data) {
 
     fun catchPhrase(): String {
         val buzzwordsSections = getList("company", "buzzwords")
-        var catchPhrase = ""
-        for (buzzwordsSection in buzzwordsSections) {
-            catchPhrase += sampleFromList(buzzwordsSection as List<Any>) + " "
+        return buzzwordsSections.joinToString(" ") { buzzwordSection ->
+            sampleFromList(buzzwordSection as List<*>)
         }
-        return catchPhrase.substring(0, catchPhrase.length - 1)
     }
 
     fun buzzwords(): String {

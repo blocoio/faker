@@ -1,39 +1,22 @@
 package io.bloco.faker.helpers
 
-import io.bloco.faker.helpers.StringHelper.StringReplacer
 import junit.framework.TestCase.assertTrue
-import org.hamcrest.core.Is
-import org.hamcrest.core.IsEqual
-import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import java.util.*
-import java.util.regex.Matcher
 
 class StringHelperTest {
-    private lateinit var stringHelper: StringHelper
-
-    @Before
-    fun setUp() {
-        stringHelper = StringHelper()
-    }
+    private val stringHelper = StringHelper()
 
     @Test
     fun testReplaceMethod() {
         assertTrue(
-            stringHelper.replaceMethod("aaa", ".", object : StringReplacer {
-                override fun replaceWith(matcher: Matcher): String {
-                    return "b"
-                }
-            }) == "bbb"
+            stringHelper.replaceMethod("aaa", ".") { "b" } == "bbb"
         )
 
         assertTrue(
-            stringHelper.replaceMethod("abc", "a(.)", object : StringReplacer {
-                override fun replaceWith(matcher: Matcher): String {
-                    return matcher.group(1).uppercase(Locale.getDefault())
-                }
-            }) == "Bc"
+            stringHelper.replaceMethod(
+                "abc", "a(.)"
+            ) { matcher -> matcher.group(1).uppercase(Locale.getDefault()) } == "Bc"
         )
     }
 

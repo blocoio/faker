@@ -23,7 +23,7 @@ import io.bloco.faker.components.Time
 import io.bloco.faker.components.University
 import io.bloco.faker.helpers.StringHelper
 
-open class FakerData(private val data: Map<String, Any>) {
+class FakerData(private val data: Map<String, Any>) {
     private val components: MutableMap<String, FakerComponent>
     private val stringHelper: StringHelper
 

@@ -3,7 +3,6 @@ package io.bloco.faker
 import io.bloco.faker.helpers.RandomHelper
 import io.bloco.faker.helpers.StringHelper
 import java.lang.reflect.InvocationTargetException
-import java.util.regex.Matcher
 
 abstract class FakerComponent(private val data: FakerData) {
     protected val randomHelper: RandomHelper = RandomHelper()
@@ -23,20 +22,16 @@ abstract class FakerComponent(private val data: FakerData) {
     }
 
     fun numerify(input: String): String {
-        return stringHelper.replaceMethod(input, DIGIT_SYMBOL, object : StringHelper.StringReplacer {
-            override fun replaceWith(matcher: Matcher): String {
-                return randomHelper.digit()
-            }
-        })
+        return stringHelper.replaceMethod(input, DIGIT_SYMBOL
+        ) { randomHelper.digit() }
     }
 
     fun parse(input: String): String {
-        return stringHelper.replaceMethod(input, PARSE_REGEXP, object : StringHelper.StringReplacer {
-            override fun replaceWith(matcher: Matcher): String {
-                val key = matcher.group(1)
-                return call(key)
-            }
-        })
+        return stringHelper.replaceMethod(input, PARSE_REGEXP
+        ) { matcher ->
+            val key = matcher.group(1)
+            call(key)
+        }
     }
 
     fun call(key: String): String {

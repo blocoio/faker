@@ -9,12 +9,7 @@ import org.junit.Before
 import org.junit.Test
 
 class PlaceholditTest {
-    private lateinit var faker: Faker
-
-    @Before
-    fun setUp() {
-        faker = Faker()
-    }
+    private val faker = Faker()
 
     @Test
     fun imageDefault() {

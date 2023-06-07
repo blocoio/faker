@@ -8,12 +8,7 @@ import org.junit.Test
 import java.math.BigDecimal
 
 class CommerceTest {
-    private lateinit var faker: Faker
-
-    @Before
-    fun setUp() {
-        faker = Faker()
-    }
+    private val faker = Faker()
 
     @Test
     fun color() {
