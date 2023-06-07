@@ -28,27 +28,27 @@ import java.io.IOException
 import java.io.InputStream
 
 class Faker(val locale: String = DEFAULT_LOCALE) {
-    val address: Address
-    val app: App
-    val avatar: Avatar
-    val book: Book
-    val bool: Bool
-    val business: Business
-    val color: Color
-    val commerce: Commerce
-    val company: Company
-    val date: Date
-    val food: Food
-    val internet: Internet
-    val lorem: Lorem
-    val name: Name
-    val number: Number
-    val placeholdit: Placeholdit
-    val phoneNumber: PhoneNumber
-    val slackEmoji: SlackEmoji
-    val team: Team
-    val time: Time
-    val university: University
+    @JvmField val address: Address
+    @JvmField val app: App
+    @JvmField val avatar: Avatar
+    @JvmField val book: Book
+    @JvmField val bool: Bool
+    @JvmField val business: Business
+    @JvmField val color: Color
+    @JvmField val commerce: Commerce
+    @JvmField val company: Company
+    @JvmField val date: Date
+    @JvmField val food: Food
+    @JvmField val internet: Internet
+    @JvmField val lorem: Lorem
+    @JvmField val name: Name
+    @JvmField val number: Number
+    @JvmField val placeholdit: Placeholdit
+    @JvmField val phoneNumber: PhoneNumber
+    @JvmField val slackEmoji: SlackEmoji
+    @JvmField val team: Team
+    @JvmField val time: Time
+    @JvmField val university: University
     private val data: FakerData
 
     init {

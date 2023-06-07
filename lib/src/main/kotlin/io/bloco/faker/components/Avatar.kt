@@ -4,6 +4,7 @@ import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 
 class Avatar(data: FakerData) : FakerComponent(data) {
+    @JvmOverloads
     fun image(
         slug: String? = "image",
         size: String = "300x300",

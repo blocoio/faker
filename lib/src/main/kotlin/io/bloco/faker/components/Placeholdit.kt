@@ -4,6 +4,8 @@ import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 
 class Placeholdit(data: FakerData) : FakerComponent(data) {
+
+    @JvmOverloads
     fun image(
         size: String = "300x300",
         format: String = "png",
@@ -32,7 +34,7 @@ class Placeholdit(data: FakerData) : FakerComponent(data) {
     companion object {
         val SUPPORTED_FORMATS = listOf("png", "jpg", "jpeg", "gif")
         private const val PLACEHOLDER_URL = "https://placehold.it/"
-        private const val SIZE_REGEX =  "^[0-9]+x[0-9]+$";
+        private const val SIZE_REGEX =  "^[0-9]+x[0-9]+$"
         private const val HEX_REGEX = "((?:^[0-9a-fA-F]{3}$)|(?:^[0-9a-fA-F]{6}$)){1}(?!.*[^0-9a-fA-F])"
     }
 }

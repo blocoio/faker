@@ -19,10 +19,12 @@ class Time(fakerData: FakerData) : FakerComponent(fakerData) {
         return between(from, to, Period.All)
     }
 
+    @JvmOverloads
     fun forward(numberOfDays: Int, period: Period = Period.All): Date {
         return randomTime(now(), period).plusDays(numberOfDays.toLong()).toDate()
     }
 
+    @JvmOverloads
     fun backward(numberOfDays: Int, period: Period = Period.All): Date {
         return randomTime(now(), period).minusDays(numberOfDays.toLong()).toDate()
     }

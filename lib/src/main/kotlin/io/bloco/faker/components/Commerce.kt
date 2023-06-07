@@ -10,12 +10,12 @@ class Commerce(data: FakerData) : FakerComponent(data) {
         return call("color.colorName")
     }
 
+    @JvmOverloads
     fun department(max: Int = 3, fixedAmount: Boolean = false): String {
         val num = if (fixedAmount) max else randomHelper.number(max) + 1
         val categories = getCategories(num)
         return if (num > 1) mergeCategories(categories) else categories.first()
     }
-
 
     fun productName(): String {
         return listOf(
@@ -25,15 +25,16 @@ class Commerce(data: FakerData) : FakerComponent(data) {
         ).joinToString(" ")
     }
 
-
     fun material(): String {
         return fetch("commerce.product_name.material")
     }
 
+    @JvmOverloads
     fun price(min: Int = 0, max: Int = 100): BigDecimal {
         return BigDecimal(randomHelper.range(min, max)).setScale(2, RoundingMode.HALF_UP)
     }
 
+    @JvmOverloads
     fun promotionCode(digits: Int = 6): String {
         return listOf(
             fetch("commerce.promotion_code.adjective"),

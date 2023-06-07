@@ -4,18 +4,23 @@ import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 
 class Internet(data: FakerData) : FakerComponent(data) {
+
+    @JvmOverloads
     fun email(name: String? = null): String {
         return userName(name) + "@" + domainName()
     }
 
+    @JvmOverloads
     fun freeEmail(name: String? = null): String {
         return userName(name) + "@" + fetch("internet.free_email")
     }
 
+    @JvmOverloads
     fun safeEmail(name: String? = null): String {
         return userName(name) + "@" + SAFE_EMAIL_HOST + randomHelper.sample(SAFE_EMAIL_TLDS)
     }
 
+    @JvmOverloads
     fun userName(specifier: String? = null, separators: List<String> = DEFAULT_SEPARATORS): String {
         val separator = randomHelper.sample(separators)
         return when {
@@ -34,6 +39,7 @@ class Internet(data: FakerData) : FakerComponent(data) {
         }
     }
 
+    @JvmOverloads
     fun password(
         minLength: Int = PASSWORD_MIN_LENGTH,
         maxLength: Int = PASSWORD_MAX_LENGTH,
@@ -105,6 +111,7 @@ class Internet(data: FakerData) : FakerComponent(data) {
         return "http://$host$path"
     }
 
+    @JvmOverloads
     fun slug(
         words: List<String> = listOf(fetch("lorem.words"), fetch("lorem.words")),
         glue: String = randomHelper.sample(DEFAULT_SLUG_GLUE)
