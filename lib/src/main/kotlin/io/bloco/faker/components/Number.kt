@@ -44,6 +44,7 @@ class Number(data: FakerData) : FakerComponent(data) {
         return "%0${digits}x".format(num)
     }
 
+    @JvmOverloads
     fun between(from: Int = DEFAULT_FROM, to: Int = DEFAULT_TO): Int {
         return randomHelper.range(from, to)
     }
@@ -56,6 +57,7 @@ class Number(data: FakerData) : FakerComponent(data) {
         return randomHelper.range(from, to)
     }
 
+    @JvmOverloads
     fun positive(from: Int = DEFAULT_FROM, to: Int = DEFAULT_TO): Int {
         return abs(between(from, to))
     }
@@ -68,6 +70,7 @@ class Number(data: FakerData) : FakerComponent(data) {
         return abs(between(from, to))
     }
 
+    @JvmOverloads
     fun negative(from: Int = DEFAULT_FROM, to: Int = DEFAULT_TO): Int {
         return abs(between(from, to)) * -1
     }

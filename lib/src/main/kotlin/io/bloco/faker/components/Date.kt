@@ -12,7 +12,7 @@ import java.util.Date
 import kotlin.random.Random
 
 class Date(fakerData: FakerData) : FakerComponent(fakerData) {
-    private var formatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    private val formatter = SimpleDateFormat("yyyy-MM-dd")
 
     fun between(from: String, to: String): Date {
         return try {
@@ -28,14 +28,17 @@ class Date(fakerData: FakerData) : FakerComponent(fakerData) {
         return between(from.toLocalDate(), to.toLocalDate())
     }
 
+    @JvmOverloads
     fun forward(numberOfDays: Int = DEFAULT_NUM_OF_DAYS): Date {
         return between(today(), today().plusDays(numberOfDays.toLong()))
     }
 
+    @JvmOverloads
     fun backward(numberOfDays: Int = DEFAULT_NUM_OF_DAYS): Date {
         return between(today().minusDays(numberOfDays.toLong()), today())
     }
 
+    @JvmOverloads
     fun birthday(minAge: Int = DEFAULT_MIN_AGE, maxAge: Int = DEFAULT_MAX_AGE): Date {
         return between(today().plusYears(minAge.toLong()), today().plusYears(maxAge.toLong()))
     }

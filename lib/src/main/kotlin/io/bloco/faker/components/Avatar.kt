@@ -4,6 +4,7 @@ import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 
 class Avatar(data: FakerData) : FakerComponent(data) {
+    @JvmOverloads
     fun image(
         slug: String? = "image",
         size: String = "300x300",
@@ -11,7 +12,7 @@ class Avatar(data: FakerData) : FakerComponent(data) {
         set: String = "set1",
         bgset: String? = null
     ): String {
-        require(size.matches("^\\d+x\\d+$".toRegex())) {
+        require(size.matches("^[0-9]+x[0-9]+$".toRegex())) {
             "Size should be specified in format 300x300"
         }
         require(SUPPORTED_FORMATS.contains(format)) {

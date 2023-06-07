@@ -10,7 +10,7 @@ class ColorTest {
 
     @Test
     fun hexColor() {
-        assertTrue(faker.color.hexColor().matches(Regex("^#[\\da-f]{6}\$")))
+        assertTrue(faker.color.hexColor().matches(Regex("^#[0-9a-f]{6}$")))
     }
 
     @Test

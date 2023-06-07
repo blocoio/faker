@@ -12,7 +12,7 @@ class StringHelper {
     }
 
     fun camelToSnake(input: String): String {
-        return input.replace("(?<=[a-zA-Z\\d])(\\p{Upper})".toRegex()) { matcher ->
+        return input.replace("(?<=\\w)(\\p{Upper})".toRegex()) { matcher ->
             "_" + matcher.groupValues[1].lowercase(Locale.getDefault())
         }.lowercase(Locale.getDefault())
     }

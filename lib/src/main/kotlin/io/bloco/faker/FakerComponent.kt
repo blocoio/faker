@@ -100,6 +100,6 @@ abstract class FakerComponent(private val data: FakerData) {
 
     companion object {
         private const val DIGIT_SYMBOL = "#"
-        private const val PARSE_REGEXP = "#\\{(.+?)}"
+        private const val PARSE_REGEXP = "\\#\\{(.+?)\\}"
     }
 }

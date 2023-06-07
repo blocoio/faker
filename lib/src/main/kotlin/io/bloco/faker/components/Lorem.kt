@@ -12,6 +12,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         return fetch("lorem.supplemental")
     }
 
+    @JvmOverloads
     fun words(num: Int = DEFAULT_NUM, supplemental: Boolean = DEFAULT_SUPPLEMENTAL): List<String> {
         return List(num) {
             if (supplemental && randomHelper.randBoolean()) {
@@ -30,6 +31,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         return List(count) { character() }.joinToString("")
     }
 
+    @JvmOverloads
     fun sentence(
         wordCount: Int = DEFAULT_WORD_COUNT,
         supplemental: Boolean = DEFAULT_SUPPLEMENTAL,
@@ -41,6 +43,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
             .replaceFirstChar { it.titlecase() } + "."
     }
 
+    @JvmOverloads
     fun sentences(
         sentenceCount: Int = DEFAULT_SENTENCE_COUNT,
         supplemental: Boolean = DEFAULT_SUPPLEMENTAL
@@ -48,6 +51,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         return List(sentenceCount) { sentence(DEFAULT_WORD_COUNT, supplemental) }
     }
 
+    @JvmOverloads
     fun paragraph(
         sentenceCount: Int = DEFAULT_SENTENCE_COUNT,
         supplemental: Boolean = DEFAULT_SUPPLEMENTAL,
@@ -58,6 +62,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         return sentences.joinToString(" ")
     }
 
+    @JvmOverloads
     fun paragraphs(
         paragraphCount: Int = DEFAULT_PARAGRAPH_COUNT,
         supplemental: Boolean = DEFAULT_SUPPLEMENTAL
@@ -65,6 +70,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         return List(paragraphCount) { paragraph(DEFAULT_SENTENCE_COUNT, supplemental) }
     }
 
+    @JvmOverloads
     fun question(
         wordCount: Int = 4,
         supplemental: Boolean = false,
@@ -77,7 +83,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         return "$sentence?"
     }
 
-
+    @JvmOverloads
     fun questions(questionsCount: Int = 3, supplemental: Boolean = false): List<String> {
         return List(questionsCount) { question(3, supplemental) }
     }
