@@ -31,7 +31,6 @@ class FakerComponentTest {
         every { fakerData.getComponentData(eq(componentKey)) } returns data
 
         assertTrue(options.contains(fakerComponent.fetch("wtv.list")))
-
     }
 
     @Test

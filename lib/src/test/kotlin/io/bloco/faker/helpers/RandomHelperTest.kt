@@ -8,6 +8,7 @@ import java.security.SecureRandom
 class RandomHelperTest {
     private lateinit var randomHelper: RandomHelper
     private lateinit var random: SecureRandom
+
     @Before
     fun setUp() {
         randomHelper = RandomHelper()

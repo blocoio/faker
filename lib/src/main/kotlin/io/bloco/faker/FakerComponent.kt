@@ -52,7 +52,6 @@ abstract class FakerComponent(private val data: FakerData) {
             is String -> option
             is List<*> -> randomHelper.sample(option) as String // List of lists
             else -> throw UnsupportedOperationException("Unsupported data type")
-
         }
     }
 

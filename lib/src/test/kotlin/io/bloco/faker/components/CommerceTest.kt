@@ -35,8 +35,8 @@ class CommerceTest {
 
     @Test
     fun price() {
-        assertTrue(faker.commerce.price() in BigDecimal(0) .. BigDecimal(100))
-        assertTrue(faker.commerce.price(0, 1) in BigDecimal(0) .. BigDecimal(1))
+        assertTrue(faker.commerce.price() in BigDecimal(0)..BigDecimal(100))
+        assertTrue(faker.commerce.price(0, 1) in BigDecimal(0)..BigDecimal(1))
     }
 
     @Test
