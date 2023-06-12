@@ -1,7 +1,7 @@
 name: tests
 on: [push]
 jobs:
-  unit_tests:
+  tests_and_lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
