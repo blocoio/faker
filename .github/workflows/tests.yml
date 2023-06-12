@@ -19,3 +19,5 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Run unit Tests
         run: ./gradlew test
+      - name: Run ktlint Check
+        run: ./gradlew ktlintCheck
