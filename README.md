@@ -69,10 +69,9 @@ You can also check our [blog post](https://www.bloco.io/blog/faker-a-library-to-
  - Implement remaining components of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 ## Proguard
+If you are using R8 the shrinking and obfuscation rules are included automatically.
 
-To use Faker with proguard, here are the rules you need to add:
-
-    # SnakeYAML
+ProGuard users will need to add the following options:
     -keep class org.yaml.snakeyaml.** { public protected private *; }
     -keep class org.yaml.snakeyaml.** { public protected private *; }
     -dontwarn org.yaml.snakeyaml.**
