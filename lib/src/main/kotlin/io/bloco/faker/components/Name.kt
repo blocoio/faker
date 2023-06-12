@@ -21,9 +21,11 @@ class Name(data: FakerData) : FakerComponent(data) {
     }
 
     fun title(): String {
-        return (fetch("name.title.descriptor")
-                + " " + fetch("name.title.level")
-                + " " + fetch("name.title.job"))
+        return (
+            fetch("name.title.descriptor") +
+                " " + fetch("name.title.level") +
+                " " + fetch("name.title.job")
+            )
     }
 
     fun name(): String {

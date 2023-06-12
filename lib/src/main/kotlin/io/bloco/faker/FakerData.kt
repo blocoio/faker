@@ -15,8 +15,8 @@ import io.bloco.faker.components.Internet
 import io.bloco.faker.components.Lorem
 import io.bloco.faker.components.Name
 import io.bloco.faker.components.Number
-import io.bloco.faker.components.Placeholdit
 import io.bloco.faker.components.PhoneNumber
+import io.bloco.faker.components.Placeholdit
 import io.bloco.faker.components.SlackEmoji
 import io.bloco.faker.components.Team
 import io.bloco.faker.components.Time

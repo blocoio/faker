@@ -58,7 +58,7 @@ class DateTest {
     fun birthday() {
         val nextYear = LocalDate.now().plusYears(1).toDate()
         val in10Years = LocalDate.now().plusYears(10).toDate()
-        assertTrue(faker.date.birthday(1, 10) in nextYear .. in10Years)
+        assertTrue(faker.date.birthday(1, 10) in nextYear..in10Years)
     }
 
     @Test

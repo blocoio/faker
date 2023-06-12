@@ -50,8 +50,9 @@ class Internet(data: FakerData) : FakerComponent(data) {
         var password: String = getComponent(Lorem::class).characters(characterCount)
         if (mixCase && password.length >= 2) {
             val middlePoint = randomHelper.number(password.length - 1) + 1
-            password = password.substring(0, middlePoint).lowercase() +
-                    password.substring(middlePoint).uppercase()
+            password =
+                password.substring(0, middlePoint).lowercase() + password.substring(middlePoint)
+                .uppercase()
         }
 
         if (specialChars && password.length >= 2) {
@@ -59,9 +60,10 @@ class Internet(data: FakerData) : FakerComponent(data) {
             repeat(numSpecialChars) {
                 val specialChar = randomHelper.sample(PASSWORD_SPECIAL_CHARS_LIST)
                 val index = randomHelper.number(password.length)
-                password = password.substring(0, index).lowercase() +
-                        specialChar +
-                        password.substring(index + 1).uppercase()
+                password =
+                    password.substring(0, index).lowercase() + specialChar + password.substring(
+                    index + 1
+                ).uppercase()
             }
         }
         return password
@@ -83,8 +85,8 @@ class Internet(data: FakerData) : FakerComponent(data) {
     @JvmOverloads
     fun macAddress(prefix: String = ""): String {
         val prefixDigits = prefix.split(":").filterNot { it.isEmpty() }
-        val addressDigits = (0 until (6 - prefixDigits.size))
-            .map { "%02x".format(randomHelper.number(256)) }
+        val addressDigits =
+            (0 until (6 - prefixDigits.size)).map { "%02x".format(randomHelper.number(256)) }
         return (prefixDigits + addressDigits).joinToString(":")
     }
 

@@ -20,9 +20,8 @@ class Avatar(data: FakerData) : FakerComponent(data) {
         }
 
         val bgsetQuery = bgset?.let { "&bgset=$it" }.orEmpty()
-        return "$AVATAR_URL${slug}.$format?size=$size&set=$set$bgsetQuery"
+        return "$AVATAR_URL$slug.$format?size=$size&set=$set$bgsetQuery"
     }
-
 
     companion object {
         val SUPPORTED_FORMATS: List<String> = listOf("png", "jpg", "bmp")

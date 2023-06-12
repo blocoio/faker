@@ -22,32 +22,51 @@ import io.bloco.faker.components.Team
 import io.bloco.faker.components.Time
 import io.bloco.faker.components.University
 import io.bloco.faker.helpers.MapHelper
-
 import org.yaml.snakeyaml.Yaml
 import java.io.IOException
 import java.io.InputStream
 
 class Faker(val locale: String = DEFAULT_LOCALE) {
     @JvmField val address: Address
+
     @JvmField val app: App
+
     @JvmField val avatar: Avatar
+
     @JvmField val book: Book
+
     @JvmField val bool: Bool
+
     @JvmField val business: Business
+
     @JvmField val color: Color
+
     @JvmField val commerce: Commerce
+
     @JvmField val company: Company
+
     @JvmField val date: Date
+
     @JvmField val food: Food
+
     @JvmField val internet: Internet
+
     @JvmField val lorem: Lorem
+
     @JvmField val name: Name
+
     @JvmField val number: Number
+
     @JvmField val placeholdit: Placeholdit
+
     @JvmField val phoneNumber: PhoneNumber
+
     @JvmField val slackEmoji: SlackEmoji
+
     @JvmField val team: Team
+
     @JvmField val time: Time
+
     @JvmField val university: University
     private val data: FakerData
 
