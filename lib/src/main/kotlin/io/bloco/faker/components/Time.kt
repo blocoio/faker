@@ -3,6 +3,7 @@ package io.bloco.faker.components
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 import io.bloco.faker.helpers.Period
+import io.bloco.faker.helpers.RandomHelper
 import io.bloco.faker.helpers.toDate
 import io.bloco.faker.helpers.toLocalDateTime
 import java.time.LocalDateTime
@@ -52,14 +53,14 @@ class Time(fakerData: FakerData) : FakerComponent(fakerData) {
 
     private fun hours(period: Period): Int {
         val values: IntArray = period.values
-        return values[randomHelper.number(values.size)]
+        return values[RandomHelper.number(values.size)]
     }
 
     private fun minutes(): Int {
-        return randomHelper.number(60)
+        return RandomHelper.number(60)
     }
 
     private fun seconds(): Int {
-        return randomHelper.number(60)
+        return RandomHelper.number(60)
     }
 }

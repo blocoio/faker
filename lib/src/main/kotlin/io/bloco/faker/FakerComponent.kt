@@ -7,8 +7,6 @@ import java.lang.reflect.InvocationTargetException
 import kotlin.reflect.KClass
 
 abstract class FakerComponent(private val data: FakerData) {
-    protected val randomHelper: RandomHelper = RandomHelper()
-
     val key: String
         get() = this::class.simpleName!!.camelToSnake()
 
@@ -24,7 +22,7 @@ abstract class FakerComponent(private val data: FakerData) {
 
     fun numerify(input: String): String {
         return input.replace(DIGIT_SYMBOL.toRegex()) {
-            randomHelper.digit()
+            RandomHelper.digit()
         }
     }
 
@@ -48,9 +46,9 @@ abstract class FakerComponent(private val data: FakerData) {
         get() = data["separator"] as String
 
     protected fun sampleFromList(options: List<*>): String {
-        return when (val option = randomHelper.sample(options)) {
+        return when (val option = RandomHelper.sample(options)) {
             is String -> option
-            is List<*> -> randomHelper.sample(option) as String // List of lists
+            is List<*> -> RandomHelper.sample(option) as String // List of lists
             else -> throw UnsupportedOperationException("Unsupported data type")
         }
     }

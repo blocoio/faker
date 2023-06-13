@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 
 class Lorem(data: FakerData?) : FakerComponent(data!!) {
     fun word(): String {
@@ -15,7 +16,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
     @JvmOverloads
     fun words(num: Int = DEFAULT_NUM, supplemental: Boolean = DEFAULT_SUPPLEMENTAL): List<String> {
         return List(num) {
-            if (supplemental && randomHelper.randBoolean()) {
+            if (supplemental && RandomHelper.randBoolean()) {
                 supplemental()
             } else {
                 word()
@@ -24,7 +25,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
     }
 
     fun character(): String {
-        return ('a' + randomHelper.number(26)).toString()
+        return ('a' + RandomHelper.number(26)).toString()
     }
 
     fun characters(count: Int = DEFAULT_CHAR_COUNT): String {
@@ -37,7 +38,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         supplemental: Boolean = DEFAULT_SUPPLEMENTAL,
         randomWordsToAdd: Int = DEFAULT_WORDS_TO_ADD
     ): String {
-        val finalWordCount = wordCount + randomHelper.number(randomWordsToAdd + 1)
+        val finalWordCount = wordCount + RandomHelper.number(randomWordsToAdd + 1)
         val words = words(finalWordCount, supplemental)
         return words.joinToString(separator = " ")
             .replaceFirstChar { it.titlecase() } + "."
@@ -57,7 +58,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         supplemental: Boolean = DEFAULT_SUPPLEMENTAL,
         randomSentencesToAdd: Int = DEFAULT_SENTENCES_TO_ADD
     ): String {
-        val finalSentenceCount = sentenceCount + randomHelper.number(randomSentencesToAdd + 1)
+        val finalSentenceCount = sentenceCount + RandomHelper.number(randomSentencesToAdd + 1)
         val sentences = sentences(finalSentenceCount, supplemental)
         return sentences.joinToString(" ")
     }
@@ -76,7 +77,7 @@ class Lorem(data: FakerData?) : FakerComponent(data!!) {
         supplemental: Boolean = false,
         randomWordsToAdd: Int = 6
     ): String {
-        val finalWordCount = wordCount + randomHelper.number(randomWordsToAdd + 1)
+        val finalWordCount = wordCount + RandomHelper.number(randomWordsToAdd + 1)
         val questionWords = words(finalWordCount, supplemental)
         val sentence = questionWords.joinToString(" ")
             .replaceFirstChar { it.titlecase() }

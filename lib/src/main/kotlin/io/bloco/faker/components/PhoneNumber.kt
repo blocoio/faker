@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 
 class PhoneNumber(data: FakerData) : FakerComponent(data) {
     fun phoneNumber(): String {
@@ -29,7 +30,7 @@ class PhoneNumber(data: FakerData) : FakerComponent(data) {
 
     // US only
     fun subscriberNumber(length: Int): String {
-        return "%0${length}d".format(randomHelper.numberByLength(length))
+        return "%0${length}d".format(RandomHelper.numberByLength(length))
     }
 
     // US only

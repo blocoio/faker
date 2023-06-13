@@ -47,10 +47,15 @@ class InternetTest {
         assertTrue(faker.internet.password(1).isNotEmpty())
         assertTrue(faker.internet.password(2, 4).length in 2..4)
         assertTrue(faker.internet.password(2, 2).length == 2)
-        assertTrue(faker.internet.password(2, 2, true, true).matches(Regex(".*[a-z].*")))
-        assertTrue(faker.internet.password(2, 2, true).matches(Regex(".*[A-Z].*")))
         assertTrue(faker.internet.password(2, 2, true, true).length == 2)
-        assertTrue(faker.internet.password(2, 2, true, true).matches(Regex(".*[\\!\\@\\#\\$\\%\\^\\&\\*].*")))
+        assertTrue(
+            faker.internet.password(2, 2, true, true)
+                .matches(Regex(".*[\\!\\@\\#\\$\\%\\^\\&\\*].*"))
+        )
+
+        val password = faker.internet.password(2, 2, true)
+        assertTrue(password.matches(Regex(".*[a-z].*")))
+        assertTrue(password.matches(Regex(".*[A-Z].*")))
     }
 
     @Test

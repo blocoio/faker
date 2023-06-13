@@ -1,22 +1,22 @@
 package io.bloco.faker.helpers
 
 import java.text.Normalizer
-import java.util.*
+import java.util.Locale
 import java.util.regex.Pattern
 
-fun String.snakeToCamel(): String {
-    return this.replace("_(\\p{Lower})".toRegex()) { matcher ->
+internal fun String.snakeToCamel(): String {
+    return replace("_(\\p{Lower})".toRegex()) { matcher ->
         matcher.groupValues[1].uppercase(Locale.getDefault())
     }
 }
 
-fun String.camelToSnake(): String {
-    return this.replace("(?<=\\w)(\\p{Upper})".toRegex()) { matcher ->
+internal fun String.camelToSnake(): String {
+    return replace("(?<=\\w)(\\p{Upper})".toRegex()) { matcher ->
         "_" + matcher.groupValues[1].lowercase(Locale.getDefault())
     }.lowercase(Locale.getDefault())
 }
 
-fun String.normalize(): String {
+internal fun String.normalize(): String {
     val asciiPattern = Pattern.compile("[^\\p{ASCII}]")
     val nonWordPattern = Pattern.compile("\\W")
 
