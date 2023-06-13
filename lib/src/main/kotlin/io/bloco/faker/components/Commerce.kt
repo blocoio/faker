@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -12,7 +13,7 @@ class Commerce(data: FakerData) : FakerComponent(data) {
 
     @JvmOverloads
     fun department(max: Int = 3, fixedAmount: Boolean = false): String {
-        val num = if (fixedAmount) max else randomHelper.number(max) + 1
+        val num = if (fixedAmount) max else RandomHelper.number(max) + 1
         val categories = getCategories(num)
         return if (num > 1) mergeCategories(categories) else categories.first()
     }
@@ -31,7 +32,7 @@ class Commerce(data: FakerData) : FakerComponent(data) {
 
     @JvmOverloads
     fun price(min: Int = 0, max: Int = 100): BigDecimal {
-        return BigDecimal(randomHelper.range(min, max)).setScale(2, RoundingMode.HALF_UP)
+        return BigDecimal(RandomHelper.range(min, max)).setScale(2, RoundingMode.HALF_UP)
     }
 
     @JvmOverloads

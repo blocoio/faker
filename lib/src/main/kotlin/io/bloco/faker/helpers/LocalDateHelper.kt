@@ -6,29 +6,29 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
 
-fun LocalDate.toDate(): Date {
-    return Date.from(this.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())
+internal fun LocalDate.toDate(): Date {
+    return Date.from(atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())
 }
 
-fun LocalDateTime.toDate(): Date {
-    return Date.from(this.atZone(ZoneId.systemDefault()).toInstant())
+internal fun LocalDateTime.toDate(): Date {
+    return Date.from(atZone(ZoneId.systemDefault()).toInstant())
 }
 
-fun Long.toLocalDateTime(): LocalDateTime {
+internal fun Long.toLocalDateTime(): LocalDateTime {
     return LocalDateTime.ofInstant(
         Instant.ofEpochMilli(this),
         TimeZone.getDefault().toZoneId()
     )
 }
 
-fun Date.toLocalDateTime(): LocalDateTime {
-    return this.toInstant()
+internal fun Date.toLocalDateTime(): LocalDateTime {
+    return toInstant()
         .atZone(ZoneId.systemDefault())
         .toLocalDateTime()
 }
 
-fun Date.toLocalDate(): LocalDate {
-    return this.toInstant()
+internal fun Date.toLocalDate(): LocalDate {
+    return toInstant()
         .atZone(ZoneId.systemDefault())
         .toLocalDate()
 }

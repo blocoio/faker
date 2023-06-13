@@ -2,10 +2,11 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 
 class Color(data: FakerData) : FakerComponent(data) {
     fun hexColor(): String {
-        return "#%06x".format(randomHelper.number(MAX_RGB * MAX_RGB * MAX_RGB))
+        return "#%06x".format(RandomHelper.number(MAX_RGB * MAX_RGB * MAX_RGB))
     }
 
     fun colorName(): String {
@@ -13,7 +14,7 @@ class Color(data: FakerData) : FakerComponent(data) {
     }
 
     fun singleRgbColor(): Int {
-        return randomHelper.number(MAX_RGB)
+        return RandomHelper.number(MAX_RGB)
     }
 
     fun rgbColor(): IntArray {
@@ -21,11 +22,11 @@ class Color(data: FakerData) : FakerComponent(data) {
     }
 
     fun singleHslColor(): Double {
-        return randomHelper.range(0.0, MAX_HSL)
+        return RandomHelper.range(0.0, MAX_HSL)
     }
 
     fun alphaChannel(): Double {
-        return randomHelper.randDouble()
+        return RandomHelper.randDouble()
     }
 
     fun hslColor(): DoubleArray {

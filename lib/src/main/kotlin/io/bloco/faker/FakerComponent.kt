@@ -1,16 +1,14 @@
 package io.bloco.faker
 
 import io.bloco.faker.helpers.RandomHelper
-import io.bloco.faker.helpers.StringHelper
+import io.bloco.faker.helpers.camelToSnake
+import io.bloco.faker.helpers.snakeToCamel
 import java.lang.reflect.InvocationTargetException
 import kotlin.reflect.KClass
 
 abstract class FakerComponent(private val data: FakerData) {
-    protected val randomHelper: RandomHelper = RandomHelper()
-    protected val stringHelper: StringHelper = StringHelper()
-
     val key: String
-        get() = stringHelper.camelToSnake(this::class.simpleName!!)
+        get() = this::class.simpleName!!.camelToSnake()
 
     fun fetch(key: String): String {
         val keys = key.split(".")
@@ -24,7 +22,7 @@ abstract class FakerComponent(private val data: FakerData) {
 
     fun numerify(input: String): String {
         return input.replace(DIGIT_SYMBOL.toRegex()) {
-            randomHelper.digit()
+            RandomHelper.digit()
         }
     }
 
@@ -48,9 +46,9 @@ abstract class FakerComponent(private val data: FakerData) {
         get() = data["separator"] as String
 
     protected fun sampleFromList(options: List<*>): String {
-        return when (val option = randomHelper.sample(options)) {
+        return when (val option = RandomHelper.sample(options)) {
             is String -> option
-            is List<*> -> randomHelper.sample(option) as String // List of lists
+            is List<*> -> RandomHelper.sample(option) as String // List of lists
             else -> throw UnsupportedOperationException("Unsupported data type")
         }
     }
@@ -75,7 +73,7 @@ abstract class FakerComponent(private val data: FakerData) {
     }
 
     private fun callMethod(methodKey: String): String {
-        val methodKeyCamel: String = stringHelper.snakeToCamel(methodKey)
+        val methodKeyCamel: String = methodKey.snakeToCamel()
         return try {
             javaClass.getDeclaredMethod(methodKeyCamel).invoke(this) as String
         } catch (e: NoSuchMethodException) {

@@ -21,12 +21,10 @@ import io.bloco.faker.components.SlackEmoji
 import io.bloco.faker.components.Team
 import io.bloco.faker.components.Time
 import io.bloco.faker.components.University
-import io.bloco.faker.helpers.StringHelper
+import io.bloco.faker.helpers.camelToSnake
 import kotlin.reflect.KClass
 
 class FakerData(private val data: Map<String, Any>) {
-    private val stringHelper: StringHelper = StringHelper()
-
     private val components: Map<String, FakerComponent> = listOf(
         Address(this),
         App(this),
@@ -57,7 +55,7 @@ class FakerData(private val data: Map<String, Any>) {
     }
 
     fun <K : FakerComponent> getComponentByKey(componentKey: String): K {
-        val componentKeyInSnake: String = stringHelper.camelToSnake(componentKey)
+        val componentKeyInSnake: String = componentKey.camelToSnake()
         @Suppress("UNCHECKED_CAST")
         return (components[componentKeyInSnake] as? K)
             ?: throw IllegalArgumentException("Unsupported component '$componentKey'")

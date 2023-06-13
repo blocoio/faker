@@ -4,8 +4,8 @@ import java.security.SecureRandom
 import kotlin.math.abs
 import kotlin.math.pow
 
-class RandomHelper {
-    private val random: SecureRandom = SecureRandom()
+internal object RandomHelper {
+    private val random: SecureRandom by lazy { SecureRandom() }
 
     fun <T> sample(options: List<T>): T {
         return options[random.nextInt(options.size)]

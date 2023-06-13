@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 import kotlin.math.abs
 import kotlin.math.pow
 
@@ -29,32 +30,32 @@ class Number(data: FakerData) : FakerComponent(data) {
     }
 
     fun digit(): String {
-        return randomHelper.number(10).toString()
+        return RandomHelper.number(10).toString()
     }
 
     fun nonZeroDigit(): String {
-        return (randomHelper.number(9) + 1).toString()
+        return (RandomHelper.number(9) + 1).toString()
     }
 
     fun hexadecimal(digits: Int): String {
         if (digits < 1) {
             return ""
         }
-        val num = randomHelper.number(16.0.pow(digits.toDouble()).toLong())
+        val num = RandomHelper.number(16.0.pow(digits.toDouble()).toLong())
         return "%0${digits}x".format(num)
     }
 
     @JvmOverloads
     fun between(from: Int = DEFAULT_FROM, to: Int = DEFAULT_TO): Int {
-        return randomHelper.range(from, to)
+        return RandomHelper.range(from, to)
     }
 
     fun between(from: Long, to: Long): Long {
-        return randomHelper.range(from, to)
+        return RandomHelper.range(from, to)
     }
 
     fun between(from: Double, to: Double): Double {
-        return randomHelper.range(from, to)
+        return RandomHelper.range(from, to)
     }
 
     @JvmOverloads

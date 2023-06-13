@@ -4,27 +4,26 @@ import junit.framework.TestCase.assertTrue
 import org.junit.Test
 
 class StringHelperTest {
-    private val stringHelper = StringHelper()
 
     @Test
     fun testSnakeToCamel() {
-        assertTrue(stringHelper.snakeToCamel("hello") == "hello")
-        assertTrue(stringHelper.snakeToCamel("first_name") == "firstName")
-        assertTrue(stringHelper.snakeToCamel("once_upon_a_time") == "onceUponATime")
+        assertTrue("hello".snakeToCamel() == "hello")
+        assertTrue("first_name".snakeToCamel() == "firstName")
+        assertTrue("once_upon_a_time".snakeToCamel() == "onceUponATime")
     }
 
     @Test
     fun testCamelToSnake() {
-        assertTrue(stringHelper.camelToSnake("HelloWorld") == "hello_world")
-        assertTrue(stringHelper.camelToSnake("SlackEmoji") == "slack_emoji")
-        assertTrue(stringHelper.camelToSnake("RGB") == "r_g_b")
-        assertTrue(stringHelper.camelToSnake("Rgb") == "rgb")
+        assertTrue("HelloWorld".camelToSnake() == "hello_world")
+        assertTrue("SlackEmoji".camelToSnake() == "slack_emoji")
+        assertTrue("RGB".camelToSnake() == "r_g_b")
+        assertTrue("Rgb".camelToSnake() == "rgb")
     }
 
     @Test
     fun testNormalize() {
-        assertTrue(stringHelper.normalize("Sérgio Santos") == "sergiosantos")
-        assertTrue(stringHelper.normalize("áàãâäå") == "aaaaaa")
-        assertTrue(stringHelper.normalize("-.@,;!?") == "")
+        assertTrue("Sérgio Santos".normalize() == "sergiosantos")
+        assertTrue("áàãâäå".normalize() == "aaaaaa")
+        assertTrue("-.@,;!?".normalize() == "")
     }
 }

@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 
 class Company(data: FakerData) : FakerComponent(data) {
     fun name(): String {
@@ -32,7 +33,7 @@ class Company(data: FakerData) : FakerComponent(data) {
     }
 
     fun logo(): String {
-        val randomNum = randomHelper.range(1, 12)
+        val randomNum = RandomHelper.range(1, 12)
         return "https://pigment.github.io/fake-logos/logos/medium/color/$randomNum.png"
     }
 

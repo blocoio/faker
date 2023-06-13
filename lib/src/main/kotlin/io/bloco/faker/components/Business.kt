@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.RandomHelper
 import java.time.LocalDate
 
 class Business(data: FakerData) : FakerComponent(data) {
@@ -11,7 +12,7 @@ class Business(data: FakerData) : FakerComponent(data) {
 
     fun creditCardExpireDate(): LocalDate {
         return LocalDate.now()
-            .plusYears(randomHelper.number(CREDIT_CARD_PLUS_YEARS_MAX).toLong() + 1)
+            .plusYears(RandomHelper.number(CREDIT_CARD_PLUS_YEARS_MAX).toLong() + 1)
     }
 
     fun creditCardType(): String {
