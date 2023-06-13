@@ -21,6 +21,10 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.3")
 }
 
+java {
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
@@ -29,14 +33,6 @@ publishing {
             version = "2.0.0"
 
             from(components["java"])
-        }
-    }
-}
-
-sourceSets {
-    main {
-        java {
-            srcDir("src/main/resources/locales")
         }
     }
 }
