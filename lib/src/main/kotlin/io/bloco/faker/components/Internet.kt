@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
+import io.bloco.faker.helpers.normalize
 
 class Internet(data: FakerData) : FakerComponent(data) {
 
@@ -26,15 +27,14 @@ class Internet(data: FakerData) : FakerComponent(data) {
         return when {
             specifier != null -> {
                 specifier.split("\\s+".toRegex())
-                    .joinToString(separator) { stringHelper.normalize(it) }
+                    .joinToString(separator) { it.normalize() }
             }
             randomHelper.randBoolean() -> {
-                stringHelper.normalize(call("Name.first_name")) + separator + stringHelper.normalize(
-                    call("Name.last_name")
-                )
+                call("Name.first_name").normalize() + separator +
+                        call("Name.last_name").normalize()
             }
             else -> {
-                stringHelper.normalize(call("Name.first_name"))
+                call("Name.first_name").normalize()
             }
         }
     }
@@ -75,7 +75,7 @@ class Internet(data: FakerData) : FakerComponent(data) {
 
     fun domainWord(): String {
         val companyName = call("Company.name")
-        return stringHelper.normalize(companyName)
+        return companyName.normalize()
     }
 
     fun domainSuffix(): String {
