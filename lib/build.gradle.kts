@@ -21,6 +21,10 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.3")
 }
 
+java {
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
