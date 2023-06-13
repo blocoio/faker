@@ -10,25 +10,29 @@ The goal was to reuse their locale data files.
 
 ## Installing
 
-    repositories {
-        // ...
-        maven { url 'https://jitpack.io' }
-    }
+```groovy
+repositories {
+    // ...
+    maven { url 'https://jitpack.io' }
+}
 
-    dependencies {
-        implementation 'com.github.blocoio:faker:2.0.0'
-    }
+dependencies {
+    implementation 'com.github.blocoio:faker:2.0.0'
+}
+```
 
 You can use ```testImplementation``` or ```androidTestImplementation```, if you only want to use Faker for testing.
 
 ## Usage
 
-    val faker = Faker()
-    faker.name.firstName()    // Returns "Aaron"
-    faker.company.name()      // Returns "Hirthe-Ritchie"
+```kotlin
+val faker = Faker()
+faker.name.firstName()    // Returns "Aaron"
+faker.company.name()      // Returns "Hirthe-Ritchie"
 
-    val faker = Faker("nl")
-    faker.name.firstName()    // Returns "Thijs"
+val faker = Faker("nl")
+faker.name.firstName()    // Returns "Thijs"
+```
 
 For full list of available options, check the [original source](https://github.com/stympy/faker/blob/master/README.md).
 We have tried to keep the operations as close as possible.
@@ -69,12 +73,16 @@ You can also check our [blog post](https://www.bloco.io/blog/faker-a-library-to-
  - Implement remaining components of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 ## Proguard
-If you are using R8 the shrinking and obfuscation rules are included automatically.
 
-ProGuard users will need to add the following options:
-    -keep class org.yaml.snakeyaml.** { public protected private *; }
-    -keep class org.yaml.snakeyaml.** { public protected private *; }
-    -dontwarn org.yaml.snakeyaml.**
+If you are using R8, the shrinking and obfuscation rules are included automatically.
+
+Otherwise, you will need to add the following options:
+
+```
+-keep class org.yaml.snakeyaml.** { public protected private *; }
+-keep class org.yaml.snakeyaml.** { public protected private *; }
+-dontwarn org.yaml.snakeyaml.**
+```
 
 ## Contact
 
