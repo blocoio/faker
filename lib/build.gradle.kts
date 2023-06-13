@@ -32,3 +32,11 @@ publishing {
         }
     }
 }
+
+sourceSets {
+    main {
+        java {
+            srcDir("src/main/resources/locales")
+        }
+    }
+}
