@@ -3,8 +3,8 @@
 Generates fake data for testing or populating a development database.
 Run your tests with realistic data like names, emails, dates, countries...
 
-A Kotlin port of the [Faker ruby gem](https://github.com/stympy/faker/).
-The goal was to reuse their locale data files.
+A Kotlin port of the [Faker ruby gem](https://github.com/stympy/faker/) that's suitable to use in Android development.
+The goal is to reuse their locale data files without changes.
 
 [![Release](https://img.shields.io/github/release/blocoio/faker.svg?label=maven)](https://jitpack.io/#blocoio/faker)
 
@@ -88,7 +88,3 @@ Otherwise, you will need to add the following options:
 
 Feedback and contributions are welcome.
 Feel free to send an [email](mailto:hello@bloco.io) or submit a pull request.
-
-## License
-
-This code is free to use under the terms of the [MIT license](http://opensource.org/licenses/MIT).
