@@ -4,7 +4,6 @@ import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 import io.bloco.faker.helpers.RandomHelper
 import io.bloco.faker.helpers.normalize
-import java.util.*
 
 class Internet(data: FakerData) : FakerComponent(data) {
 
