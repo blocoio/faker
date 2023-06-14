@@ -12,6 +12,7 @@ The goal is to reuse their locale data files without changes.
 
 ```groovy
 repositories {
+    // ...
     mavenCentral()
 }
 
