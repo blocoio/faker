@@ -12,12 +12,11 @@ The goal is to reuse their locale data files without changes.
 
 ```groovy
 repositories {
-    // ...
-    maven { url 'https://jitpack.io' }
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.blocoio:faker:2.0.0'
+    implementation 'io.bloco:faker:2.0.1'
 }
 ```
 
