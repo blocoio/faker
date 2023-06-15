@@ -71,3 +71,12 @@ publishing {
         }
     }
 }
+
+signing {
+    try {
+        useGpgCmd()
+        sign(publishing.publications)
+    } catch (e: Exception) {
+        println("WARNING: No properties found. Signing will be skipped.")
+    }
+}
