@@ -78,9 +78,9 @@ publishing {
 }
 
 signing {
-    val SIGNING_KEY: String? by project
-    println("Signing key: $SIGNING_KEY")
+    val signingKey: String? by project
+    println("Signing key: $signingKey")
     val signingPassword: String? by project
-    useInMemoryPgpKeys(SIGNING_KEY, signingPassword)
+    useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications)
 }
