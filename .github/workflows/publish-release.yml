@@ -22,4 +22,4 @@ jobs:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
       - name: Publish package
-        run: gradle -Prelease publishToSonatype closeAndReleaseSonatypeStagingRepository
+        run: gradle -Prelease publishToSonatype
