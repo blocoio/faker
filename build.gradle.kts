@@ -1,3 +1,5 @@
+import java.util.*
+
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.21"
     `java-library`
@@ -31,16 +33,17 @@ java {
     withJavadocJar()
 }
 
+val localProperties = Properties().apply {
+    load(rootProject.file("local.properties").reader())
+}
+
 nexusPublishing {
     repositories {
         sonatype {
-            val sonatypeUsername: String? by project
-            val sonatypePassword: String? by project
-
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username.set(sonatypeUsername ?: System.getenv("SONATYPE_USERNAME"))
-            password.set(sonatypePassword ?: System.getenv("SONATYPE_PASSWORD"))
+            username.set(localProperties["sonatypeUsername"] as String)
+            password.set(localProperties["sonatypePassword"] as String)
         }
     }
 }
@@ -78,9 +81,8 @@ publishing {
 }
 
 signing {
-    val signingKey: String? by project
-    println("Signing key: $signingKey")
-    val signingPassword: String? by project
+    val signingKey = localProperties["signingKey"] as String
+    val signingPassword = localProperties["signingPassword"] as String
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications)
 }

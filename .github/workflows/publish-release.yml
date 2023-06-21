@@ -12,13 +12,14 @@ jobs:
           java-version: 15
       - name: Create temp file with secrets
         run: | 
-          echo "signingKey=$SIGNING_KEY" >> gradle.properties
-          echo "signingPassword=$SIGNING_PASSWORD" >> gradle.properties
+          echo "signingKey=$SIGNING_KEY" >> local.properties
+          echo "signingPassword=$SIGNING_PASSWORD" >> local.properties
+          echo "sonatypeUsername=$SONATYPE_USERNAME" >> local.properties
+          echo "sonatypePassword=$SONATYPE_PASSWORD" >> local.properties
         env:
-           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-      - name: Signing package
-        run: gradle signMavenJavaPublication
-        env:
-           SONATYPE_USERNAME : ${{ secrets.SONATYPE_USERNAME }}
-           SONATYPE_PASSWORD : ${{ secrets.SONATYPE_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+      - name: Publish package
+        run: gradle -Prelease publishToSonatype closeAndReleaseSonatypeStagingRepository
