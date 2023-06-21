@@ -1,12 +1,12 @@
 <img src="bloco_faker.png" alt="Faker" />
 
+[![Release](https://img.shields.io/github/release/blocoio/faker.svg?label=Maven)](http://144.217.6.255/nexus/r/io.bloco/faker?server=https%3A%2F%2Fs01.oss.sonatype.org)
+
 Generates fake data for testing or populating a development database.
 Run your tests with realistic data like names, emails, dates, countries...
 
 A Kotlin port of the [Faker ruby gem](https://github.com/stympy/faker/) that's suitable to use in Android development.
 The goal is to reuse their locale data files without changes.
-
-[![Release](https://img.shields.io/github/release/blocoio/faker.svg?label=maven)](https://jitpack.io/#blocoio/faker)
 
 ## Installing
 
@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.bloco:faker:2.0.1'
+    implementation 'io.bloco:faker:${fakerVersion}'
 }
 ```
 
@@ -43,6 +43,7 @@ You can also check our [blog post](https://www.bloco.io/blog/faker-a-library-to-
 
  - Address
  - App
+ - Artist
  - Avatar
  - Book
  - Bool
@@ -67,10 +68,6 @@ You can also check our [blog post](https://www.bloco.io/blog/faker-a-library-to-
 
  - Currently, we don't support locale specific operations
  like ```Address.postcode_by_state``` or ```Business.swedish_organisation_number```.
-
-## TODO
-
- - Implement remaining components of the [Faker ruby gem](https://github.com/stympy/faker/).
 
 ## Proguard
 
