@@ -69,29 +69,37 @@ val localProperties = Properties().apply {
     try {
         load(rootProject.file("local.properties").reader())
     } catch (e: Exception) {
-        println("local.properties not found")
+        println("File local.properties not found.")
     }
 }
 
-if (localProperties["sonatypeUsername"] != null && localProperties["sonatypePassword"] != null) {
-    nexusPublishing {
-        repositories {
-            sonatype {
-                nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-                snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-                username.set(localProperties["sonatypeUsername"] as String?)
-                password.set(localProperties["sonatypePassword"] as String?)
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+
+            val sonatypeUsername = localProperties["sonatypeUsername"] as String?
+            val sonatypePassword = localProperties["sonatypePassword"] as String?
+
+            if (sonatypeUsername != null && sonatypePassword != null) {
+                username.set(sonatypeUsername)
+                password.set(sonatypePassword)
+            } else {
+                println("Sonatype credentials not found.")
             }
         }
     }
 }
 
-if (localProperties["signingKey"] != null && localProperties["signingPassword"] != null) {
-    signing {
-        val signingKey = localProperties["signingKey"] as String
-        val signingPassword = localProperties["signingPassword"] as String
+signing {
+    val signingKey = localProperties["signingKey"] as String?
+    val signingPassword = localProperties["signingPassword"] as String?
 
+    if (signingKey != null && signingPassword != null) {
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign(publishing.publications)
+    } else {
+        println("Signing credentials not found.")
     }
 }
