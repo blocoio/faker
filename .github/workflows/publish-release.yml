@@ -1,7 +1,6 @@
 name: Publish releases to the Maven Central Repository
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
