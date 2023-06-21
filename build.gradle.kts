@@ -1,4 +1,4 @@
-import java.util.*
+import java.util.Properties
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.21"
