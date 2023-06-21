@@ -33,25 +33,6 @@ java {
     withJavadocJar()
 }
 
-val localProperties = Properties().apply {
-    try {
-        load(rootProject.file("local.properties").reader())
-    } catch (e: Exception) {
-        println("local.properties not found")
-    }
-}
-
-nexusPublishing {
-    repositories {
-        sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username.set(localProperties["sonatypeUsername"] as String?)
-            password.set(localProperties["sonatypePassword"] as String?)
-        }
-    }
-}
-
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -84,13 +65,33 @@ publishing {
     }
 }
 
-signing {
-    val signingKey = localProperties["signingKey"] as String?
-    val signingPassword = localProperties["signingPassword"] as String?
+val localProperties = Properties().apply {
     try {
+        load(rootProject.file("local.properties").reader())
+    } catch (e: Exception) {
+        println("local.properties not found")
+    }
+}
+
+if (localProperties["sonatypeUsername"] != null && localProperties["sonatypePassword"] != null) {
+    nexusPublishing {
+        repositories {
+            sonatype {
+                nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+                snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+                username.set(localProperties["sonatypeUsername"] as String?)
+                password.set(localProperties["sonatypePassword"] as String?)
+            }
+        }
+    }
+}
+
+if (localProperties["signingKey"] != null && localProperties["signingPassword"] != null) {
+    signing {
+        val signingKey = localProperties["signingKey"] as String
+        val signingPassword = localProperties["signingPassword"] as String
+
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign(publishing.publications)
-    } catch (e: Exception) {
-        println("Signing not configured")
     }
 }
