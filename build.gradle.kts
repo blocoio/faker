@@ -34,8 +34,13 @@ java {
 nexusPublishing {
     repositories {
         sonatype {
+            val sonatypeUsername : String? by project
+            val sonatypePassword : String? by project
+
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(sonatypeUsername ?: System.getenv("SONATYPE_USERNAME"))
+            password.set(sonatypePassword ?: System.getenv("SONATYPE_PASSWORD"))
         }
     }
 }
@@ -73,6 +78,7 @@ publishing {
 }
 
 signing {
+    println("Signing with key: ${System.getenv("SIGNING_KEY")}")
     useInMemoryPgpKeys(System.getenv("SIGNING_KEY"), System.getenv("SIGNING_PASSWORD"))
     sign(publishing.publications)
 }
