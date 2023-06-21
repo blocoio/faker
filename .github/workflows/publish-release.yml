@@ -11,9 +11,9 @@ jobs:
         with:
           java-version: 15
       - name: Create temp file with signing key
-        run: echo $SIGNING_KEY >> gradle.properties
+        run: echo "$SIGNING_KEY" >> gradle.properties
       - name: Add singing password to temp file
-        run: echo $SIGNING_PASSWORD >> gradle.properties
+        run: echo "$SIGNING_PASSWORD" >> gradle.properties
       - name: Signing package
         run: gradle signMavenJavaPublication
         env:
