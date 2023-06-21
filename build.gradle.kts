@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.21"
     `java-library`
@@ -31,15 +33,6 @@ java {
     withJavadocJar()
 }
 
-nexusPublishing {
-    repositories {
-        sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-        }
-    }
-}
-
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -69,5 +62,44 @@ publishing {
                 }
             }
         }
+    }
+}
+
+val localProperties = Properties().apply {
+    try {
+        load(rootProject.file("local.properties").reader())
+    } catch (e: Exception) {
+        println("File local.properties not found.")
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+
+            val sonatypeUsername = localProperties["sonatypeUsername"] as String?
+            val sonatypePassword = localProperties["sonatypePassword"] as String?
+
+            if (sonatypeUsername != null && sonatypePassword != null) {
+                username.set(sonatypeUsername)
+                password.set(sonatypePassword)
+            } else {
+                println("Sonatype credentials not found.")
+            }
+        }
+    }
+}
+
+signing {
+    val signingKey = localProperties["signingKey"] as String?
+    val signingPassword = localProperties["signingPassword"] as String?
+
+    if (signingKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign(publishing.publications)
+    } else {
+        println("Signing credentials not found.")
     }
 }

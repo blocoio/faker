@@ -1,0 +1,26 @@
+name: Publish releases to the Maven Central Repository
+on:
+  release:
+    types: [published]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+      - name: Create temp file with secrets
+        run: | 
+          echo "signingKey=$SIGNING_KEY" >> local.properties
+          echo "signingPassword=$SIGNING_PASSWORD" >> local.properties
+          echo "sonatypeUsername=$SONATYPE_USERNAME" >> local.properties
+          echo "sonatypePassword=$SONATYPE_PASSWORD" >> local.properties
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+      - name: Publish package
+        run: gradle -Prelease publishToSonatype
