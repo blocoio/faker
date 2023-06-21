@@ -1,6 +1,7 @@
 name: Publish releases to the Maven Central Repository
 on:
-  [push]
+  release:
+    types: [published]
 jobs:
   publish:
     runs-on: ubuntu-latest
