@@ -2,6 +2,7 @@ package io.bloco.faker
 
 import io.bloco.faker.components.Address
 import io.bloco.faker.components.App
+import io.bloco.faker.components.Artist
 import io.bloco.faker.components.Avatar
 import io.bloco.faker.components.Book
 import io.bloco.faker.components.Bool
@@ -32,6 +33,9 @@ class Faker(val locale: String = DEFAULT_LOCALE) {
 
     @JvmField
     val app: App
+
+    @JvmField
+    val artist: Artist
 
     @JvmField
     val avatar: Avatar
@@ -103,6 +107,7 @@ class Faker(val locale: String = DEFAULT_LOCALE) {
         // Load components
         address = data.getComponent(Address::class)
         app = data.getComponent(App::class)
+        artist = data.getComponent(Artist::class)
         avatar = data.getComponent(Avatar::class)
         book = data.getComponent(Book::class)
         bool = data.getComponent(Bool::class)

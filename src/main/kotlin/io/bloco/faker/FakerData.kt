@@ -2,6 +2,7 @@ package io.bloco.faker
 
 import io.bloco.faker.components.Address
 import io.bloco.faker.components.App
+import io.bloco.faker.components.Artist
 import io.bloco.faker.components.Avatar
 import io.bloco.faker.components.Book
 import io.bloco.faker.components.Bool
@@ -29,6 +30,7 @@ class FakerData(private val data: Map<String, Any>) {
         Address(this),
         App(this),
         Avatar(this),
+        Artist(this),
         Book(this),
         Bool(this),
         Business(this),
