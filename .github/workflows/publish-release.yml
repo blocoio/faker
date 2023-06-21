@@ -10,6 +10,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
+      name: Create temp file
+        run: echo $SIGNING_KEY >> gradle.properties | cat gradle.properties
       - name: Signing package
         run: gradle signMavenJavaPublication
         env:
