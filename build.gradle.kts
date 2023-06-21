@@ -78,7 +78,7 @@ publishing {
 }
 
 signing {
-    println("Signing with key: ${System.getenv("SIGNING_KEY")}")
+    println("Test: ${System.getenv("SONATYPE_USERNAME")}")
     useInMemoryPgpKeys(System.getenv("SIGNING_KEY"), System.getenv("SIGNING_PASSWORD"))
     sign(publishing.publications)
 }
