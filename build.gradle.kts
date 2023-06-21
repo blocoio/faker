@@ -73,10 +73,6 @@ publishing {
 }
 
 signing {
-    try {
-        useGpgCmd()
-        sign(publishing.publications)
-    } catch (e: Exception) {
-        println("WARNING: No properties found. Signing will be skipped.")
-    }
+    useInMemoryPgpKeys(System.getenv("SIGNING_KEY"), System.getenv("SIGNING_PASSWORD"))
+    sign(publishing.publications)
 }

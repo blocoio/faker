@@ -1,7 +1,6 @@
 name: Publish releases to the Maven Central Repository
 on:
-  release:
-    types: [published]
+  [push]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -11,10 +10,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
-      - name: Publish package
-        run: gradle -Prelease publishToSonatype closeAndReleaseSonatypeStagingRepository
+      - name: Signing package
+        run: gradle signMavenJavaPublication
         env:
            SONATYPE_USERNAME : ${{ secrets.SONATYPE_USERNAME }}
            SONATYPE_PASSWORD : ${{ secrets.SONATYPE_PASSWORD }}
-           SIGNING_KEY : ${{ secrets.SIGNING_KEY }}
            SIGNING_PASSWORD : ${{ secrets.SIGNING_PASSWORD }}
+           SIGNING_KEY : ${{ secrets.SIGNING_KEY }}
