@@ -52,6 +52,10 @@ class Address(data: FakerData) : FakerComponent(data) {
         return parse(fetch("address.city"))
     }
 
+    private fun cityName(): String {
+        return parse("address.city_name")
+    }
+
     fun streetName(): String {
         return parse(fetch("address.street_name"))
     }

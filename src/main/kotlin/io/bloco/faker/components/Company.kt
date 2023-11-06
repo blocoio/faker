@@ -9,6 +9,10 @@ class Company(data: FakerData) : FakerComponent(data) {
         return parse(fetch("company.name"))
     }
 
+    private fun prefix(): String {
+        return fetch("company.prefix")
+    }
+
     fun suffix(): String {
         return fetch("company.suffix")
     }
