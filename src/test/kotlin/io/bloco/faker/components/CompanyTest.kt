@@ -2,6 +2,7 @@ package io.bloco.faker.components
 
 import io.bloco.faker.Faker
 import junit.framework.TestCase
+import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertNotNull
 import org.junit.Test
 
@@ -11,6 +12,13 @@ class CompanyTest {
     @Test
     fun name() {
         assertNotNull(faker.company.name())
+    }
+
+    @Test
+    fun name_ru() {
+        val name = Faker("ru").company.name()
+        assertNotNull(name)
+        assertFalse(name.contains("#"))
     }
 
     @Test

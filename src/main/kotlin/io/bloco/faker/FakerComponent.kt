@@ -75,7 +75,9 @@ abstract class FakerComponent(private val data: FakerData) {
     private fun callMethod(methodKey: String): String {
         val methodKeyCamel: String = methodKey.snakeToCamel()
         return try {
-            javaClass.getDeclaredMethod(methodKeyCamel).invoke(this) as String
+            javaClass.getDeclaredMethod(methodKeyCamel)
+                .also { it.isAccessible = true }
+                .invoke(this) as String
         } catch (e: NoSuchMethodException) {
             throw IllegalArgumentException("Unsupported method '$methodKey' for component '$key'", e)
         } catch (e: IllegalAccessException) {

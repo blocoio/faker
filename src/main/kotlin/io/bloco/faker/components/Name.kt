@@ -4,40 +4,31 @@ import io.bloco.faker.FakerComponent
 import io.bloco.faker.FakerData
 
 class Name(data: FakerData) : FakerComponent(data) {
-    fun firstName(): String {
-        return fetch("name.first_name")
-    }
 
-    fun lastName(): String {
-        return fetch("name.last_name")
-    }
+    fun firstName(): String = fetch("name.first_name")
 
-    fun prefix(): String {
-        return fetch("name.prefix")
-    }
+    fun lastName(): String = fetch("name.last_name")
 
-    fun suffix(): String {
-        return fetch("name.suffix")
-    }
+    private fun maleFirstName(): String = fetch("name.male_first_name")
+    private fun femaleFirstName(): String = fetch("name.female_first_name")
+    private fun maleMiddleName(): String = fetch("name.male_middle_name")
+    private fun femaleMiddleName(): String = fetch("name.female_middle_name")
+    private fun maleLastName(): String = fetch("name.male_last_name")
+    private fun femaleLastName(): String = fetch("name.female_last_name")
 
-    fun title(): String {
-        return (
-            fetch("name.title.descriptor") +
-                " " + fetch("name.title.level") +
-                " " + fetch("name.title.job")
-            )
-    }
+    fun prefix(): String = fetch("name.prefix")
 
-    fun name(): String {
-        return parse(fetch("name.name"))
-    }
+    fun suffix(): String = fetch("name.suffix")
 
-    fun nameWithMiddle(): String {
-        return parse(fetch("name.name_with_middle"))
-    }
+    fun title(): String =
+        fetch("name.title.descriptor") +
+            " " + fetch("name.title.level") +
+            " " + fetch("name.title.job")
+
+    fun name(): String = parse(fetch("name.name"))
+
+    fun nameWithMiddle(): String = parse(fetch("name.name_with_middle"))
 
     @Suppress("UNCHECKED_CAST")
-    fun jobTitles(): List<String> {
-        return getMap("name", "title")["job"] as List<String>
-    }
+    fun jobTitles(): List<String> = getMap("name", "title")["job"] as List<String>
 }

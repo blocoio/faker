@@ -68,6 +68,16 @@ class AddressTest {
     }
 
     @Test
+    fun city_pt() {
+        assertNotNull(Faker("pt").address.city())
+    }
+
+    @Test
+    fun city_ru() {
+        assertNotNull(Faker("ru").address.city())
+    }
+
+    @Test
     fun streetName() {
         assertNotNull(faker.address.streetName())
     }
