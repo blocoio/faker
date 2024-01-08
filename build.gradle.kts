@@ -11,14 +11,13 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven { setUrl("https://jitpack.io") }
 }
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("com.github.bmoliveira:snake-yaml:v1.18-android")
+    implementation("org.yaml:snakeyaml:2.2")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
@@ -26,7 +25,7 @@ dependencies {
 }
 
 group = "io.bloco"
-version = "2.0.3"
+version = "2.0.4"
 
 java {
     withSourcesJar()
